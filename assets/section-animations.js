@@ -575,13 +575,152 @@
     });
   }
 
+  // ==========================================
+  // 6. BRANDON DROP COUNTDOWN BANNER ANIMATION
+  // ==========================================
+  function initBrandonCountdownAnimation(section) {
+    const card = section.querySelector('.brandon-countdown__card');
+    const bgWrapper = section.querySelector('.brandon-countdown__bg-wrapper');
+    const bgImg = section.querySelector('.brandon-countdown__bg-img');
+    const productWrapper = section.querySelector('.brandon-countdown__product-wrapper');
+    const subheading = section.querySelector('.brandon-countdown__subheading');
+    const timerUnits = section.querySelectorAll('.brandon-countdown__timer-unit, .brandon-countdown__timer-colon');
+    const button = section.querySelector('.brandon-countdown__btn-wrapper');
+
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1px)', () => {
+      // Explicitly set initial GSAP hidden state for countdown elements
+      if (bgWrapper) gsap.set(bgWrapper, { autoAlpha: 0 });
+      if (card) gsap.set(card, { y: 140, autoAlpha: 0 });
+      if (productWrapper) gsap.set(productWrapper, { scale: 0.75, y: 40, autoAlpha: 0 });
+      if (subheading) gsap.set(subheading, { y: 25, autoAlpha: 0 });
+      if (timerUnits.length > 0) gsap.set(timerUnits, { y: 30, autoAlpha: 0 });
+      if (button) gsap.set(button, { y: 25, autoAlpha: 0 });
+
+      // Parallax Scrub on Floral Background Image
+      if (bgImg) {
+        gsap.fromTo(bgImg,
+          { scale: 1.15, yPercent: 0 },
+          {
+            scale: 1.0,
+            yPercent: 8,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          }
+        );
+      }
+
+      // Scroll-Driven Scrub Animation Timeline for Drop Countdown Card
+      const scrubTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 95%',
+          end: 'top 20%',
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      });
+
+      if (bgWrapper) {
+        scrubTl.to(bgWrapper,
+          { autoAlpha: 1, duration: 0.8, ease: 'power2.out' },
+          0
+        );
+      }
+
+      if (card) {
+        scrubTl.to(card,
+          { y: 0, autoAlpha: 1, duration: 1.0, ease: 'power2.out' },
+          0
+        );
+      }
+
+      if (productWrapper) {
+        scrubTl.to(productWrapper,
+          { scale: 1.0, y: 0, autoAlpha: 1, duration: 1.1, ease: 'power2.out' },
+          0.1
+        );
+      }
+
+      if (subheading) {
+        scrubTl.to(subheading,
+          { y: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out' },
+          0.3
+        );
+      }
+
+      if (timerUnits.length > 0) {
+        scrubTl.to(timerUnits,
+          { y: 0, autoAlpha: 1, stagger: 0.08, duration: 0.8, ease: 'power2.out' },
+          0.4
+        );
+      }
+
+      if (button) {
+        scrubTl.to(button,
+          { y: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out' },
+          0.6
+        );
+      }
+    });
+
+    // Realtime JS Countdown Engine
+    const targetDateStr = section.dataset.targetDate || '2026-10-01T12:00:00';
+    const daysEl = section.querySelector('.js-countdown-days');
+    const hoursEl = section.querySelector('.js-countdown-hours');
+    const minutesEl = section.querySelector('.js-countdown-minutes');
+    const secondsEl = section.querySelector('.js-countdown-seconds');
+
+    if (daysEl && hoursEl && minutesEl && secondsEl) {
+      const targetTime = new Date(targetDateStr).getTime();
+      const updateTimer = () => {
+        const now = new Date().getTime();
+        const diff = targetTime - now;
+
+        if (isNaN(diff) || diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          secondsEl.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        daysEl.textContent = days < 10 ? '0' + days : days;
+        hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+        minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+        secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+      };
+
+      updateTimer();
+      const timerInterval = setInterval(updateTimer, 1000);
+
+      section.addEventListener('shopify:section:unload', () => {
+        clearInterval(timerInterval);
+      });
+    }
+  }
+
   // Register section handlers
-  registerWhenEngineReady("image-banner", initHeroAnimation);
-  registerWhenEngineReady("hero", initHeroAnimation);
-  registerWhenEngineReady("brandon-hero", initBrandonHeroAnimation);
-  registerWhenEngineReady("custom-announcement", () => {});
-  registerWhenEngineReady("custom-header", () => {});
-  registerWhenEngineReady("featured-collection", initProductGridAnimation);
-  registerWhenEngineReady("product-grid", initProductGridAnimation);
-  registerWhenEngineReady("image-with-text", initImageBannerAnimation);
+  registerWhenEngineReady('image-banner', initHeroAnimation);
+  registerWhenEngineReady('hero', initHeroAnimation);
+  registerWhenEngineReady('brandon-hero', initBrandonHeroAnimation);
+  registerWhenEngineReady('brandon-countdown', initBrandonCountdownAnimation);
+  registerWhenEngineReady('custom-announcement', () => {});
+  registerWhenEngineReady('custom-header', () => {});
+  registerWhenEngineReady('featured-collection', initProductGridAnimation);
+  registerWhenEngineReady('product-grid', initProductGridAnimation);
+  registerWhenEngineReady('image-with-text', initImageBannerAnimation);
 })();
+
+

@@ -1,8 +1,22 @@
-/* Custom Figma Header Section Styles */
+.shopify-section.custom-header-section-wrapper,
+.custom-header-section-wrapper {
+  position: fixed;
+  top: 37px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+  pointer-events: auto;
+}
+
+body:not(:has(.custom-announcement-bar)) .custom-header-section-wrapper,
+body:not(:has(.custom-announcement-bar)) .custom-header {
+  top: 0;
+}
 
 .custom-header {
-  position: absolute;
-  top: 38px;
+  position: fixed;
+  top: 37px;
   left: 0;
   right: 0;
   width: 100%;
@@ -10,10 +24,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 10;
+  z-index: 999;
   background: transparent;
   pointer-events: auto;
   will-change: transform, opacity;
+}
+
+@media screen and (max-width: 767px) {
+  .shopify-section.custom-header-section-wrapper,
+  .custom-header-section-wrapper,
+  .custom-header {
+    top: 33px;
+    padding: 12px 16px;
+  }
 }
 
 .custom-header__left {
@@ -63,9 +86,13 @@
 }
 
 .custom-header__brand-logo-img {
-  max-width: 220px;
+  max-width: 466px;
   height: auto;
   display: inline-block;
+}
+
+.custom-header__brand-logo-img--mobile {
+  display: none;
 }
 
 /* Header Right Icons */
@@ -128,9 +155,12 @@
     padding: 12px 16px;
   }
 
-  .custom-header__menu-btn svg {
-    width: 20px;
-    height: 20px;
+  .custom-header__menu-btn {
+    display: none !important;
+  }
+
+  .custom-header__right {
+    display: none !important;
   }
 
   .custom-header__brand-title {
@@ -142,8 +172,15 @@
     max-width: 150px;
   }
 
-  .custom-header__right {
-    gap: 14px;
+  .custom-header__brand-logo-img--mobile {
+    display: inline-block !important;
+    max-width: 150px;
+    height: auto;
+  }
+
+  .custom-header__brand-logo-img--desktop,
+  .custom-header__brand-text--desktop {
+    display: none !important;
   }
 
   .custom-header__icon-btn svg {

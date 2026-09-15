@@ -26,15 +26,26 @@
     <!-- Center: Brand Logo / Title -->
     <div class="custom-header__brand">
       <a href="{{ routes.root_url }}" class="custom-header__brand-title">
+        {%- if section.settings.mobile_logo_image != blank -%}
+          <img
+            src="{{ section.settings.mobile_logo_image | image_url: width: 600 }}"
+            alt="{{ shop.name | escape }}"
+            class="custom-header__brand-logo-img custom-header__brand-logo-img--mobile"
+            loading="eager"
+          >
+        {%- endif -%}
+
         {%- if section.settings.logo_image != blank -%}
           <img
             src="{{ section.settings.logo_image | image_url: width: 600 }}"
             alt="{{ shop.name | escape }}"
-            class="custom-header__brand-logo-img"
+            class="custom-header__brand-logo-img {% if section.settings.mobile_logo_image != blank %}custom-header__brand-logo-img--desktop{% endif %}"
             loading="eager"
           >
         {%- elsif section.settings.brand_text != blank -%}
-          {{ section.settings.brand_text }}
+          <span class="{% if section.settings.mobile_logo_image != blank %}custom-header__brand-text--desktop{% endif %}">
+            {{ section.settings.brand_text }}
+          </span>
         {%- endif -%}
       </a>
     </div>
@@ -157,7 +168,12 @@
     {
       "type": "image_picker",
       "id": "logo_image",
-      "label": "Brand Logo Image"
+      "label": "Brand Logo Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_logo_image",
+      "label": "Brand Logo Image (Mobile)"
     },
     {
       "type": "color",

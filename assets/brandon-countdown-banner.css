@@ -1,0 +1,249 @@
+/* Brandon Drop Countdown Banner Styles */
+
+.shopify-section.brandon-countdown-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.brandon-countdown-section {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 120px 20px 0 20px;
+  background-color: #f7f5f2;
+  overflow: hidden;
+}
+
+/* Background Image Context */
+.brandon-countdown__bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.brandon-countdown__bg-picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brandon-countdown__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.brandon-countdown__bg-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f7f3ee 0%, #ede8e1 100%);
+}
+
+/* Content Container */
+.brandon-countdown__content-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1125px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.brandon-countdown__card {
+  position: relative;
+  width: 100%;
+  min-height: 521px;
+  background: #ffffff;
+  padding: 160px 40px 50px 40px;
+  text-align: center;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.03);
+  margin-top: 0;
+  border-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Floating Handbag Image */
+.brandon-countdown__product-wrapper {
+  position: absolute;
+  top: -190px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  max-width: 85%;
+  z-index: 15;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.brandon-countdown__product-picture {
+  display: block;
+  width: 100%;
+}
+
+.brandon-countdown__product-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12));
+}
+
+/* Subheading */
+.brandon-countdown__subheading {
+ font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #707070;
+    margin-bottom: 28px;
+    font-family: var(--font-body-family, sans-serif);
+}
+
+/* Timer Display */
+.brandon-countdown__timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 36px;
+}
+
+.brandon-countdown__timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.brandon-countdown__timer-num {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  font-family: var(--font-custom-heading, var(--font-essonnes, 'Essonnes Display', serif));
+  color: #000000;
+  letter-spacing: 1px;
+}
+
+.brandon-countdown__timer-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888888;
+  margin-top: 10px;
+}
+
+.brandon-countdown__timer-colon {
+  font-size: 28px;
+  color: #000000;
+  line-height: 1;
+  font-weight: 300;
+  align-self: center;
+  margin-top: -18px;
+}
+
+/* Button CTA */
+.brandon-countdown__btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.brandon-countdown__btn {
+  display: inline-block;
+  padding: 12px 40px;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.brandon-countdown__btn:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Mobile Responsive Styling */
+@media screen and (max-width: 767px) {
+  .brandon-countdown-section {
+    padding: 60px 16px 0 16px;
+    min-height: 85vh;
+  }
+
+  .brandon-countdown__card {
+    min-height: auto;
+    padding: 120px 20px 36px 20px;
+  }
+
+  .brandon-countdown__product-wrapper {
+    top: -125px;
+    width: 260px;
+  }
+
+  .brandon-countdown__subheading {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    margin-bottom: 22px;
+  }
+
+  .brandon-countdown__timer {
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .brandon-countdown__timer-unit {
+    min-width: 48px;
+  }
+
+  .brandon-countdown__timer-num {
+    font-size: 36px;
+  }
+
+  .brandon-countdown__timer-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .brandon-countdown__timer-colon {
+    font-size: 24px;
+    margin-top: -14px;
+  }
+
+  .brandon-countdown__btn {
+    padding: 10px 30px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+}

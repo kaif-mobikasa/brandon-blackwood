@@ -1,0 +1,205 @@
+{{ 'brandon-countdown-banner.css' | asset_url | stylesheet_tag }}
+
+<div
+  id="ShopifySection-{{ section.id }}"
+  class="shopify-section brandon-countdown-wrapper"
+  data-section-id="{{ section.id }}"
+  data-section-type="brandon-countdown"
+  data-target-date="{{ section.settings.target_date | default: '2026-10-01T12:00:00' }}"
+>
+  <section class="brandon-countdown-section" aria-label="Drop Countdown Banner">
+    
+    <div class="brandon-countdown__bg-wrapper">
+      {%- if section.settings.bg_desktop_image != blank or section.settings.bg_mobile_image != blank -%}
+        <picture class="brandon-countdown__bg-picture">
+          {%- if section.settings.bg_mobile_image != blank -%}
+            <source
+              media="(max-width: 767px)"
+              srcset="{{ section.settings.bg_mobile_image | image_url: width: 1500 }}"
+            >
+          {%- endif -%}
+
+          {%- if section.settings.bg_desktop_image != blank -%}
+            <img
+              src="{{ section.settings.bg_desktop_image | image_url: width: 2400 }}"
+              alt="{{ section.settings.subheading | escape }}"
+              width="{{ section.settings.bg_desktop_image.width }}"
+              height="{{ section.settings.bg_desktop_image.height }}"
+              loading="lazy"
+              class="brandon-countdown__bg-img"
+            >
+          {%- endif -%}
+        </picture>
+      {%- else -%}
+        <div class="brandon-countdown__bg-placeholder"></div>
+      {%- endif -%}
+    </div>
+    <div class="brandon-countdown__content-container">
+      <div class="brandon-countdown__card">
+        {%- if section.settings.product_desktop_image != blank or section.settings.product_mobile_image != blank -%}
+          <div class="brandon-countdown__product-wrapper">
+            <picture class="brandon-countdown__product-picture">
+              {%- if section.settings.product_mobile_image != blank -%}
+                <source
+                  media="(max-width: 767px)"
+                  srcset="{{ section.settings.product_mobile_image | image_url: width: 1000 }}"
+                >
+              {%- endif -%}
+
+              {%- if section.settings.product_desktop_image != blank -%}
+                <img
+                  src="{{ section.settings.product_desktop_image | image_url: width: 1400 }}"
+                  alt="{{ section.settings.subheading | escape }}"
+                  width="{{ section.settings.product_desktop_image.width }}"
+                  height="{{ section.settings.product_desktop_image.height }}"
+                  loading="lazy"
+                  class="brandon-countdown__product-img"
+                >
+              {%- endif -%}
+            </picture>
+          </div>
+        {%- endif -%}
+
+        <!-- SUBHEADING -->
+        <div class="brandon-countdown__subheading">
+          {{ section.settings.subheading | default: 'DROPDOWN COUNTDOWN' }}
+        </div>
+
+        <div class="brandon-countdown__timer" id="BrandonCountdownTimer-{{ section.id }}">
+          <div class="brandon-countdown__timer-unit">
+            <span class="brandon-countdown__timer-num js-countdown-days">09</span>
+            <span class="brandon-countdown__timer-label">{{ section.settings.days_label | default: 'DAYS' }}</span>
+          </div>
+
+          <div class="brandon-countdown__timer-colon">:</div>
+
+          <div class="brandon-countdown__timer-unit">
+            <span class="brandon-countdown__timer-num js-countdown-hours">12</span>
+            <span class="brandon-countdown__timer-label">{{ section.settings.hours_label | default: 'HOURS' }}</span>
+          </div>
+
+          <div class="brandon-countdown__timer-colon">:</div>
+
+          <div class="brandon-countdown__timer-unit">
+            <span class="brandon-countdown__timer-num js-countdown-minutes">42</span>
+            <span class="brandon-countdown__timer-label">{{ section.settings.minutes_label | default: 'MIN' }}</span>
+          </div>
+
+          <div class="brandon-countdown__timer-colon">:</div>
+
+          <div class="brandon-countdown__timer-unit">
+            <span class="brandon-countdown__timer-num js-countdown-seconds">24</span>
+            <span class="brandon-countdown__timer-label">{{ section.settings.seconds_label | default: 'SEC' }}</span>
+          </div>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <div class="brandon-countdown__btn-wrapper">
+          <a href="{{ section.settings.button_link | default: '#' }}" class="brandon-countdown__btn">
+            {{ section.settings.button_label | default: 'GET NOTIFIED' }}
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Brandon Drop Countdown",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Floral Background Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_desktop_image",
+      "label": "Desktop Background Image (Floral)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_mobile_image",
+      "label": "Mobile Background Image (Floral)"
+    },
+    {
+      "type": "header",
+      "content": "Floating Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_desktop_image",
+      "label": "Desktop Product Image (Handbag)"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_mobile_image",
+      "label": "Mobile Product Image (Handbag)"
+    },
+    {
+      "type": "header",
+      "content": "Countdown Settings"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "DROPDOWN COUNTDOWN"
+    },
+    {
+      "type": "text",
+      "id": "target_date",
+      "label": "Target End Date (ISO Format)",
+      "default": "2026-10-01T12:00:00"
+    },
+    {
+      "type": "text",
+      "id": "days_label",
+      "label": "Days Label",
+      "default": "DAYS"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Hours Label",
+      "default": "HOURS"
+    },
+    {
+      "type": "text",
+      "id": "minutes_label",
+      "label": "Minutes Label",
+      "default": "MIN"
+    },
+    {
+      "type": "text",
+      "id": "seconds_label",
+      "label": "Seconds Label",
+      "default": "SEC"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "GET NOTIFIED"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brandon Drop Countdown",
+      "settings": {
+        "subheading": "DROPDOWN COUNTDOWN",
+        "button_label": "GET NOTIFIED"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,24 +1,37 @@
 /* Custom Announcement Bar Section Styles */
 
-.custom-announcement-bar {
+.shopify-section.custom-announcement-bar-section-wrapper,
+.custom-announcement-bar-section-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  padding: 10px 16px;
-  text-align: center;
-  font-size: 12px;
-  background-color: var(--announcement-bg, #000000);
-  color: var(--announcement-text-color, #ffffff);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  line-height: 1.4;
-  z-index: 20;
-  position: relative;
-  will-change: transform, opacity;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.custom-announcement-bar {
+     width: 100%;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 14px;
+    font-family: var(--font-semplicita-bold);
+    background-color: var(--announcement-bg, #000000);
+    color: var(--announcement-text-color, #ffffff);
+    letter-spacing: 9%;
+    text-transform: uppercase;
+    font-weight: 500;
+    /* line-height: 1.4; */
+    line-height: 16px;
+    z-index: 1000;
+    position: relative;
 }
 
 .custom-announcement-bar a {
   color: inherit;
   text-decoration: underline;
+  font-family: var(--font-semplicita-bold, 'SemplicitaPro-Bold', sans-serif);
   font-weight: 700;
   margin-left: 4px;
 }
