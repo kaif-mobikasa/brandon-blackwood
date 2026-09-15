@@ -1,0 +1,76 @@
+{{ 'custom-announcement-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #ShopifySection-{{ section.id }} .custom-announcement-bar {
+    --announcement-bg: {{ section.settings.announcement_bg_color }};
+    --announcement-text-color: {{ section.settings.announcement_text_color }};
+  }
+{%- endstyle -%}
+
+<div
+  id="ShopifySection-{{ section.id }}"
+  class="shopify-section custom-announcement-bar-section-wrapper"
+  data-section-id="{{ section.id }}"
+  data-section-type="custom-announcement"
+>
+  {%- if section.settings.show_announcement and section.settings.announcement_text != blank -%}
+    <div class="custom-announcement-bar" id="AnnouncementBar-{{ section.id }}">
+      <span>{{ section.settings.announcement_text }}</span>
+      {%- if section.settings.announcement_link_text != blank and section.settings.announcement_link_url != blank -%}
+        <a href="{{ section.settings.announcement_link_url }}">
+          {{ section.settings.announcement_link_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Announcement Bar",
+  "tag": "section",
+  "class": "section-announcement",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "Resell & Get 110% Brand Credit Back."
+    },
+    {
+      "type": "text",
+      "id": "announcement_link_text",
+      "label": "Link Text",
+      "default": "SEE MORE"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "color",
+      "id": "announcement_bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "announcement_text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

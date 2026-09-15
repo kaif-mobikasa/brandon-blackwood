@@ -1,0 +1,307 @@
+{{ 'custom-figma-header.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #ShopifySection-{{ section.id }} .custom-header {
+    --header-icon-color: {{ section.settings.header_icon_color }};
+  }
+{%- endstyle -%}
+
+<div
+  id="ShopifySection-{{ section.id }}"
+  class="shopify-section custom-header-section-wrapper"
+  data-section-id="{{ section.id }}"
+  data-section-type="custom-header"
+>
+  <header class="custom-header" id="Header-{{ section.id }}">
+    
+    <!-- Left: Hamburger Menu Button -->
+    <div class="custom-header__left">
+      {%- if section.settings.menu_icon_svg != blank -%}
+        <button type="button" class="custom-header__menu-btn" aria-label="Open navigation menu">
+          {{ section.settings.menu_icon_svg }}
+        </button>
+      {%- endif -%}
+    </div>
+
+    <!-- Center: Brand Logo / Title -->
+    <div class="custom-header__brand">
+      <a href="{{ routes.root_url }}" class="custom-header__brand-title">
+        {%- if section.settings.logo_image != blank -%}
+          <img
+            src="{{ section.settings.logo_image | image_url: width: 600 }}"
+            alt="{{ shop.name | escape }}"
+            class="custom-header__brand-logo-img"
+            loading="eager"
+          >
+        {%- elsif section.settings.brand_text != blank -%}
+          {{ section.settings.brand_text }}
+        {%- endif -%}
+      </a>
+    </div>
+
+    <!-- Right: Header Icons (Search, Account, Cart) -->
+    <div class="custom-header__right">
+      {%- if section.settings.show_search_icon and section.settings.search_icon_svg != blank -%}
+        <a href="{{ routes.search_url }}" class="custom-header__icon-btn" aria-label="Search">
+          {{ section.settings.search_icon_svg }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.show_account_icon and section.settings.account_icon_svg != blank -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="custom-header__icon-btn" aria-label="Account">
+          {{ section.settings.account_icon_svg }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.show_cart_icon and section.settings.cart_icon_svg != blank -%}
+        <a href="{{ routes.cart_url }}" class="custom-header__icon-btn" id="cart-icon-bubble-header" aria-label="Cart">
+          {{ section.settings.cart_icon_svg }}
+          {%- if cart != empty and cart.item_count > 0 -%}
+            <span class="custom-header__cart-count">{{ cart.item_count }}</span>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </header>
+
+  <!-- Mobile Bottom Navigation Bar (Shown on Mobile screens only) -->
+  {%- if section.settings.show_mobile_bottom_nav -%}
+    <nav class="custom-mobile-nav" aria-label="Mobile Navigation">
+      
+      <!-- 1. Home -->
+      {%- if section.settings.mobile_nav_home_svg != blank -%}
+        <a
+          href="{{ section.settings.mobile_nav_home_url | default: routes.root_url }}"
+          class="custom-mobile-nav__item {% if request.path == routes.root_url %}custom-mobile-nav__item--active{% endif %}"
+        >
+          <span class="custom-mobile-nav__icon">{{ section.settings.mobile_nav_home_svg }}</span>
+          {%- if section.settings.mobile_nav_home_label != blank -%}
+            <span class="custom-mobile-nav__label">{{ section.settings.mobile_nav_home_label }}</span>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+
+      <!-- 2. Category -->
+      {%- if section.settings.mobile_nav_category_svg != blank -%}
+        <a
+          href="{{ section.settings.mobile_nav_category_url | default: routes.collections_url }}"
+          class="custom-mobile-nav__item {% if request.path contains '/collections' %}custom-mobile-nav__item--active{% endif %}"
+        >
+          <span class="custom-mobile-nav__icon">{{ section.settings.mobile_nav_category_svg }}</span>
+          {%- if section.settings.mobile_nav_category_label != blank -%}
+            <span class="custom-mobile-nav__label">{{ section.settings.mobile_nav_category_label }}</span>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+
+      <!-- 3. Search -->
+      {%- if section.settings.mobile_nav_search_svg != blank -%}
+        <a
+          href="{{ section.settings.mobile_nav_search_url | default: routes.search_url }}"
+          class="custom-mobile-nav__item {% if request.path == routes.search_url %}custom-mobile-nav__item--active{% endif %}"
+        >
+          <span class="custom-mobile-nav__icon">{{ section.settings.mobile_nav_search_svg }}</span>
+          {%- if section.settings.mobile_nav_search_label != blank -%}
+            <span class="custom-mobile-nav__label">{{ section.settings.mobile_nav_search_label }}</span>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+
+      <!-- 4. Profile -->
+      {%- if section.settings.mobile_nav_profile_svg != blank -%}
+        <a
+          href="{{ section.settings.mobile_nav_profile_url | default: routes.account_url }}"
+          class="custom-mobile-nav__item {% if request.path contains '/account' %}custom-mobile-nav__item--active{% endif %}"
+        >
+          <span class="custom-mobile-nav__icon">{{ section.settings.mobile_nav_profile_svg }}</span>
+          {%- if section.settings.mobile_nav_profile_label != blank -%}
+            <span class="custom-mobile-nav__label">{{ section.settings.mobile_nav_profile_label }}</span>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+
+      <!-- 5. Cart -->
+      {%- if section.settings.mobile_nav_cart_svg != blank -%}
+        <a
+          href="{{ section.settings.mobile_nav_cart_url | default: routes.cart_url }}"
+          class="custom-mobile-nav__item {% if request.path == routes.cart_url %}custom-mobile-nav__item--active{% endif %}"
+        >
+          <span class="custom-mobile-nav__icon">
+            {{ section.settings.mobile_nav_cart_svg }}
+            {%- if cart != empty and cart.item_count > 0 -%}
+              <span class="custom-mobile-nav__cart-badge">{{ cart.item_count }}</span>
+            {%- endif -%}
+          </span>
+          {%- if section.settings.mobile_nav_cart_label != blank -%}
+            <span class="custom-mobile-nav__label">{{ section.settings.mobile_nav_cart_label }}</span>
+          {%- endif -%}
+        </a>
+      {%- endif -%}
+
+    </nav>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Header",
+  "tag": "section",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand Title",
+      "default": "BRANDON BLACKWOOD"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Brand Logo Image"
+    },
+    {
+      "type": "color",
+      "id": "header_icon_color",
+      "label": "Header Icon & Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Header Desktop Icons"
+    },
+    {
+      "type": "html",
+      "id": "menu_icon_svg",
+      "label": "Menu Icon SVG Code"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search_icon",
+      "label": "Show Search Icon",
+      "default": true
+    },
+    {
+      "type": "html",
+      "id": "search_icon_svg",
+      "label": "Search Icon SVG Code"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account_icon",
+      "label": "Show Account Icon",
+      "default": true
+    },
+    {
+      "type": "html",
+      "id": "account_icon_svg",
+      "label": "Account Icon SVG Code"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_icon",
+      "label": "Show Cart Icon",
+      "default": true
+    },
+    {
+      "type": "html",
+      "id": "cart_icon_svg",
+      "label": "Cart Icon SVG Code"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Bottom Navigation Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mobile_bottom_nav",
+      "label": "Enable Mobile Bottom Navigation",
+      "default": true
+    },
+    {
+      "type": "html",
+      "id": "mobile_nav_home_svg",
+      "label": "Home Icon SVG Code"
+    },
+    {
+      "type": "text",
+      "id": "mobile_nav_home_label",
+      "label": "Home Label",
+      "default": "HOME"
+    },
+    {
+      "type": "url",
+      "id": "mobile_nav_home_url",
+      "label": "Home Link URL"
+    },
+    {
+      "type": "html",
+      "id": "mobile_nav_category_svg",
+      "label": "Category Icon SVG Code"
+    },
+    {
+      "type": "text",
+      "id": "mobile_nav_category_label",
+      "label": "Category Label",
+      "default": "CATEGORY"
+    },
+    {
+      "type": "url",
+      "id": "mobile_nav_category_url",
+      "label": "Category Link URL"
+    },
+    {
+      "type": "html",
+      "id": "mobile_nav_search_svg",
+      "label": "Search Icon SVG Code"
+    },
+    {
+      "type": "text",
+      "id": "mobile_nav_search_label",
+      "label": "Search Label",
+      "default": "SEARCH"
+    },
+    {
+      "type": "url",
+      "id": "mobile_nav_search_url",
+      "label": "Search Link URL"
+    },
+    {
+      "type": "html",
+      "id": "mobile_nav_profile_svg",
+      "label": "Profile Icon SVG Code"
+    },
+    {
+      "type": "text",
+      "id": "mobile_nav_profile_label",
+      "label": "Profile Label",
+      "default": "PROFILE"
+    },
+    {
+      "type": "url",
+      "id": "mobile_nav_profile_url",
+      "label": "Profile Link URL"
+    },
+    {
+      "type": "html",
+      "id": "mobile_nav_cart_svg",
+      "label": "Cart Icon SVG Code"
+    },
+    {
+      "type": "text",
+      "id": "mobile_nav_cart_label",
+      "label": "Cart Label",
+      "default": "CART"
+    },
+    {
+      "type": "url",
+      "id": "mobile_nav_cart_url",
+      "label": "Cart Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Header"
+    }
+  ]
+}
+{% endschema %}

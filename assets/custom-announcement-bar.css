@@ -1,0 +1,36 @@
+/* Custom Announcement Bar Section Styles */
+
+.custom-announcement-bar {
+  width: 100%;
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 12px;
+  background-color: var(--announcement-bg, #000000);
+  color: var(--announcement-text-color, #ffffff);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.4;
+  z-index: 20;
+  position: relative;
+  will-change: transform, opacity;
+}
+
+.custom-announcement-bar a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.custom-announcement-bar a:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-announcement-bar {
+    font-size: 11px;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+  }
+}

@@ -1,0 +1,226 @@
+/* Custom Figma Header Section Styles */
+
+.custom-header {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  background: transparent;
+  pointer-events: auto;
+  will-change: transform, opacity;
+}
+
+.custom-header__left {
+  display: flex;
+  align-items: center;
+}
+
+.custom-header__menu-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--header-icon-color, #000000);
+  transition: opacity 0.2s ease;
+}
+
+.custom-header__menu-btn:hover {
+  opacity: 0.75;
+}
+
+.custom-header__menu-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
+/* Center Brand Logo/Title */
+.custom-header__brand {
+  flex: 1;
+  text-align: center;
+  margin: 0 16px;
+}
+
+.custom-header__brand-title {
+  font-family: var(--font-custom-heading, 'Essonnes Display', serif, 'Georgia', 'Playfair Display', Times, sans-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--header-icon-color, #000000);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.custom-header__brand-logo-img {
+  max-width: 220px;
+  height: auto;
+  display: inline-block;
+}
+
+/* Header Right Icons */
+.custom-header__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.custom-header__icon-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--header-icon-color, #000000);
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.custom-header__icon-btn:hover {
+  opacity: 0.75;
+}
+
+.custom-header__icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+}
+
+.custom-header__cart-count {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Bottom Navigation Bar (Hidden on Desktop, Visible on Mobile Only) */
+.custom-mobile-nav {
+  display: none;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 767px) {
+  .custom-header {
+    top: 32px;
+    padding: 12px 16px;
+  }
+
+  .custom-header__menu-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .custom-header__brand-title {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .custom-header__brand-logo-img {
+    max-width: 150px;
+  }
+
+  .custom-header__right {
+    gap: 14px;
+  }
+
+  .custom-header__icon-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Mobile Floating Bottom Nav Pill Bar */
+  .custom-mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    padding: 6px 8px;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+  }
+
+  .custom-mobile-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
+    padding: 6px 12px;
+    border-radius: 14px;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    min-width: 54px;
+  }
+
+  .custom-mobile-nav__item--active {
+    background-color: #e8e8e8;
+  }
+
+  .custom-mobile-nav__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+  }
+
+  .custom-mobile-nav__icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  .custom-mobile-nav__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1;
+    color: #000000;
+  }
+
+  .custom-mobile-nav__cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
