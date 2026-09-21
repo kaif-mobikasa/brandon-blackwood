@@ -1,0 +1,231 @@
+.brandon-textures-wrapper {
+  width: 100%;
+  max-width: 1440px;
+    margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.brandon-textures-grid {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.brandon-textures-grid__bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.brandon-textures-grid__bg-picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brandon-textures-grid__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.brandon-textures-grid__container {
+position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 799px;
+    margin: 0 auto;
+    padding: 55px 20px 44px;
+    box-sizing: border-box;
+}
+
+.brandon-textures-grid__cards {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+  align-items: stretch;
+  justify-content: center;
+}
+
+.brandon-textures-grid__card {
+  position: relative;
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+.brandon-textures-grid__card-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brandon-textures-grid__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandon-textures-grid__picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brandon-textures-grid__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brandon-textures-grid__card--left {
+  background: #3a2e24;
+}
+
+.brandon-textures-grid__content-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 87%;
+    max-width: 380px;
+    background: #ffffffd1;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 17px 24px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+.brandon-textures-grid__heading {
+font-family: var(--font-semplicita);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3%;
+    text-transform: uppercase;
+    color: #111;
+    margin: 0 0 11px;
+    line-height: 1.3;
+}
+
+.brandon-textures-grid__description {
+    font-family: var(--font-semplicita);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 4%;
+    color: #333;
+    max-width: 291px;
+}
+
+.brandon-textures-grid__card--right {
+  background: #ffffff;
+}
+
+.brandon-textures-grid__featured-strip {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  margin-top: 10px;
+}
+
+.brandon-textures-grid__featured-pill {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: #000000;
+  font-family: var(--font-semplicita, sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 3px 31px;
+  border-radius: 1px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.brandon-textures-grid__featured-logos-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.brandon-textures-grid__featured-picture {
+  display: block;
+  width: 100%;
+}
+
+.brandon-textures-grid__featured-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .brandon-textures-grid__container {
+    padding: 24px 16px 58px;
+  }
+
+  .brandon-textures-grid__cards {
+    flex-direction: column;
+    gap: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .brandon-textures-grid__card {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .brandon-textures-grid__content-card {
+         width: 89%;
+        max-width: 320px;
+        padding: 15px 18px 25px;
+  }
+
+  .brandon-textures-grid__heading {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .brandon-textures-grid__description {
+    font-size: 11px;
+
+  }
+
+  .brandon-textures-grid__featured-pill {
+    top: -12px;
+    font-size: 10px;
+    padding: 3px 24px;
+  }
+}

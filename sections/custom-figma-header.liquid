@@ -14,7 +14,6 @@
 >
   <header class="custom-header" id="Header-{{ section.id }}">
     
-    <!-- Left: Hamburger Menu Button -->
     <div class="custom-header__left">
       {%- if section.settings.menu_icon_svg != blank -%}
         <button type="button" class="custom-header__menu-btn" aria-label="Open navigation menu">
@@ -23,7 +22,6 @@
       {%- endif -%}
     </div>
 
-    <!-- Center: Brand Logo / Title -->
     <div class="custom-header__brand">
       <a href="{{ routes.root_url }}" class="custom-header__brand-title">
         {%- if section.settings.mobile_logo_image != blank -%}
@@ -50,7 +48,6 @@
       </a>
     </div>
 
-    <!-- Right: Header Icons (Search, Account, Cart) -->
     <div class="custom-header__right">
       {%- if section.settings.show_search_icon and section.settings.search_icon_svg != blank -%}
         <a href="{{ routes.search_url }}" class="custom-header__icon-btn" aria-label="Search">
@@ -75,11 +72,9 @@
     </div>
   </header>
 
-  <!-- Mobile Bottom Navigation Bar (Shown on Mobile screens only) -->
   {%- if section.settings.show_mobile_bottom_nav -%}
     <nav class="custom-mobile-nav" aria-label="Mobile Navigation">
       
-      <!-- 1. Home -->
       {%- if section.settings.mobile_nav_home_svg != blank -%}
         <a
           href="{{ section.settings.mobile_nav_home_url | default: routes.root_url }}"
@@ -92,7 +87,6 @@
         </a>
       {%- endif -%}
 
-      <!-- 2. Category -->
       {%- if section.settings.mobile_nav_category_svg != blank -%}
         <a
           href="{{ section.settings.mobile_nav_category_url | default: routes.collections_url }}"
@@ -105,7 +99,6 @@
         </a>
       {%- endif -%}
 
-      <!-- 3. Search -->
       {%- if section.settings.mobile_nav_search_svg != blank -%}
         <a
           href="{{ section.settings.mobile_nav_search_url | default: routes.search_url }}"
@@ -118,7 +111,6 @@
         </a>
       {%- endif -%}
 
-      <!-- 4. Profile -->
       {%- if section.settings.mobile_nav_profile_svg != blank -%}
         <a
           href="{{ section.settings.mobile_nav_profile_url | default: routes.account_url }}"
@@ -131,7 +123,6 @@
         </a>
       {%- endif -%}
 
-      <!-- 5. Cart -->
       {%- if section.settings.mobile_nav_cart_svg != blank -%}
         <a
           href="{{ section.settings.mobile_nav_cart_url | default: routes.cart_url }}"

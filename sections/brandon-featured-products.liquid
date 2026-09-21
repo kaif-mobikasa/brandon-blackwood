@@ -1,0 +1,173 @@
+{{ 'brandon-featured-products.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+{%- style -%}
+  #ShopifySection-{{ section.id }} .brandon-featured-products {
+    --bfp-top-bg-desktop: {{ section.settings.top_bg_color_desktop | default: '#ffffff' }};
+    --bfp-top-bg-mobile: {{ section.settings.top_bg_color_mobile | default: '#ffffff' }};
+  }
+{%- endstyle -%}
+
+<div class="brandon-featured-products" data-section-type="brandon-featured-products" data-section-id="{{ section.id }}">
+  
+  <div class="brandon-featured-products__top-bg"></div>
+
+  <div class="brandon-featured-products__main-bg">
+    {%- if section.settings.main_bg_image_desktop != blank -%}
+      <img src="{{ section.settings.main_bg_image_desktop | image_url: width: 2400 }}" class="brandon-featured-products__bg-img brandon-featured-products__bg-img--desktop" alt="" loading="lazy">
+    {%- endif -%}
+    {%- if section.settings.main_bg_image_mobile != blank -%}
+      <img src="{{ section.settings.main_bg_image_mobile | image_url: width: 1200 }}" class="brandon-featured-products__bg-img brandon-featured-products__bg-img--mobile" alt="" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  <div class="brandon-featured-products__container">
+    
+    <div class="brandon-featured-products__emblem js-fp-emblem">
+      {%- if section.settings.emblem_icon_mobile != blank -%}
+        <img src="{{ section.settings.emblem_icon_mobile | image_url: width: 240 }}" alt="Brand Emblem" class="brandon-featured-products__emblem-img brandon-featured-products__emblem-img--mobile" loading="lazy">
+      {%- endif -%}
+
+      {%- if section.settings.emblem_icon_desktop != blank -%}
+        <img src="{{ section.settings.emblem_icon_desktop | image_url: width: 240 }}" alt="Brand Emblem" class="brandon-featured-products__emblem-img {% if section.settings.emblem_icon_mobile != blank %}brandon-featured-products__emblem-img--desktop{% endif %}" loading="lazy">
+      {%- endif -%}
+    </div>
+
+    <div class="brandon-featured-products__title-badge js-fp-title-badge">
+      <span class="js-active-product-title"></span>
+    </div>
+
+    <div class="brandon-featured-products__carousel-wrapper js-fp-swiper">
+      
+      <button class="brandon-featured-products__nav-btn brandon-featured-products__nav-btn--prev js-fp-prev" aria-label="Previous product">
+        {%- if section.settings.prev_icon != blank -%}
+          <img src="{{ section.settings.prev_icon | image_url: width: 120 }}" alt="Previous" class="brandon-featured-products__nav-icon" loading="lazy">
+        {%- endif -%}
+      </button>
+
+      <button class="brandon-featured-products__nav-btn brandon-featured-products__nav-btn--next js-fp-next" aria-label="Next product">
+        {%- if section.settings.next_icon != blank -%}
+          <img src="{{ section.settings.next_icon | image_url: width: 120 }}" alt="Next" class="brandon-featured-products__nav-icon" loading="lazy">
+        {%- endif -%}
+      </button>
+
+      <div class="swiper brandon-featured-products__swiper">
+        <div class="swiper-wrapper">
+          {%- assign selected_products = section.settings.product_list -%}
+          {%- if selected_products != blank and selected_products.count > 0 -%}
+            {%- for prod in selected_products -%}
+              <div class="swiper-slide brandon-featured-products__slide" data-title="{{ prod.title | escape }}" data-price="{{ prod.price | money }}" data-url="{{ prod.url }}">
+                <div class="brandon-featured-products__item">
+                  <div class="brandon-featured-products__media">
+                    {%- if prod.featured_image -%}
+                      <img src="{{ prod.featured_image | image_url: width: 900 }}" alt="{{ prod.title | escape }}" loading="lazy" width="450" height="450">
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </div>
+                  <div class="brandon-featured-products__cta-wrapper">
+                    <a href="{{ prod.url }}" class="brandon-featured-products__cta-btn" aria-label="Add {{ prod.title | escape }} to bag - {{ prod.price | money }}">
+                      ADD TO BAG &bull; {{ prod.price | money }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="brandon-featured-products__mobile-pagination">
+        <span class="brandon-featured-products__pag-line"></span>
+        <span class="brandon-featured-products__pag-line"></span>
+        <span class="brandon-featured-products__pag-line brandon-featured-products__pag-line--active"></span>
+        <span class="brandon-featured-products__pag-line"></span>
+        <span class="brandon-featured-products__pag-line"></span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "tag": "section",
+  "class": "section-brandon-featured-products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FEATURED PRODUCTS"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Featured Products",
+      "limit": 12
+    },
+    {
+      "type": "header",
+      "content": "Navigation Arrow Icons"
+    },
+    {
+      "type": "image_picker",
+      "id": "prev_icon",
+      "label": "Previous Arrow Icon Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "next_icon",
+      "label": "Next Arrow Icon Image"
+    },
+    {
+      "type": "header",
+      "content": "Background Color & Image Settings"
+    },
+    {
+      "type": "color",
+      "id": "top_bg_color_desktop",
+      "label": "Desktop Top Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "top_bg_color_mobile",
+      "label": "Mobile Top Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_bg_image_desktop",
+      "label": "Desktop Main Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_bg_image_mobile",
+      "label": "Mobile Main Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Brand Emblem Icon Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "emblem_icon_desktop",
+      "label": "Desktop Emblem Icon Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "emblem_icon_mobile",
+      "label": "Mobile Emblem Icon Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

@@ -579,40 +579,46 @@
   // 6. BRANDON DROP COUNTDOWN BANNER ANIMATION
   // ==========================================
   function initBrandonCountdownAnimation(section) {
-    const card = section.querySelector('.brandon-countdown__card');
-    const bgWrapper = section.querySelector('.brandon-countdown__bg-wrapper');
-    const bgImg = section.querySelector('.brandon-countdown__bg-img');
-    const productWrapper = section.querySelector('.brandon-countdown__product-wrapper');
-    const subheading = section.querySelector('.brandon-countdown__subheading');
-    const timerUnits = section.querySelectorAll('.brandon-countdown__timer-unit, .brandon-countdown__timer-colon');
-    const button = section.querySelector('.brandon-countdown__btn-wrapper');
+    const card = section.querySelector(".brandon-countdown__card");
+    const bgWrapper = section.querySelector(".brandon-countdown__bg-wrapper");
+    const bgImg = section.querySelector(".brandon-countdown__bg-img");
+    const productWrapper = section.querySelector(
+      ".brandon-countdown__product-wrapper",
+    );
+    const subheading = section.querySelector(".brandon-countdown__subheading");
+    const timerUnits = section.querySelectorAll(
+      ".brandon-countdown__timer-unit, .brandon-countdown__timer-colon",
+    );
+    const button = section.querySelector(".brandon-countdown__btn-wrapper");
 
     const mm = gsap.matchMedia();
 
-    mm.add('(min-width: 1px)', () => {
+    mm.add("(min-width: 1px)", () => {
       // Explicitly set initial GSAP hidden state for countdown elements
       if (bgWrapper) gsap.set(bgWrapper, { autoAlpha: 0 });
       if (card) gsap.set(card, { y: 140, autoAlpha: 0 });
-      if (productWrapper) gsap.set(productWrapper, { scale: 0.75, y: 40, autoAlpha: 0 });
+      if (productWrapper)
+        gsap.set(productWrapper, { scale: 0.75, y: 40, autoAlpha: 0 });
       if (subheading) gsap.set(subheading, { y: 25, autoAlpha: 0 });
       if (timerUnits.length > 0) gsap.set(timerUnits, { y: 30, autoAlpha: 0 });
       if (button) gsap.set(button, { y: 25, autoAlpha: 0 });
 
       // Parallax Scrub on Floral Background Image
       if (bgImg) {
-        gsap.fromTo(bgImg,
+        gsap.fromTo(
+          bgImg,
           { scale: 1.15, yPercent: 0 },
           {
             scale: 1.0,
             yPercent: 8,
-            ease: 'none',
+            ease: "none",
             scrollTrigger: {
               trigger: section,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true
-            }
-          }
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          },
         );
       }
 
@@ -620,62 +626,74 @@
       const scrubTl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top 95%',
-          end: 'top 20%',
+          start: "top 95%",
+          end: "top 20%",
           scrub: 1,
-          invalidateOnRefresh: true
-        }
+          invalidateOnRefresh: true,
+        },
       });
 
       if (bgWrapper) {
-        scrubTl.to(bgWrapper,
-          { autoAlpha: 1, duration: 0.8, ease: 'power2.out' },
-          0
+        scrubTl.to(
+          bgWrapper,
+          { autoAlpha: 1, duration: 0.8, ease: "power2.out" },
+          0,
         );
       }
 
       if (card) {
-        scrubTl.to(card,
-          { y: 0, autoAlpha: 1, duration: 1.0, ease: 'power2.out' },
-          0
+        scrubTl.to(
+          card,
+          { y: 0, autoAlpha: 1, duration: 1.0, ease: "power2.out" },
+          0,
         );
       }
 
       if (productWrapper) {
-        scrubTl.to(productWrapper,
-          { scale: 1.0, y: 0, autoAlpha: 1, duration: 1.1, ease: 'power2.out' },
-          0.1
+        scrubTl.to(
+          productWrapper,
+          { scale: 1.0, y: 0, autoAlpha: 1, duration: 1.1, ease: "power2.out" },
+          0.1,
         );
       }
 
       if (subheading) {
-        scrubTl.to(subheading,
-          { y: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out' },
-          0.3
+        scrubTl.to(
+          subheading,
+          { y: 0, autoAlpha: 1, duration: 0.6, ease: "power2.out" },
+          0.3,
         );
       }
 
       if (timerUnits.length > 0) {
-        scrubTl.to(timerUnits,
-          { y: 0, autoAlpha: 1, stagger: 0.08, duration: 0.8, ease: 'power2.out' },
-          0.4
+        scrubTl.to(
+          timerUnits,
+          {
+            y: 0,
+            autoAlpha: 1,
+            stagger: 0.08,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          0.4,
         );
       }
 
       if (button) {
-        scrubTl.to(button,
-          { y: 0, autoAlpha: 1, duration: 0.6, ease: 'power2.out' },
-          0.6
+        scrubTl.to(
+          button,
+          { y: 0, autoAlpha: 1, duration: 0.6, ease: "power2.out" },
+          0.6,
         );
       }
     });
 
     // Realtime JS Countdown Engine
-    const targetDateStr = section.dataset.targetDate || '2026-10-01T12:00:00';
-    const daysEl = section.querySelector('.js-countdown-days');
-    const hoursEl = section.querySelector('.js-countdown-hours');
-    const minutesEl = section.querySelector('.js-countdown-minutes');
-    const secondsEl = section.querySelector('.js-countdown-seconds');
+    const targetDateStr = section.dataset.targetDate || "2026-10-01T12:00:00";
+    const daysEl = section.querySelector(".js-countdown-days");
+    const hoursEl = section.querySelector(".js-countdown-hours");
+    const minutesEl = section.querySelector(".js-countdown-minutes");
+    const secondsEl = section.querySelector(".js-countdown-seconds");
 
     if (daysEl && hoursEl && minutesEl && secondsEl) {
       const targetTime = new Date(targetDateStr).getTime();
@@ -684,43 +702,442 @@
         const diff = targetTime - now;
 
         if (isNaN(diff) || diff <= 0) {
-          daysEl.textContent = '00';
-          hoursEl.textContent = '00';
-          minutesEl.textContent = '00';
-          secondsEl.textContent = '00';
+          daysEl.textContent = "00";
+          hoursEl.textContent = "00";
+          minutesEl.textContent = "00";
+          secondsEl.textContent = "00";
           return;
         }
 
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        daysEl.textContent = days < 10 ? '0' + days : days;
-        hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-        minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
-        secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+        daysEl.textContent = days < 10 ? "0" + days : days;
+        hoursEl.textContent = hours < 10 ? "0" + hours : hours;
+        minutesEl.textContent = minutes < 10 ? "0" + minutes : minutes;
+        secondsEl.textContent = seconds < 10 ? "0" + seconds : seconds;
       };
 
       updateTimer();
       const timerInterval = setInterval(updateTimer, 1000);
 
-      section.addEventListener('shopify:section:unload', () => {
+      section.addEventListener("shopify:section:unload", () => {
         clearInterval(timerInterval);
       });
     }
   }
 
+  // ==========================================
+  // 5. BRANDON FEATURED PRODUCTS ANIMATION & SWIPER
+  // ==========================================
+  function initBrandonFeaturedProductsAnimation(section) {
+    const sectionContainer =
+      section.querySelector(".brandon-featured-products") || section;
+    const swiperEl = sectionContainer.querySelector(
+      ".brandon-featured-products__swiper",
+    );
+    const prevBtn = sectionContainer.querySelector(".js-fp-prev");
+    const nextBtn = sectionContainer.querySelector(".js-fp-next");
+    const titleBadgeText = sectionContainer.querySelector(
+      ".js-active-product-title",
+    );
+
+    // Initialize Swiper Carousel
+    const initSwiper = () => {
+      if (typeof Swiper === "undefined") {
+        setTimeout(initSwiper, 100);
+        return;
+      }
+
+      if (!swiperEl) return;
+
+      const swiper = new Swiper(swiperEl, {
+        slidesPerView: 1.25,
+        centeredSlides: true,
+        spaceBetween: 15,
+        loop: true,
+        speed: 600,
+        navigation: {
+          nextEl: nextBtn,
+          prevEl: prevBtn,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 1.8,
+            spaceBetween: 25,
+          },
+          1024: {
+            slidesPerView: 2.8,
+            spaceBetween: 35,
+          },
+          1400: {
+            slidesPerView: 3.2,
+            spaceBetween: 45,
+          },
+        },
+        on: {
+          init: function () {
+            updateActiveBadge(this);
+            updateMobilePaginationLines(this);
+            if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+          },
+          slideChange: function () {
+            updateActiveBadge(this);
+            updateMobilePaginationLines(this);
+          },
+        },
+      });
+
+      function updateMobilePaginationLines(swiperInst) {
+        const pagLines = sectionContainer.querySelectorAll(
+          ".brandon-featured-products__pag-line",
+        );
+        if (!pagLines || pagLines.length === 0) return;
+
+        const totalLines = pagLines.length;
+        const activeIdx =
+          (swiperInst.realIndex !== undefined ? swiperInst.realIndex : 0) %
+          totalLines;
+
+        pagLines.forEach((line, index) => {
+          if (index === activeIdx) {
+            line.classList.add("brandon-featured-products__pag-line--active");
+          } else {
+            line.classList.remove(
+              "brandon-featured-products__pag-line--active",
+            );
+          }
+        });
+      }
+
+      // Allow clicking mobile pagination lines to jump to corresponding slide
+      const pagLines = sectionContainer.querySelectorAll(
+        ".brandon-featured-products__pag-line",
+      );
+      pagLines.forEach((line, index) => {
+        line.style.cursor = "pointer";
+        line.addEventListener("click", () => {
+          if (swiper.slideToLoop) {
+            swiper.slideToLoop(index);
+          } else {
+            swiper.slideTo(index);
+          }
+        });
+      });
+
+      function updateActiveBadge(swiperInst) {
+        if (!titleBadgeText) return;
+        const activeSlide = swiperInst.slides[swiperInst.activeIndex];
+        if (activeSlide) {
+          const title = activeSlide.getAttribute("data-title");
+          if (title) {
+            if (titleBadgeText.textContent !== title) {
+              gsap.to(titleBadgeText, {
+                opacity: 0,
+                y: -4,
+                duration: 0.15,
+                onComplete: () => {
+                  titleBadgeText.textContent = title;
+                  gsap.to(titleBadgeText, { opacity: 1, y: 0, duration: 0.25 });
+                },
+              });
+            } else {
+              titleBadgeText.textContent = title;
+            }
+          }
+        }
+      }
+    };
+
+    initSwiper();
+
+    // GSAP ScrollTrigger Entrance Sequence
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      const emblem = sectionContainer.querySelector(".js-fp-emblem");
+      const heading = sectionContainer.querySelector(".js-fp-heading");
+      const titleBadge = sectionContainer.querySelector(".js-fp-title-badge");
+      const swiperContainer = sectionContainer.querySelector(".js-fp-swiper");
+
+      if (emblem) gsap.set(emblem, { y: 50, scale: 0.85, autoAlpha: 0 });
+      if (heading) gsap.set(heading, { y: 30, autoAlpha: 0 });
+      if (titleBadge) gsap.set(titleBadge, { y: 30, autoAlpha: 0 });
+      if (swiperContainer)
+        gsap.set(swiperContainer, { y: 60, scale: 0.92, autoAlpha: 0 });
+
+      const scrubTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionContainer,
+          start: "top 90%",
+          end: "top 25%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      if (emblem) {
+        scrubTl.to(
+          emblem,
+          { y: 0, scale: 1, autoAlpha: 1, duration: 0.7, ease: "power2.out" },
+          0,
+        );
+      }
+      if (heading) {
+        scrubTl.to(
+          heading,
+          { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out" },
+          0.1,
+        );
+      }
+      if (titleBadge) {
+        scrubTl.to(
+          titleBadge,
+          { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out" },
+          0.2,
+        );
+      }
+      if (swiperContainer) {
+        scrubTl.to(
+          swiperContainer,
+          { y: 0, scale: 1, autoAlpha: 1, duration: 1.0, ease: "power2.out" },
+          0.15,
+        );
+      }
+    }
+  }
+
+  // ==========================================
+  // 6. BRANDON FEATURED COLLECTIONS ANIMATION
+  // ==========================================
+  function initBrandonFeaturedCollectionsAnimation(section) {
+    const sectionContainer =
+      section.querySelector(".brandon-featured-collections") || section;
+    const innerContainer = sectionContainer.querySelector(
+      ".brandon-featured-collections__container"
+    );
+    const gridContainer = sectionContainer.querySelector(".js-fc-grid");
+    const cards = sectionContainer.querySelectorAll(".js-fc-card");
+    const indicators = sectionContainer.querySelector(".js-fc-indicators");
+
+    if (!cards.length) return;
+
+    const mm = gsap.matchMedia();
+
+    // Desktop Animation: Single Centered Card expanding into 4-Column Grid (No JS Pinning/Height)
+    mm.add("(min-width: 768px)", () => {
+      const totalCards = cards.length;
+      const centerIndex = totalCards - 1; // 4th card (index 3) is center card
+      let isExpanded = false;
+
+      const setupInitialState = () => {
+        if (!gridContainer || !cards.length) return;
+
+        // Reset transforms temporarily to measure natural CSS layout centers
+        gsap.set(cards, { x: 0, xPercent: 0 });
+
+        const gridRect = gridContainer.getBoundingClientRect();
+        const gridCenter = gridRect.left + gridRect.width / 2;
+
+        cards.forEach((card, index) => {
+          const cardRect = card.getBoundingClientRect();
+          const cardCenter = cardRect.left + cardRect.width / 2;
+          const offsetPx = gridCenter - cardCenter;
+
+          if (index !== centerIndex) {
+            gsap.set(card, {
+              x: offsetPx,
+              autoAlpha: 0,
+              scale: 0.85,
+              pointerEvents: "none",
+            });
+          } else {
+            gsap.set(card, {
+              x: offsetPx,
+              scale: 1.05,
+              autoAlpha: 1,
+              pointerEvents: "auto",
+              cursor: "pointer",
+            });
+          }
+        });
+
+        if (indicators) {
+          gsap.set(indicators, { autoAlpha: 1, y: 0, cursor: "pointer" });
+        }
+      };
+
+      setupInitialState();
+
+      const expandTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionContainer,
+          start: "top 75%",
+          end: "top 25%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+          onRefresh: () => {
+            setupInitialState();
+          },
+          onUpdate: (self) => {
+            if (self.progress >= 0.95) {
+              isExpanded = true;
+            } else if (self.progress < 0.1) {
+              isExpanded = false;
+            }
+          },
+        },
+      });
+
+      cards.forEach((card) => {
+        expandTl.to(
+          card,
+          {
+            x: 0,
+            xPercent: 0,
+            scale: 1,
+            autoAlpha: 1,
+            pointerEvents: "auto",
+            duration: 1.2,
+            ease: "power2.out",
+          },
+          0
+        );
+      });
+
+      if (indicators) {
+        expandTl.to(
+          indicators,
+          {
+            autoAlpha: 0,
+            y: 20,
+            duration: 0.4,
+            ease: "power2.in",
+          },
+          0.2
+        );
+      }
+
+      const handleExpand = (e) => {
+        if (!isExpanded) {
+          e.preventDefault();
+          isExpanded = true;
+          gsap.to(expandTl, {
+            progress: 1,
+            duration: 1.0,
+            ease: "power2.out",
+          });
+        }
+      };
+
+      if (cards[centerIndex]) {
+        cards[centerIndex].addEventListener("click", handleExpand);
+      }
+      if (indicators) {
+        indicators.addEventListener("click", handleExpand);
+      }
+
+      let resizeDebounce;
+      const handleResize = () => {
+        clearTimeout(resizeDebounce);
+        resizeDebounce = setTimeout(() => {
+          if (!isExpanded) {
+            setupInitialState();
+          }
+        }, 100);
+      };
+      window.addEventListener("resize", handleResize);
+      window.addEventListener("load", handleResize);
+
+      return () => {
+        if (cards[centerIndex]) {
+          cards[centerIndex].removeEventListener("click", handleExpand);
+        }
+        if (indicators) {
+          indicators.removeEventListener("click", handleExpand);
+        }
+        window.removeEventListener("resize", handleResize);
+        window.removeEventListener("load", handleResize);
+      };
+    });
+
+    // Mobile Responsive Carousel & Active Indicator Tracking
+    mm.add("(max-width: 767px)", () => {
+      const elementsToClear = [
+        sectionContainer,
+        innerContainer,
+        gridContainer,
+        indicators,
+        ...Array.from(cards),
+      ].filter(Boolean);
+
+      gsap.set(elementsToClear, { clearProps: "all" });
+
+      if (indicators) {
+        gsap.set(indicators, { autoAlpha: 1, y: 0 });
+      }
+
+      const indLines = indicators
+        ? indicators.querySelectorAll(".brandon-featured-collections__ind-line")
+        : [];
+
+      const handleScroll = () => {
+        if (!gridContainer || !indLines.length) return;
+        const scrollLeft = gridContainer.scrollLeft;
+        const cardWidth = gridContainer.firstElementChild
+          ? gridContainer.firstElementChild.offsetWidth + 16
+          : 300;
+        const activeIndex = Math.min(
+          indLines.length - 1,
+          Math.max(0, Math.round(scrollLeft / cardWidth))
+        );
+
+        indLines.forEach((line, i) => {
+          if (i === activeIndex) {
+            line.classList.add("brandon-featured-collections__ind-line--active");
+          } else {
+            line.classList.remove("brandon-featured-collections__ind-line--active");
+          }
+        });
+      };
+
+      if (gridContainer) {
+        gridContainer.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+      }
+
+      if (typeof ScrollTrigger !== "undefined") {
+        ScrollTrigger.refresh();
+      }
+
+      return () => {
+        if (gridContainer) {
+          gridContainer.removeEventListener("scroll", handleScroll);
+        }
+      };
+    });
+  }
+
   // Register section handlers
-  registerWhenEngineReady('image-banner', initHeroAnimation);
-  registerWhenEngineReady('hero', initHeroAnimation);
-  registerWhenEngineReady('brandon-hero', initBrandonHeroAnimation);
-  registerWhenEngineReady('brandon-countdown', initBrandonCountdownAnimation);
-  registerWhenEngineReady('custom-announcement', () => {});
-  registerWhenEngineReady('custom-header', () => {});
-  registerWhenEngineReady('featured-collection', initProductGridAnimation);
-  registerWhenEngineReady('product-grid', initProductGridAnimation);
-  registerWhenEngineReady('image-with-text', initImageBannerAnimation);
+  registerWhenEngineReady("image-banner", initHeroAnimation);
+  registerWhenEngineReady("hero", initHeroAnimation);
+  registerWhenEngineReady("brandon-hero", initBrandonHeroAnimation);
+  registerWhenEngineReady("brandon-countdown", initBrandonCountdownAnimation);
+  registerWhenEngineReady(
+    "brandon-featured-products",
+    initBrandonFeaturedProductsAnimation,
+  );
+  registerWhenEngineReady(
+    "brandon-featured-collections",
+    initBrandonFeaturedCollectionsAnimation,
+  );
+  registerWhenEngineReady("brandon-categories", () => {});
+  registerWhenEngineReady("brandon-founder", () => {});
+  registerWhenEngineReady("custom-announcement", () => {});
+  registerWhenEngineReady("custom-header", () => {});
+  registerWhenEngineReady("featured-collection", initProductGridAnimation);
+  registerWhenEngineReady("product-grid", initProductGridAnimation);
+  registerWhenEngineReady("image-with-text", initImageBannerAnimation);
 })();
-
-

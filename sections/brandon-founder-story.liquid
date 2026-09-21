@@ -1,0 +1,269 @@
+{{ 'brandon-founder-story.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #ShopifySection-{{ section.id }} .brandon-founder-story {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+  }
+{%- endstyle -%}
+
+<div
+  id="ShopifySection-{{ section.id }}"
+  class="shopify-section brandon-founder-story-wrapper"
+  data-section-id="{{ section.id }}"
+  data-section-type="brandon-founder-story"
+>
+  <section class="brandon-founder-story" aria-label="{{ section.settings.heading | default: 'THE FOUNDER STORY' | escape }}">
+    <div class="brandon-founder-story__container">
+      
+      {%- if section.settings.heading != blank -%}
+        <h2 class="brandon-founder-story__heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {%- endif -%}
+
+      <div class="brandon-founder-story__main-wrapper">
+        
+        {%- if section.settings.bg_image_desktop != blank or section.settings.bg_image_mobile != blank -%}
+          <picture class="brandon-founder-story__bg-picture">
+            {%- if section.settings.bg_image_mobile != blank -%}
+              <source
+                media="(max-width: 768px)"
+                srcset="{{ section.settings.bg_image_mobile | image_url: width: 1400 }}"
+              >
+            {%- endif -%}
+            {%- if section.settings.bg_image_desktop != blank -%}
+              <img
+                src="{{ section.settings.bg_image_desktop | image_url: width: 2400 }}"
+                alt="{{ section.settings.heading | escape }}"
+                loading="lazy"
+                width="{{ section.settings.bg_image_desktop.width }}"
+                height="{{ section.settings.bg_image_desktop.height }}"
+                class="brandon-founder-story__bg-img"
+              >
+            {%- else -%}
+              <img
+                src="{{ section.settings.bg_image_mobile | image_url: width: 1400 }}"
+                alt="{{ section.settings.heading | escape }}"
+                loading="lazy"
+                class="brandon-founder-story__bg-img"
+              >
+            {%- endif -%}
+          </picture>
+        {%- endif -%}
+
+        <div class="brandon-founder-story__text-box">
+          
+          {%- if section.settings.text_bg_image_desktop != blank or section.settings.text_bg_image_mobile != blank -%}
+            <picture class="brandon-founder-story__text-bg-picture">
+              {%- if section.settings.text_bg_image_mobile != blank -%}
+                <source
+                  media="(max-width: 768px)"
+                  srcset="{{ section.settings.text_bg_image_mobile | image_url: width: 1200 }}"
+                >
+              {%- endif -%}
+              {%- if section.settings.text_bg_image_desktop != blank -%}
+                <img
+                  src="{{ section.settings.text_bg_image_desktop | image_url: width: 2000 }}"
+                  alt=""
+                  loading="lazy"
+                  class="brandon-founder-story__text-bg-img"
+                >
+              {%- else -%}
+                <img
+                  src="{{ section.settings.text_bg_image_mobile | image_url: width: 1200 }}"
+                  alt=""
+                  loading="lazy"
+                  class="brandon-founder-story__text-bg-img"
+                >
+              {%- endif -%}
+            </picture>
+          {%- endif -%}
+
+          <div class="brandon-founder-story__text-content">
+            {%- if section.settings.subheading != blank -%}
+              <h3 class="brandon-founder-story__subheading">
+                {{ section.settings.subheading | escape }}
+              </h3>
+            {%- endif -%}
+
+            {%- if section.settings.person_image_desktop != blank or section.settings.person_image_mobile != blank -%}
+              <div class="brandon-founder-story__person-img-wrapper">
+                <picture class="brandon-founder-story__person-picture">
+                  {%- if section.settings.person_image_mobile != blank -%}
+                    <source
+                      media="(max-width: 768px)"
+                      srcset="{{ section.settings.person_image_mobile | image_url: width: 1200 }}"
+                    >
+                  {%- endif -%}
+                  {%- if section.settings.person_image_desktop != blank -%}
+                    <img
+                      src="{{ section.settings.person_image_desktop | image_url: width: 1800 }}"
+                      alt="{{ section.settings.subheading | escape }}"
+                      loading="lazy"
+                      width="{{ section.settings.person_image_desktop.width }}"
+                      height="{{ section.settings.person_image_desktop.height }}"
+                      class="brandon-founder-story__person-img"
+                    >
+                  {%- else -%}
+                    <img
+                      src="{{ section.settings.person_image_mobile | image_url: width: 1200 }}"
+                      alt="{{ section.settings.subheading | escape }}"
+                      loading="lazy"
+                      class="brandon-founder-story__person-img"
+                    >
+                  {%- endif -%}
+                </picture>
+              </div>
+            {%- endif -%}
+
+            {%- assign desktop_desc = section.settings.description_desktop | default: section.settings.description -%}
+            {%- assign mobile_desc = section.settings.description_mobile | default: desktop_desc -%}
+            {%- assign another_description_mobile = section.settings.another_description_mobile -%}
+
+            {%- if desktop_desc != blank -%}
+              <div class="brandon-founder-story__description brandon-founder-story__description--desktop">
+                {{ desktop_desc }}
+              </div>
+            {%- endif -%}
+
+            {%- if mobile_desc != blank -%}
+              <div class="brandon-founder-story__description brandon-founder-story__description--mobile">
+                {{ mobile_desc }}
+              </div>
+            {%- endif -%}
+            {%- if another_description_mobile != blank -%}
+              <div class="brandon-founder-story__description brandon-founder-story__description--another-mobile">
+                {{ another_description_mobile }}
+              </div>
+            {%- endif -%}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Brandon Founder Story",
+  "tag": "section",
+  "class": "shopify-section-brandon-founder-story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE FOUNDER"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Bags Background Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background Image (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "White Text Box Container Settings"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "ABOUT BRANDON BLACKWOOD"
+    },
+    {
+      "type": "image_picker",
+      "id": "text_bg_image_desktop",
+      "label": "Text Box Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "text_bg_image_mobile",
+      "label": "Text Box Background Image (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Person with Bag Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "person_image_desktop",
+      "label": "Person with Bag Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "person_image_mobile",
+      "label": "Person with Bag Image (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Description Text Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "description_desktop",
+      "label": "Description Text (Desktop)",
+      "default": "<p>Beyond fashion, Brandon is committed to using design as a platform for meaningful impact. His widely recognized \"End Systemic Racism\" tote became a cultural symbol of advocacy, reflecting his belief that creativity can inspire conversations and drive positive change. Through both his brand and foundation, he continues to champion innovation, inclusivity, and opportunities for emerging creatives.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description_mobile",
+      "label": "Description Text (Mobile)",
+      "default": "<p>Brandon Blackwood is the founder and creative force behind Brandon Blackwood New York, a contemporary luxury accessories brand celebrated for its bold design language and modern interpretation of timeless craftsmanship. Born in Brooklyn and raised between New York City and Tokyo, his multicultural upbringing continues to shape the brand's distinctive aesthetic and global appeal.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "another_description_mobile",
+      "label": "Another Description Mobile"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brandon Founder Story"
+    }
+  ]
+}
+{% endschema %}

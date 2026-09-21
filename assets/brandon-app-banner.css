@@ -1,0 +1,279 @@
+.brandon-app-banner-wrapper {
+  width: 100%;
+  max-width: 1440px;
+    margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.brandon-app-banner {
+  position: relative;
+  width: 100%;
+  background-color: #e27f30;
+  color: #111111;
+  box-sizing: border-box;
+}
+
+.brandon-app-banner__marquee-strip {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+  padding: 10px 0;
+}
+
+.brandon-app-banner__marquee-track {
+  display: flex;
+  width: max-content;
+  animation: brandonMarqueeScroll 28s linear infinite;
+}
+
+.brandon-app-banner__marquee-strip:hover .brandon-app-banner__marquee-track {
+  animation-play-state: paused;
+}
+
+.brandon-app-banner__marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  padding-right: 23px;
+}
+
+.brandon-app-banner__marquee-item {
+  font-family: var(--font-semplicita);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #1d1d1d;
+}
+
+.brandon-app-banner__marquee-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4783b;
+  flex-shrink: 0;
+}
+
+.brandon-app-banner__marquee-icon img {
+  width: 10px;
+  height: 10px;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes brandonMarqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.brandon-app-banner__main-wrapper {
+  position: relative;
+  width: 100%;
+  /* min-height: 520px; */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.brandon-app-banner__bg-picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.brandon-app-banner__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.brandon-app-banner__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 78px 48px 20px 38px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.brandon-app-banner__content {
+  flex: 1;
+  max-width: 520px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
+.brandon-app-banner__subheading {
+  font-family: var(--font-semplicita);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+.brandon-app-banner__heading {
+  font-family: var(--font-semplicita);
+  font-size: 42px;
+  /* font-weight: 500; */
+  line-height: 1.08;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #000000;
+  margin: 0 0 39px;
+}
+
+.brandon-app-banner__heading em {
+  font-style: italic;
+  font-weight: 700;
+  font-family: var(--font-essonnes-display);
+  display: inline-block;
+  margin-top: 14px;
+}
+
+.brandon-app-banner__heading-wrapper,
+.brandon-app-banner__em-wrapper {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.brandon-app-banner__buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.brandon-app-banner__buttons--desktop {
+  display: flex;
+}
+
+.brandon-app-banner__buttons--mobile {
+  display: none;
+}
+
+.brandon-app-banner__btn-svg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.brandon-app-banner__btn-svg:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.brandon-app-banner__btn-svg svg {
+  display: block;
+}
+
+.brandon-app-banner__bottom-bar--mobile {
+  display: none;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+  .brandon-app-banner__main-wrapper {
+    min-height: 589px;
+    align-items: flex-start;
+  }
+
+  .brandon-app-banner__container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 78px 20px 0px;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .brandon-app-banner__content {
+    max-width: 100%;
+    width: 100%;
+    padding-bottom: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .brandon-app-banner__subheading {
+    font-size: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .brandon-app-banner__heading {
+    font-size: 26px;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .brandon-app-banner__buttons--desktop {
+    display: none;
+  }
+  .brandon-app-banner__marquee-strip {
+    padding: 3px 0;
+  }
+
+  .brandon-app-banner__bottom-bar--mobile {
+    display: block;
+    position: relative;
+    z-index: 6;
+    padding: 0px 6px;
+    margin-top: -33px;
+  }
+  .brandon-app-banner__marquee-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .brandon-app-banner__buttons--mobile {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .brandon-app-banner__buttons--mobile .brandon-app-banner__btn-svg {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .brandon-app-banner__buttons--mobile .brandon-app-banner__btn-svg svg {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+  }
+}

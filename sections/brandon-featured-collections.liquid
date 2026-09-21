@@ -1,0 +1,111 @@
+{{ 'brandon-featured-collections.css' | asset_url | stylesheet_tag }}
+
+<div class="brandon-featured-collections" data-section-type="brandon-featured-collections" data-section-id="{{ section.id }}">
+  <div class="brandon-featured-collections__bg">
+    {%- if section.settings.bg_image_desktop != blank -%}
+      <img src="{{ section.settings.bg_image_desktop | image_url: width: 2400 }}" class="brandon-featured-collections__bg-img brandon-featured-collections__bg-img--desktop" alt="" loading="lazy">
+    {%- endif -%}
+    {%- if section.settings.bg_image_mobile != blank -%}
+      <img src="{{ section.settings.bg_image_mobile | image_url: width: 1200 }}" class="brandon-featured-collections__bg-img brandon-featured-collections__bg-img--mobile" alt="" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  <div class="brandon-featured-collections__container">
+    <div class="brandon-featured-collections__grid js-fc-grid">
+      {%- assign selected_collection = section.settings.collection -%}
+      {%- assign selected_list = section.settings.collection_list -%}
+
+      {%- if selected_collection != blank and selected_collection.products.size > 0 -%}
+        {%- for product in selected_collection.products limit: 4 -%}
+          {%- assign prod_img = product.featured_image -%}
+          <div class="brandon-featured-collections__card js-fc-card" data-index="{{ forloop.index0 }}">
+            <div class="brandon-featured-collections__card-media">
+              <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+                {%- if prod_img != blank -%}
+                  <img src="{{ prod_img | image_url: width: 1000 }}" alt="{{ product.title | escape }}" loading="lazy" width="500" height="625">
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </a>
+            </div>
+            <div class="brandon-featured-collections__card-footer">
+              <span class="brandon-featured-collections__card-title">{{ product.title }}</span>
+              <a href="{{ product.url }}" class="brandon-featured-collections__card-link" aria-label="{{ section.settings.link_text | default: 'VIEW COLLECTION' | escape }} - {{ product.title | escape }}">
+                {{ section.settings.link_text | default: "VIEW COLLECTION" }}
+              </a>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- elsif selected_list != blank and selected_list.count > 0 -%}
+        {%- for col in selected_list limit: 4 -%}
+          {%- assign col_img = col.featured_image | default: col.image -%}
+          <div class="brandon-featured-collections__card js-fc-card" data-index="{{ forloop.index0 }}">
+            <div class="brandon-featured-collections__card-media">
+              <a href="{{ col.url }}" aria-label="{{ col.title | escape }}">
+                {%- if col_img != blank -%}
+                  <img src="{{ col_img | image_url: width: 1000 }}" alt="{{ col.title | escape }}" loading="lazy" width="500" height="625">
+                {%- else -%}
+                  {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </a>
+            </div>
+            <div class="brandon-featured-collections__card-footer">
+              <span class="brandon-featured-collections__card-title">{{ col.title }}</span>
+              <a href="{{ col.url }}" class="brandon-featured-collections__card-link" aria-label="{{ section.settings.link_text | default: 'VIEW COLLECTION' | escape }} - {{ col.title | escape }}">
+                {{ section.settings.link_text | default: "VIEW COLLECTION" }}
+              </a>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    <div class="brandon-featured-collections__indicators js-fc-indicators">
+      <span class="brandon-featured-collections__ind-line"></span>
+      <span class="brandon-featured-collections__ind-line brandon-featured-collections__ind-line--active"></span>
+      <span class="brandon-featured-collections__ind-line"></span>
+      <span class="brandon-featured-collections__ind-line"></span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collections",
+  "tag": "section",
+  "class": "section-brandon-featured-collections",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Featured Collection"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "Collections List (Fallback)"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "VIEW COLLECTION"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Mobile Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collections"
+    }
+  ]
+}
+{% endschema %}

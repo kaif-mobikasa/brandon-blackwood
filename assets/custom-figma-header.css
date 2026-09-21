@@ -16,11 +16,11 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
 
 .custom-header {
   position: fixed;
-  top: 37px;
+  top: 40px;
   left: 0;
   right: 0;
   width: 100%;
-  padding: 16px 32px;
+  padding: 13px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,7 +66,6 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
   stroke: currentColor;
 }
 
-/* Center Brand Logo/Title */
 .custom-header__brand {
   flex: 1;
   text-align: center;
@@ -83,6 +82,7 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
   margin: 0;
   line-height: 1.1;
   text-decoration: none;
+   margin-left: 75px;
 }
 
 .custom-header__brand-logo-img {
@@ -95,11 +95,10 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
   display: none;
 }
 
-/* Header Right Icons */
 .custom-header__right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 9px;
 }
 
 .custom-header__icon-btn {
@@ -120,12 +119,6 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
   opacity: 0.75;
 }
 
-.custom-header__icon-btn svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-}
 
 .custom-header__cart-count {
   position: absolute;
@@ -143,16 +136,14 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
   justify-content: center;
 }
 
-/* Mobile Bottom Navigation Bar (Hidden on Desktop, Visible on Mobile Only) */
 .custom-mobile-nav {
   display: none;
 }
 
-/* Mobile Responsive */
 @media screen and (max-width: 767px) {
   .custom-header {
-    top: 32px;
-    padding: 12px 16px;
+         top: 25px;
+        padding: 5px 16px;
   }
 
   .custom-header__menu-btn {
@@ -166,15 +157,16 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
   .custom-header__brand-title {
     font-size: 16px;
     letter-spacing: 2px;
+            margin: 0px;
   }
 
   .custom-header__brand-logo-img {
-    max-width: 150px;
+        max-width: 270px;
   }
 
   .custom-header__brand-logo-img--mobile {
     display: inline-block !important;
-    max-width: 150px;
+        max-width: 270px;
     height: auto;
   }
 
@@ -188,34 +180,37 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
     height: 18px;
   }
 
-  /* Mobile Floating Bottom Nav Pill Bar */
   .custom-mobile-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-    padding: 6px 8px;
-    z-index: 9999;
-    backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 12px;
+        left: 0px;
+        right: 12px;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        background-color: #fff;
+        /* border-radius: 20px; */
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        box-shadow: 0 4px 20px #0000001f;
+        padding: 12.4px 3px;
+        width: 100%;
   }
 
   .custom-mobile-nav__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #000000;
-    padding: 6px 12px;
-    border-radius: 14px;
-    transition: background-color 0.2s ease, opacity 0.2s ease;
-    min-width: 54px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #000;
+        padding: 10px 12px;
+        border-radius: 10px;
+        transition: background-color .2s ease, opacity .2s ease;
+        min-width: 62px;
   }
 
   .custom-mobile-nav__item--active {
@@ -230,19 +225,14 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
     margin-bottom: 3px;
   }
 
-  .custom-mobile-nav__icon svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
   .custom-mobile-nav__label {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    line-height: 1;
-    color: #000000;
+          font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 9%;
+        text-transform: uppercase;
+        line-height: 1;
+        color: #000;
+        font-family: var(--font-semplicita);
   }
 
   .custom-mobile-nav__cart-badge {

@@ -1,0 +1,285 @@
+{{ 'brandon-vacation-grid.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+#ShopifySection-{{ section.id }} .brandon-vacation-grid {
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+background-color: {{ section.settings.bg_color | default: '#D7A779' }};
+}
+{%- endstyle -%}
+
+<div id="ShopifySection-{{ section.id }}" class="shopify-section brandon-vacation-wrapper"
+  data-section-id="{{ section.id }}">
+  <section class="brandon-vacation-grid" aria-label="Vacation Collection Grid">
+
+    <div class="brandon-vacation-grid__bg-wrapper">
+      {%- if section.settings.bg_image_desktop != blank or section.settings.bg_image_mobile != blank -%}
+      <picture class="brandon-vacation-grid__bg-picture">
+        {%- if section.settings.bg_image_mobile != blank -%}
+        <source media="(max-width: 768px)" srcset="{{ section.settings.bg_image_mobile | image_url: width: 1500 }}">
+        {%- endif -%}
+        {%- if section.settings.bg_image_desktop != blank -%}
+        <img src="{{ section.settings.bg_image_desktop | image_url: width: 2400 }}"
+          alt="{{ section.settings.left_title | escape }}" width="{{ section.settings.bg_image_desktop.width }}"
+          height="{{ section.settings.bg_image_desktop.height }}" loading="lazy" class="brandon-vacation-grid__bg-img">
+        {%- else -%}
+        <img src="{{ section.settings.bg_image_mobile | image_url: width: 1500 }}"
+          alt="{{ section.settings.left_title | escape }}" loading="lazy" class="brandon-vacation-grid__bg-img">
+        {%- endif -%}
+      </picture>
+      {%- endif -%}
+    </div>
+
+    <div class="brandon-vacation-grid__container">
+      <div class="brandon-vacation-grid__cards">
+
+        <div class="brandon-vacation-grid__card brandon-vacation-grid__card--left">
+          {%- if section.settings.left_link != blank -%}
+          <a href="{{ section.settings.left_link }}" class="brandon-vacation-grid__card-link"
+            aria-label="{{ section.settings.left_title | escape }}">
+            {%- endif -%}
+
+            <div class="brandon-vacation-grid__image-wrapper">
+              {%- if section.settings.left_image_desktop != blank or section.settings.left_image_mobile != blank -%}
+              <picture class="brandon-vacation-grid__picture">
+                {%- if section.settings.left_image_mobile != blank -%}
+                <source media="(max-width: 768px)"
+                  srcset="{{ section.settings.left_image_mobile | image_url: width: 1200 }}">
+                {%- endif -%}
+                {%- if section.settings.left_image_desktop != blank -%}
+                <img src="{{ section.settings.left_image_desktop | image_url: width: 1400 }}"
+                  alt="{{ section.settings.left_title | escape }}" loading="lazy" class="brandon-vacation-grid__img">
+                {%- else -%}
+                <img src="{{ section.settings.left_image_mobile | image_url: width: 1200 }}"
+                  alt="{{ section.settings.left_title | escape }}" loading="lazy" class="brandon-vacation-grid__img">
+                {%- endif -%}
+              </picture>
+              {%- endif -%}
+
+              <div class="brandon-vacation-grid__frame">
+                <div class="brandon-vacation-grid__pill-wrapper">
+                  {%- if section.settings.left_icon_desktop != blank or section.settings.left_icon_mobile != blank -%}
+                  <picture class="brandon-vacation-grid__icon-picture">
+                    {%- if section.settings.left_icon_mobile != blank -%}
+                    <source media="(max-width: 768px)"
+                      srcset="{{ section.settings.left_icon_mobile | image_url: width: 120 }}">
+                    {%- endif -%}
+                    {%- if section.settings.left_icon_desktop != blank -%}
+                    <img src="{{ section.settings.left_icon_desktop | image_url: width: 160 }}" alt="" loading="lazy"
+                      class="brandon-vacation-grid__icon-img">
+                    {%- else -%}
+                    <img src="{{ section.settings.left_icon_mobile | image_url: width: 120 }}" alt="" loading="lazy"
+                      class="brandon-vacation-grid__icon-img">
+                    {%- endif -%}
+                  </picture>
+                  {%- endif -%}
+
+                  {%- if section.settings.left_title != blank -%}
+                  <div class="brandon-vacation-grid__pill">
+                    {{ section.settings.left_title | escape }}
+                  </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+
+            {%- if section.settings.left_link != blank -%}
+          </a>
+          {%- endif -%}
+        </div>
+
+        <div class="brandon-vacation-grid__card brandon-vacation-grid__card--right">
+          {%- if section.settings.right_link != blank -%}
+          <a href="{{ section.settings.right_link }}" class="brandon-vacation-grid__card-link"
+            aria-label="View Products">
+            {%- endif -%}
+
+            <div class="brandon-vacation-grid__image-wrapper">
+              {%- if section.settings.right_image_desktop != blank or section.settings.right_image_mobile != blank -%}
+              <picture class="brandon-vacation-grid__picture">
+                {%- if section.settings.right_image_mobile != blank -%}
+                <source media="(max-width: 768px)"
+                  srcset="{{ section.settings.right_image_mobile | image_url: width: 1200 }}">
+                {%- endif -%}
+                {%- if section.settings.right_image_desktop != blank -%}
+                <img src="{{ section.settings.right_image_desktop | image_url: width: 1400 }}" alt="Products Collection"
+                  loading="lazy" class="brandon-vacation-grid__img">
+                {%- else -%}
+                <img src="{{ section.settings.right_image_mobile | image_url: width: 1200 }}" alt="Products Collection"
+                  loading="lazy" class="brandon-vacation-grid__img">
+                {%- endif -%}
+              </picture>
+              {%- endif -%}
+            </div>
+
+            {%- if section.settings.right_link != blank -%}
+          </a>
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+    <div class="brandon-vacation-grid__featured-strip">
+      {%- if section.settings.featured_text != blank -%}
+      <div class="brandon-vacation-grid__featured-pill">
+        {{ section.settings.featured_text | escape }}
+      </div>
+      {%- endif -%}
+
+      <div class="brandon-vacation-grid__featured-logos-wrapper">
+        {%- if section.settings.featured_image_desktop != blank or section.settings.featured_image_mobile != blank -%}
+        <picture class="brandon-vacation-grid__featured-picture">
+          {%- if section.settings.featured_image_mobile != blank -%}
+          <source media="(max-width: 768px)"
+            srcset="{{ section.settings.featured_image_mobile | image_url: width: 1400 }}">
+          {%- endif -%}
+          {%- if section.settings.featured_image_desktop != blank -%}
+          <img src="{{ section.settings.featured_image_desktop | image_url: width: 2400 }}"
+            alt="{{ section.settings.featured_text | escape }}" loading="lazy"
+            class="brandon-vacation-grid__featured-img">
+          {%- else -%}
+          <img src="{{ section.settings.featured_image_mobile | image_url: width: 1400 }}"
+            alt="{{ section.settings.featured_text | escape }}" loading="lazy"
+            class="brandon-vacation-grid__featured-img">
+          {%- endif -%}
+        </picture>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </section>
+</div>
+
+{% schema %}
+{
+"name": "Brandon Vacation Grid",
+"tag": "section",
+"class": "shopify-section-brandon-vacation-grid",
+"settings": [
+{
+"type": "header",
+"content": "Background Settings"
+},
+{
+"type": "image_picker",
+"id": "bg_image_desktop",
+"label": "Background Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "bg_image_mobile",
+"label": "Background Image (Mobile)"
+},
+{
+"type": "color",
+"id": "bg_color",
+"label": "Background Color Fallback",
+"default": "#D7A779"
+},
+{
+"type": "header",
+"content": "Left Card (Girls Image & Vacation Ready)"
+},
+{
+"type": "image_picker",
+"id": "left_image_desktop",
+"label": "Left Card Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "left_image_mobile",
+"label": "Left Card Image (Mobile)"
+},
+{
+"type": "text",
+"id": "left_title",
+"label": "Left Card Title / Button Text",
+"default": "VACATION READY"
+},
+{
+"type": "image_picker",
+"id": "left_icon_desktop",
+"label": "Left Card Icon (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "left_icon_mobile",
+"label": "Left Card Icon (Mobile)"
+},
+{
+"type": "url",
+"id": "left_link",
+"label": "Left Card Link"
+},
+{
+"type": "header",
+"content": "Right Card (Product Image Grid)"
+},
+{
+"type": "image_picker",
+"id": "right_image_desktop",
+"label": "Right Card Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "right_image_mobile",
+"label": "Right Card Image (Mobile)"
+},
+{
+"type": "url",
+"id": "right_link",
+"label": "Right Card Link"
+},
+{
+"type": "header",
+"content": "Bottom Featured On Strip"
+},
+{
+"type": "text",
+"id": "featured_text",
+"label": "Featured On Text",
+"default": "FEATURED ON"
+},
+{
+"type": "image_picker",
+"id": "featured_image_desktop",
+"label": "Featured Logos Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "featured_image_mobile",
+"label": "Featured Logos Image (Mobile)"
+},
+{
+"type": "header",
+"content": "Section Spacing"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Top Padding",
+"default": 40
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Bottom Padding",
+"default": 0
+}
+],
+"presets": [
+{
+"name": "Brandon Vacation Grid"
+}
+]
+}
+{% endschema %}

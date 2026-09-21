@@ -1,0 +1,156 @@
+.brandon-categories-wrapper {
+  width: 100%;
+  max-width: 1440px;
+    margin: 0 auto;
+  position: relative;
+}
+
+.brandon-categories {
+  position: relative;
+  width: 100%;
+  background-color: #FDE2CD;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.brandon-categories__container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brandon-categories__heading {
+font-family: var(--font-essonnes-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3%;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000;
+    margin: 0 0 32px;
+    line-height: 1.2;
+}
+
+.brandon-categories__slider-wrapper {
+ position: relative;
+    width: 100%;
+    max-width: 353px;
+    margin: 0 auto;
+}
+
+.brandon-categories__slider {
+  position: relative;
+  width: 100%;
+}
+
+.brandon-categories__card {
+  display: none;
+  width: 100%;
+  position: relative;
+  opacity: 1;
+}
+
+.brandon-categories__card--active {
+  display: block;
+}
+
+.brandon-categories__card-media {
+  position: relative;
+  width: 100%;
+  /* aspect-ratio: 4 / 5; */
+  overflow: hidden;
+}
+
+.brandon-categories__card-media a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.brandon-categories__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.brandon-categories__card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-family: var(--font-semplicita, sans-serif);
+  color: #000000;
+}
+
+.brandon-categories__card-title {
+  font-family: var(--font-semplicita-bold, 'SemplicitaPro-Bold', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.brandon-categories__card-link {
+  font-family: var(--font-semplicita, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.brandon-categories__card-link:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+  .brandon-categories__container {
+    padding: 0 39px;
+  }
+
+  .brandon-categories__heading {
+    font-size: 16px;
+    margin-bottom: 28px;
+  }
+
+  .brandon-categories__slider-wrapper {
+    max-width: 100%;
+  }
+
+
+
+  .brandon-categories__card-footer {
+    margin-top: 16px;
+    font-size: 12px;
+  }
+
+  .brandon-categories__card-title,
+  .brandon-categories__card-link {
+        font-size: 12px;
+        letter-spacing: 9%;
+            font-family: var(--font-semplicita-bold);
+  }
+
+}
+@media (max-width: 391px){
+  .brandon-categories__card-media {
+    height: 493px;
+  }
+    .brandon-categories__card-img{
+        width: 100%;
+    height: 100%;
+    object-fit: unset;
+  }
+}

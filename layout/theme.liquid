@@ -77,15 +77,9 @@
       assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
     %}
 
-    {% style %}
-      @font-face {
-        font-family: 'Essonnes Display';
-        src: url('https://cdn.shopify.com/s/files/1/1013/0017/5213/files/EssonnesTest-DisplayRegular-BF643e00dfae085.otf?v=1789421121') format('opentype');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
+    {% render 'custom-fonts' %}
 
+    {% style %}
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}

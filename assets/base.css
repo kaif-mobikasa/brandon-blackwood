@@ -3,14 +3,6 @@ collection-component {
   display: block;
 }
 
-/* Custom Font Family: SemplicitaPro-Bold */
-@font-face {
-  font-family: 'SemplicitaPro-Bold';
-  src: url('https://cdn.shopify.com/s/files/1/1013/0017/5213/files/SemplicitaPro-Bold.otf?v=1789503719') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 :root {
   --font-semplicita-bold: 'SemplicitaPro-Bold', sans-serif;

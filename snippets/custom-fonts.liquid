@@ -1,0 +1,306 @@
+{% style %}
+  /* ==========================================
+     FONTS: SEMPLICITAPRO
+     ========================================== */
+
+  /* SemplicitaPro Regular (400) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Italic (400 Italic) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-Italic.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-Italic.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Light (300) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-Light.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-Light.otf' | asset_url }}") format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Light Italic (300 Italic) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-LtIt.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-LtIt.otf' | asset_url }}") format('opentype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Medium (500) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-Medium.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-Medium.otf' | asset_url }}") format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Medium Italic (500 Italic) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-MedIt.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-MedIt.otf' | asset_url }}") format('opentype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Semibold (600) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-Semibold.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-Semibold.otf' | asset_url }}") format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Semibold Italic (600 Italic) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-SemibdIt.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-SemibdIt.otf' | asset_url }}") format('opentype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Bold (700) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-Bold.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-Bold.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* SemplicitaPro Bold Italic (700 Italic) */
+  @font-face {
+    font-family: 'SemplicitaPro';
+    src: url("{{ 'SemplicitaPro-BoldItalic.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-BoldItalic.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* Backward compatibility alias for SemplicitaPro-Bold */
+  @font-face {
+    font-family: 'SemplicitaPro-Bold';
+    src: url("{{ 'SemplicitaPro-Bold.woff' | asset_url }}") format('woff'),
+         url("{{ 'SemplicitaPro-Bold.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ==========================================
+     FONTS: ESSONNESTEST
+     ========================================== */
+
+  /* EssonnesTest Display - Regular (400) */
+  @font-face {
+    font-family: 'EssonnesTest-Display';
+    src: url("{{ 'EssonnesTest-DisplayRegular-BF643e00dfae085.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'EssonnesTest';
+    src: url("{{ 'EssonnesTest-DisplayRegular-BF643e00dfae085.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Display - Italic (400) */
+  @font-face {
+    font-family: 'EssonnesTest-Display';
+    src: url("{{ 'EssonnesTest-DisplayItalic-BF643e00dc9a700.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Display - Bold (700) */
+  @font-face {
+    font-family: 'EssonnesTest-Display';
+    src: url("{{ 'EssonnesTest-DisplayBold-BF643e00dc749c6.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'EssonnesTest';
+    src: url("{{ 'EssonnesTest-DisplayBold-BF643e00dc749c6.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Display - Bold Italic (700) */
+  @font-face {
+    font-family: 'EssonnesTest-Display';
+    src: url("{{ 'EssonnesTest-DisplayBoldItalic-BF643e00dfaad7c.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Display - Light (300) */
+  @font-face {
+    font-family: 'EssonnesTest-Display';
+    src: url("{{ 'EssonnesTest-DisplayLight-BF643e00df9c370.otf' | asset_url }}") format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Display - Light Italic (300) */
+  @font-face {
+    font-family: 'EssonnesTest-Display';
+    src: url("{{ 'EssonnesTest-DisplayLightItalic-BF643e00dd0edcf.otf' | asset_url }}") format('opentype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Headline - Regular (400) */
+  @font-face {
+    font-family: 'EssonnesTest-Headline';
+    src: url("{{ 'EssonnesTest-HeadlineRegular-BF643e00dd72b5b.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Headline - Italic (400) */
+  @font-face {
+    font-family: 'EssonnesTest-Headline';
+    src: url("{{ 'EssonnesTest-HeadlineItalic-BF643e00deb1c16.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Headline - Bold (700) */
+  @font-face {
+    font-family: 'EssonnesTest-Headline';
+    src: url("{{ 'EssonnesTest-HeadlineBold-BF643e00dd6a4b8.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Headline - Bold Italic (700) */
+  @font-face {
+    font-family: 'EssonnesTest-Headline';
+    src: url("{{ 'EssonnesTest-HeadlineBoldItalic-BF643e00de7b3d5.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Headline - Thin (100) */
+  @font-face {
+    font-family: 'EssonnesTest-Headline';
+    src: url("{{ 'EssonnesTest-HeadlineThin-BF643e00deb1d1c.otf' | asset_url }}") format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Headline - Thin Italic (100) */
+  @font-face {
+    font-family: 'EssonnesTest-Headline';
+    src: url("{{ 'EssonnesTest-HeadlineThinItalic-BF643e00df100ae.otf' | asset_url }}") format('opentype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Text - Regular (400) */
+  @font-face {
+    font-family: 'EssonnesTest-Text';
+    src: url("{{ 'EssonnesTest-TextRegular-BF643e00df501dc.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Text - Italic (400) */
+  @font-face {
+    font-family: 'EssonnesTest-Text';
+    src: url("{{ 'EssonnesTest-TextItalic-BF643e00df58ea9.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Text - Bold (700) */
+  @font-face {
+    font-family: 'EssonnesTest-Text';
+    src: url("{{ 'EssonnesTest-TextBold-BF643e00df62577.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* EssonnesTest Text - Bold Italic (700) */
+  @font-face {
+    font-family: 'EssonnesTest-Text';
+    src: url("{{ 'EssonnesTest-TextBoldItalic-BF643e00df142f3.otf' | asset_url }}") format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* Backward compatibility alias for Essonnes Display */
+  @font-face {
+    font-family: 'Essonnes Display';
+    src: url("{{ 'EssonnesTest-DisplayRegular-BF643e00dfae085.otf' | asset_url }}") format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ==========================================
+     GLOBAL CSS VARIABLES FOR FONT FAMILIES
+     ========================================== */
+  :root {
+    --font-essonnes: 'EssonnesTest', 'EssonnesTest-Display', serif;
+    --font-essonnes-display: 'EssonnesTest-Display', 'EssonnesTest', serif;
+    --font-essonnes-headline: 'EssonnesTest-Headline', 'EssonnesTest', serif;
+    --font-essonnes-text: 'EssonnesTest-Text', 'EssonnesTest', serif;
+
+    --font-semplicita: 'SemplicitaPro', sans-serif;
+    --font-semplicita-bold: 'SemplicitaPro', 'SemplicitaPro-Bold', sans-serif;
+    --font-semplicita-light: 'SemplicitaPro', sans-serif;
+    --font-semplicita-medium: 'SemplicitaPro', sans-serif;
+    --font-semplicita-semibold: 'SemplicitaPro', sans-serif;
+
+    /* Theme-wide Heading & Body font variables */
+    --font-custom-heading: var(--font-essonnes-display);
+    --font-custom-body: var(--font-semplicita);
+  }
+{% endstyle %}

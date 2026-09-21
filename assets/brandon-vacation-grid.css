@@ -1,0 +1,391 @@
+.brandon-vacation-wrapper {
+  width: 100%;
+  max-width: 1440px;
+    margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.brandon-vacation-grid {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.brandon-vacation-grid__bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.brandon-vacation-grid__bg-picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brandon-vacation-grid__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.brandon-vacation-grid__bg-pattern {
+  width: 100%;
+  height: 100%;
+  background-color: #d29d6a;
+  background-image:
+    radial-gradient(#be8956 1.5px, transparent 1.5px),
+    radial-gradient(#be8956 1.5px, #d29d6a 1.5px);
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    12px 12px;
+  opacity: 0.9;
+}
+
+.brandon-vacation-grid__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 799px;
+  margin: 0 auto;
+  padding: 55px 20px 50px;
+}
+
+.brandon-vacation-grid__cards {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+  align-items: stretch;
+  justify-content: center;
+}
+
+.brandon-vacation-grid__card {
+  position: relative;
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+.brandon-vacation-grid__card-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brandon-vacation-grid__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+}
+
+.brandon-vacation-grid__picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brandon-vacation-grid__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brandon-vacation-grid__card--left {
+  background: #3a2e24;
+}
+
+.brandon-vacation-grid__placeholder--left {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  position: relative;
+}
+
+.brandon-vacation-grid__placeholder-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #44372b 0%, #2b211a 100%);
+}
+
+.brandon-vacation-grid__frame {
+  position: absolute;
+  top: 104px;
+  left: 24px;
+  right: 24px;
+  bottom: 32px;
+  border: 2.97px solid #ffffff;
+  pointer-events: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.brandon-vacation-grid__pill-wrapper {
+  pointer-events: auto;
+  display: inline-grid;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(10%);
+  width: 100%;
+}
+
+.brandon-vacation-grid__icon-picture {
+  display: block;
+}
+
+.brandon-vacation-grid__icon-img {
+  max-height: 32px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.brandon-vacation-grid__pill {
+  background-color: #fff;
+  display: inline-block;
+  color: #000;
+  font-family: var(--font-semplicita);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 9%;
+  text-transform: uppercase;
+  padding: 7px 32px;
+  border: none;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 14px #00000014;
+}
+
+.brandon-vacation-grid__card--right {
+  background: #ffffff;
+}
+
+.brandon-vacation-grid__right-mockup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f6f6 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 36px 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.brandon-vacation-grid__watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-semplicita-bold, sans-serif);
+  font-size: 200px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.035);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.brandon-vacation-grid__mockup-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brandon-vacation-grid__mockup-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.brandon-vacation-grid__mockup-item {
+  width: 110px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandon-vacation-grid__bag-icon {
+  width: 90px;
+  height: 80px;
+  background-color: #d1b499;
+  border-radius: 40px 40px 10px 10px;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.brandon-vacation-grid__bag-icon--mini {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 14px solid #d1b499;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.brandon-vacation-grid__mockup-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.brandon-vacation-grid__mockup-name {
+  font-family: var(--font-semplicita, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #111111;
+  text-transform: uppercase;
+}
+
+.brandon-vacation-grid__mockup-price {
+  font-family: var(--font-semplicita, sans-serif);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #555555;
+}
+
+.brandon-vacation-grid__featured-strip {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  margin-top: 10px;
+}
+
+.brandon-vacation-grid__featured-pill {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translate(-50%);
+  background: #ffffffbf;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: #000000;
+  font-family: var(--font-semplicita);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 9%;
+  text-transform: uppercase;
+  padding: 3px 31px;
+  border-radius: 1px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px #0000000a;
+}
+
+.brandon-vacation-grid__featured-logos-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.brandon-vacation-grid__featured-picture {
+  display: block;
+  width: 100%;
+}
+
+.brandon-vacation-grid__featured-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.brandon-vacation-grid__featured-logos-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 36px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 8px 24px;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: var(--font-essonnes-display, serif);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  scrollbar-width: none;
+}
+
+.brandon-vacation-grid__featured-logos-text::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .brandon-vacation-grid__container {
+    padding: 24px 16px 58px;
+  }
+
+  .brandon-vacation-grid__cards {
+    flex-direction: column;
+    gap: 2px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .brandon-vacation-grid__card {
+    width: 100%;
+    min-height: 0px;
+  }
+
+  .brandon-vacation-grid__frame {
+    top: 16px;
+    left: 20px;
+    right: 18px;
+    bottom: 16px;
+  }
+
+  .brandon-vacation-grid__pill {
+    font-size: 12px;
+    padding: 1px 24px;
+  }
+  .brandon-vacation-grid__featured-pill {
+    top: -12px;
+    left: 50%;
+    font-size: 10px;
+    padding: 3px 24px;
+  }
+
+  .brandon-vacation-grid__featured-logos-text {
+    font-size: 20px;
+    gap: 24px;
+  }
+}

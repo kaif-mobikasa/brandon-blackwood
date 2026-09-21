@@ -1,0 +1,418 @@
+{{ 'brandon-footer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #ShopifySection-{{ section.id }} .brandon-footer {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div
+  id="ShopifySection-{{ section.id }}"
+  class="shopify-section brandon-footer-wrapper"
+  data-section-id="{{ section.id }}"
+  data-section-type="brandon-footer"
+>
+  <footer class="brandon-footer" aria-label="Footer">
+    <div class="brandon-footer__container">
+      
+      {%- if section.settings.quote_text != blank -%}
+        <div class="brandon-footer__quote-wrapper">
+          <blockquote class="brandon-footer__quote">
+            {{ section.settings.quote_text | escape }}
+          </blockquote>
+          {%- if section.settings.quote_author != blank -%}
+            <cite class="brandon-footer__quote-author">{{ section.settings.quote_author | escape }}</cite>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="brandon-footer__main-content">
+        
+        <div class="brandon-footer__column brandon-footer__column--left">
+          {%- assign left_menu = linklists[section.settings.menu_left] -%}
+          {%- if left_menu.links.size > 0 -%}
+            <ul class="brandon-footer__menu-list brandon-footer__menu-list--left" role="list">
+              {%- for link in left_menu.links -%}
+                <li class="brandon-footer__menu-item">
+                  <a href="{{ link.url }}" class="brandon-footer__menu-link">
+                    {{ link.title | escape }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            <ul class="brandon-footer__menu-list brandon-footer__menu-list--left" role="list">
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">STORE POLICY</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">CONTACT</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">FAQS</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">PRODUCT CARE</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">REWARDS</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">BLOG</a></li>
+            </ul>
+          {%- endif -%}
+        </div>
+
+        <div class="brandon-footer__column brandon-footer__column--center">
+          <div class="brandon-footer__logo-wrapper">
+            {%- if section.settings.logo_svg_desktop != blank or section.settings.logo_svg_mobile != blank -%}
+              <div class="brandon-footer__logo-svg brandon-footer__logo-svg--desktop">
+                {{ section.settings.logo_svg_desktop | default: section.settings.logo_svg_mobile }}
+              </div>
+              <div class="brandon-footer__logo-svg brandon-footer__logo-svg--mobile">
+                {{ section.settings.logo_svg_mobile | default: section.settings.logo_svg_desktop }}
+              </div>
+            {%- elsif section.settings.logo_image_desktop != blank or section.settings.logo_image_mobile != blank -%}
+              <picture class="brandon-footer__logo-picture">
+                {%- if section.settings.logo_image_mobile != blank -%}
+                  <source
+                    media="(max-width: 768px)"
+                    srcset="{{ section.settings.logo_image_mobile | image_url: width: 600 }}"
+                  >
+                {%- endif -%}
+                {%- if section.settings.logo_image_desktop != blank -%}
+                  <img
+                    src="{{ section.settings.logo_image_desktop | image_url: width: 1000 }}"
+                    alt="{{ shop.name | escape }}"
+                    loading="lazy"
+                    width="{{ section.settings.logo_image_desktop.width }}"
+                    height="{{ section.settings.logo_image_desktop.height }}"
+                    class="brandon-footer__logo-img"
+                  >
+                {%- else -%}
+                  <img
+                    src="{{ section.settings.logo_image_mobile | image_url: width: 600 }}"
+                    alt="{{ shop.name | escape }}"
+                    loading="lazy"
+                    class="brandon-footer__logo-img"
+                  >
+                {%- endif -%}
+              </picture>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="brandon-footer__column brandon-footer__column--right">
+          {%- assign right_menu = linklists[section.settings.menu_right] -%}
+          {%- if right_menu.links.size > 0 -%}
+            <ul class="brandon-footer__menu-list brandon-footer__menu-list--right" role="list">
+              {%- for link in right_menu.links -%}
+                <li class="brandon-footer__menu-item">
+                  <a href="{{ link.url }}" class="brandon-footer__menu-link">
+                    {{ link.title | escape }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            <ul class="brandon-footer__menu-list brandon-footer__menu-list--right" role="list">
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">TERMS OF SERVICE</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">PRIVACY POLICY</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">GDPR COMPLIANCE</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">ACCESSIBILITY</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">COOKIE PREFERENCES</a></li>
+              <li class="brandon-footer__menu-item"><a href="#" class="brandon-footer__menu-link">DO NOT SELL MY PERSONAL INFORMATION</a></li>
+            </ul>
+          {%- endif -%}
+        </div>
+
+        <div class="brandon-footer__mobile-divider brandon-footer__mobile-divider--top"></div>
+
+        <div class="brandon-footer__mobile-connect">
+          <span class="brandon-footer__connect-title">CONNECT WITH US</span>
+          <div class="brandon-footer__social-list">
+            {%- if section.settings.social_instagram_svg != blank -%}
+              <a href="{{ section.settings.social_instagram_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="Instagram">
+                {{ section.settings.social_instagram_svg }}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_facebook_svg != blank -%}
+              <a href="{{ section.settings.social_facebook_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="Facebook">
+                {{ section.settings.social_facebook_svg }}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_tiktok_svg != blank -%}
+              <a href="{{ section.settings.social_tiktok_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="TikTok">
+                {{ section.settings.social_tiktok_svg }}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_youtube_svg != blank -%}
+              <a href="{{ section.settings.social_youtube_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="YouTube">
+                {{ section.settings.social_youtube_svg }}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_x_svg != blank -%}
+              <a href="{{ section.settings.social_x_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="X">
+                {{ section.settings.social_x_svg }}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_linkedin_svg != blank -%}
+              <a href="{{ section.settings.social_linkedin_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="LinkedIn">
+                {{ section.settings.social_linkedin_svg }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="brandon-footer__bottom-bar">
+        
+        <div class="brandon-footer__bottom-left">
+          <div class="brandon-footer__country-selector">
+            {%- if section.settings.country_flag_svg != blank -%}
+              <span class="brandon-footer__country-flag">
+                {{ section.settings.country_flag_svg }}
+              </span>
+            {%- endif -%}
+            <span class="brandon-footer__country-name">
+              {{ section.settings.country_text | default: 'UNITED STATES (USD $)' | escape }}
+            </span>
+            {%- if section.settings.country_chevron_svg != blank -%}
+              <span class="brandon-footer__country-chevron">
+                {{ section.settings.country_chevron_svg }}
+              </span>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="brandon-footer__mobile-divider brandon-footer__mobile-divider--bottom"></div>
+
+        <div class="brandon-footer__bottom-center">
+          <div class="brandon-footer__copyright">
+            {{ section.settings.copyright_text | default: '© 2026 BRANDON BLACKWOOD' | escape }}
+          </div>
+        </div>
+
+        <div class="brandon-footer__bottom-right brandon-footer__bottom-right--desktop">
+          <div class="brandon-footer__social-list">
+            {%- if section.settings.social_instagram_svg != blank -%}
+              <a href="{{ section.settings.social_instagram_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="Instagram">
+                {{ section.settings.social_instagram_svg }}
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.social_facebook_svg != blank -%}
+              <a href="{{ section.settings.social_facebook_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="Facebook">
+                {{ section.settings.social_facebook_svg }}
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.social_tiktok_svg != blank -%}
+              <a href="{{ section.settings.social_tiktok_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="TikTok">
+                {{ section.settings.social_tiktok_svg }}
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.social_youtube_svg != blank -%}
+              <a href="{{ section.settings.social_youtube_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="YouTube">
+                {{ section.settings.social_youtube_svg }}
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.social_x_svg != blank -%}
+              <a href="{{ section.settings.social_x_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="X">
+                {{ section.settings.social_x_svg }}
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.social_linkedin_svg != blank -%}
+              <a href="{{ section.settings.social_linkedin_url | default: '#' }}" class="brandon-footer__social-icon" aria-label="LinkedIn">
+                {{ section.settings.social_linkedin_svg }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+</div>
+
+{% schema %}
+{
+  "name": "Brandon Footer",
+  "tag": "section",
+  "class": "shopify-section-brandon-footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Quote Settings"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Quote Text",
+      "default": "giving people fun and bold ways to accessorize and individually express themselves."
+    },
+    {
+      "type": "text",
+      "id": "quote_author",
+      "label": "Quote Author",
+      "default": "-BRANDON BLACKWOOD"
+    },
+    {
+      "type": "header",
+      "content": "Navigation Menus Settings"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_left",
+      "label": "Left Navigation Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_right",
+      "label": "Right Navigation Menu"
+    },
+    {
+      "type": "header",
+      "content": "Center B Logo Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_desktop",
+      "label": "Center Logo Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image_mobile",
+      "label": "Center Logo Image (Mobile)"
+    },
+    {
+      "type": "html",
+      "id": "logo_svg_desktop",
+      "label": "Center Logo SVG Code (Desktop)"
+    },
+    {
+      "type": "html",
+      "id": "logo_svg_mobile",
+      "label": "Center Logo SVG Code (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Left Country / Region Settings"
+    },
+    {
+      "type": "html",
+      "id": "country_flag_svg",
+      "label": "Country Flag SVG Code"
+    },
+    {
+      "type": "text",
+      "id": "country_text",
+      "label": "Country / Region Text",
+      "default": "UNITED STATES (USD $)"
+    },
+    {
+      "type": "html",
+      "id": "country_chevron_svg",
+      "label": "Country Dropdown Chevron SVG Code"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Center Copyright Settings"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2026 BRANDON BLACKWOOD"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Right Social Icons SVG Settings"
+    },
+    {
+      "type": "html",
+      "id": "social_instagram_svg",
+      "label": "Instagram SVG Code"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "html",
+      "id": "social_facebook_svg",
+      "label": "Facebook SVG Code"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "html",
+      "id": "social_tiktok_svg",
+      "label": "TikTok SVG Code"
+    },
+    {
+      "type": "url",
+      "id": "social_tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "html",
+      "id": "social_youtube_svg",
+      "label": "YouTube SVG Code"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube_url",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "html",
+      "id": "social_x_svg",
+      "label": "X (Twitter) SVG Code"
+    },
+    {
+      "type": "url",
+      "id": "social_x_url",
+      "label": "X (Twitter) URL"
+    },
+    {
+      "type": "html",
+      "id": "social_linkedin_svg",
+      "label": "LinkedIn SVG Code"
+    },
+    {
+      "type": "url",
+      "id": "social_linkedin_url",
+      "label": "LinkedIn URL"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brandon Footer"
+    }
+  ]
+}
+{% endschema %}

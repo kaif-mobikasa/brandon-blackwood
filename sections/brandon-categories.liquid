@@ -1,0 +1,121 @@
+{{ 'brandon-categories.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #ShopifySection-{{ section.id }} .brandon-categories {
+    background-color: {{ section.settings.bg_color | default: '#FDE2CD' }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div
+  id="ShopifySection-{{ section.id }}"
+  class="shopify-section brandon-categories-wrapper"
+  data-section-id="{{ section.id }}"
+  data-section-type="brandon-categories"
+>
+  <section class="brandon-categories" aria-label="{{ section.settings.heading | default: 'THE CATEGORIES' | escape }}">
+    <div class="brandon-categories__container">
+      
+      {%- if section.settings.heading != blank -%}
+        <h2 class="brandon-categories__heading">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {%- endif -%}
+
+      <div class="brandon-categories__slider-wrapper js-bc-slider-wrapper">
+        <div class="brandon-categories__slider js-bc-slider">
+          
+          {%- assign collections_to_show = section.settings.collection_list -%}
+          {%- if collections_to_show != blank and collections_to_show.count > 0 -%}
+            {%- for col in collections_to_show -%}
+              {%- assign col_img = col.featured_image | default: col.image -%}
+              <div class="brandon-categories__card js-bc-card{% if forloop.first %} brandon-categories__card--active{% endif %}" data-index="{{ forloop.index0 }}">
+                <div class="brandon-categories__card-media">
+                  <a href="{{ col.url }}" aria-label="{{ col.title | escape }}">
+                    {%- if col_img != blank -%}
+                      <img
+                        src="{{ col_img | image_url: width: 1200 }}"
+                        alt="{{ col.title | escape }}"
+                        loading="lazy"
+                        width="{{ col_img.width }}"
+                        height="{{ col_img.height }}"
+                        class="brandon-categories__card-img"
+                      >
+                    {%- endif -%}
+                  </a>
+                </div>
+                <div class="brandon-categories__card-footer">
+                  <span class="brandon-categories__card-title">{{ col.title | uppercase }}</span>
+                  <a href="{{ col.url }}" class="brandon-categories__card-link">
+                    {{ section.settings.link_text | default: "VIEW COLLECTION" }}
+                  </a>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Brandon Categories",
+  "tag": "section",
+  "class": "shopify-section-brandon-categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE CATEGORIES"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "Collections List (Picker)"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "VIEW COLLECTION"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FDE2CD"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brandon Categories"
+    }
+  ]
+}
+{% endschema %}

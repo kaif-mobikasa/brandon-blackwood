@@ -1,13 +1,12 @@
-/* Brandon Blackwood Hero Banner Section Styles */
-
 .brandon-hero-section {
   position: relative;
   width: 100%;
+  max-width: 1440px;
+    margin: 0 auto;
   overflow: hidden;
   font-family: inherit;
 }
 
-/* 0. Split Screen Loading Overlay */
 .brandon-hero__loader {
   position: fixed;
   inset: 0;
@@ -22,7 +21,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  height: 50vh;
+  height: calc(50vh - 6px);
   overflow: hidden;
   background-color: #dcdcd6;
   display: flex;
@@ -33,33 +32,39 @@
 .brandon-hero__loader-panel--top {
   top: 0;
   align-items: flex-end;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 .brandon-hero__loader-panel--bottom {
-  top: 50vh;
+  top: calc(50vh + 6px);
   align-items: flex-start;
-  border-top: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 .brandon-hero__loader-bg-img {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
   object-fit: cover;
-  filter: blur(10px) brightness(0.9);
-  transform: scale(1.08);
 }
 
-.brandon-hero__loader-panel--top .brandon-hero__loader-bg-img {
+.brandon-hero__loader-bg-img--custom {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+}
+
+.brandon-hero__loader-bg-img--fallback {
+  width: 100vw;
+  height: 100vh;
+}
+
+.brandon-hero__loader-panel--top .brandon-hero__loader-bg-img--fallback {
   top: 0;
 }
 
-.brandon-hero__loader-panel--bottom .brandon-hero__loader-bg-img {
+.brandon-hero__loader-panel--bottom .brandon-hero__loader-bg-img--fallback {
   bottom: 0;
 }
 
-/* Giant Split "B" Logo */
 .brandon-hero__loader-b {
   position: relative;
   z-index: 2;
@@ -81,7 +86,6 @@
   transform: translateY(-40%);
 }
 
-/* 1. Hero Banner Container & Picture */
 .brandon-hero__media-wrapper {
   position: relative;
   width: 100%;
@@ -115,74 +119,66 @@
   will-change: transform;
 }
 
-/* Banner Content Overlay */
 .brandon-hero__content-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding: 40px 24px;
+  padding: 57px 24px;
   pointer-events: none;
   z-index: 2;
 }
 
-/* Glassmorphic Preview Card (HIDDEN BY DEFAULT UNTIL SCROLL) */
 .brandon-hero__glass-card {
-    width: 86%;
-    background: linear-gradient(180deg, #fff5f073, #e6d2c859);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, .45);
-    box-shadow: 0 8px 32px #00000014;
-    border-radius: 4px;
-    padding: 32px 40px;
-    text-align: center;
-    color: #000;
-    margin-bottom: 16px;
+  width: 78%;
+  background: linear-gradient(180deg, #fff5f073, #e6d2c859);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 37px 40px 38px;
+  margin-left: -8px;
+  text-align: center;
+  color: #000;
+  margin-bottom: 16px;
 }
 
 .brandon-hero__subheading {
-  font-size: 13px;
+  font-size: 12px;
+  font-family: var(--font-semplicita);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: #000000;
-  opacity: 0.9;
+  letter-spacing: 9%;
+  margin-bottom: 0px;
+  font-weight: 500;
+  color: #000;
 }
 
 .brandon-hero__title {
-  font-family: var(
-    --font-custom-heading,
-    "Essonnes Display",
-    serif,
-    "Georgia",
-    "Playfair Display",
-    Times,
-    sans-serif
-  );
-  font-size: 42px;
+  font-family: var(--font-essonnes-display);
+  font-size: 32px;
   font-weight: 400;
   line-height: 1.15;
-  letter-spacing: 4px;
-  margin: 0 0 20px 0;
+  letter-spacing: 9%;
+  margin: 0 0 20px;
   text-transform: uppercase;
-  color: #000000;
+  color: #000;
 }
 
 .brandon-hero__btn--pill {
   display: inline-block;
-  padding: 10px 30px;
+  font-family: var(--font-semplicita);
+  padding: 5px 29px;
   background-color: transparent;
-  color: #000000;
+  color: #000;
   border: 1px solid #000000;
   border-radius: 50px;
   text-decoration: none;
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
+  font-weight: 500;
+  letter-spacing: 9%;
   text-transform: uppercase;
   transition: all 0.3s ease;
   margin-top: 4px;
@@ -193,7 +189,6 @@
   color: #ffffff;
 }
 
-/* Scroll Down Double Arrow (HIDDEN BY DEFAULT UNTIL SCROLL) */
 .brandon-hero__scroll-arrow {
   opacity: 0;
   visibility: hidden;
@@ -224,38 +219,34 @@
   }
 }
 
-/* Mobile Responsive */
 @media screen and (max-width: 767px) {
   .brandon-hero__media-wrapper {
-    height: 75vh;
-    min-height: 450px;
+    height: 97vh;
+    /* min-height: 450px; */
   }
 
   .brandon-hero__content-overlay {
-    padding: 24px 16px;
+    padding: 21px 4px;
   }
 
   .brandon-hero__glass-card {
     width: 95%;
-    padding: 24px 20px;
+    padding: 16px 20px;
     border-radius: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 27px;
+    margin-left: -1px;
   }
 
   .brandon-hero__subheading {
-    font-size: 11px;
-    letter-spacing: 1.5px;
     margin-bottom: 8px;
   }
 
   .brandon-hero__title {
-    font-size: 28px;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
+    margin-bottom: 7px;
   }
 
   .brandon-hero__btn--pill {
-    padding: 8px 24px;
+    padding: 8px 33px;
     font-size: 11px;
   }
 }
