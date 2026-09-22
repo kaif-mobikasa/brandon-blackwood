@@ -49,7 +49,7 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-     padding: 0 37px 0px 27px;
+  padding: 0 37px 0px 27px;
 
   box-sizing: border-box;
 }
@@ -103,7 +103,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-    margin-top: 21px;
+  margin-top: 21px;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -111,25 +111,25 @@
 }
 
 .brandon-featured-collections__card-title {
-     font-weight: 700;
-    color: #000;
-    white-space: nowrap;
-    overflow: hidden;
-    letter-spacing: 9%;
-    /* text-overflow: ellipsis; */
-    font-size: 14px;
-    /* font-family: var(--font-semplicita); */
+  font-weight: 700;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: 9%;
+  /* text-overflow: ellipsis; */
+  font-size: 14px;
+  /* font-family: var(--font-semplicita); */
 }
 
 .brandon-featured-collections__card-link {
-    font-weight: 500;
-    font-size: 14px;
-    color: #000;
-    text-decoration: underline;
-    letter-spacing: 9%;
-    text-underline-offset: 4px;
-    /* font-family: var(--font-semplicita); */
-    transition: opacity .2s ease;
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+  text-decoration: underline;
+  letter-spacing: 9%;
+  text-underline-offset: 4px;
+  /* font-family: var(--font-semplicita); */
+  transition: opacity 0.2s ease;
 }
 
 .brandon-featured-collections__card-link:hover {
@@ -146,8 +146,9 @@
 }
 
 .brandon-featured-collections__ind-line {
-    width: 2px;
-    height: 40.5px;
+  width: 2px;
+  height: 26.5px;
+
   background-color: rgba(0, 0, 0, 0.25);
   transition:
     background-color 0.3s ease,

@@ -1,8 +1,6 @@
 .brandon-hero-section {
   position: relative;
   width: 100%;
-  max-width: 1440px;
-    margin: 0 auto;
   overflow: hidden;
   font-family: inherit;
 }
@@ -136,6 +134,7 @@
 
 .brandon-hero__glass-card {
   width: 78%;
+ max-width: 1085px;
   background: linear-gradient(180deg, #fff5f073, #e6d2c859);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);

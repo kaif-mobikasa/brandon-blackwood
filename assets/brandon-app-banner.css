@@ -1,7 +1,5 @@
 .brandon-app-banner-wrapper {
   width: 100%;
-  max-width: 1440px;
-    margin: 0 auto;
   position: relative;
   overflow: hidden;
 }
@@ -9,8 +7,6 @@
 .brandon-app-banner {
   position: relative;
   width: 100%;
-  background-color: #e27f30;
-  color: #111111;
   box-sizing: border-box;
 }
 
@@ -20,7 +16,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   overflow: hidden;
   position: relative;
-  z-index: 5;
+  z-index: 2;
   padding: 10px 0;
 }
 

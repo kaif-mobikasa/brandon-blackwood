@@ -208,6 +208,7 @@
     },
     "brandon_founder_dYaCPE": {
       "type": "brandon-founder",
+      "disabled": true,
       "name": "Brandon Founder",
       "settings": {
         "heading": "THE FOUNDER",
@@ -227,7 +228,7 @@
       "type": "brandon-founder-story",
       "name": "Brandon Founder Story",
       "settings": {
-        "heading": "",
+        "heading": "the founder",
         "bg_color": "#ffffff",
         "bg_image_desktop": "shopify://shop_images/image_252_1.png",
         "bg_image_mobile": "shopify://shop_images/image_253_1.png",
@@ -236,6 +237,8 @@
         "text_bg_image_mobile": "shopify://shop_images/image_244_6.png",
         "person_image_desktop": "shopify://shop_images/image_256_1.png",
         "person_image_mobile": "shopify://shop_images/Frame_109.png",
+        "overlay_heading": "ABOUT BRANDON BLACKWOOD",
+        "overlay_description": "",
         "description_desktop": "<p>Beyond fashion, Brandon is committed to using design as a platform for meaningful impact. His widely recognized \"End Systemic Racism\" tote became a cultural symbol of advocacy, reflecting his belief that creativity can inspire conversations and drive positive change. Through both his brand and foundation, he continues to champion innovation, inclusivity, and opportunities for emerging creatives.</p>",
         "description_mobile": "<p>Brandon Blackwood is the founder and creative force behind Brandon Blackwood New York, a contemporary luxury accessories brand celebrated for its bold design language and modern interpretation of timeless craftsmanship. Born in Brooklyn and raised between New York City and Tokyo, his multicultural upbringing continues to shape the brand's distinctive aesthetic and global appeal.</p>",
         "another_description_mobile": "<p>Beyond fashion, Brandon is committed to using design as a platform for meaningful impact. His widely recognized \"End Systemic Racism\" tote became a cultural symbol of advocacy, reflecting his belief that creativity can inspire conversations and drive positive change. </p>",

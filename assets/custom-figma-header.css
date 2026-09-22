@@ -181,22 +181,21 @@ body:not(:has(.custom-announcement-bar)) .custom-header {
   }
 
   .custom-mobile-nav {
-        display: flex;
+           display: flex;
         align-items: center;
         justify-content: space-around;
         position: fixed;
-        bottom: 12px;
-        left: 0px;
+        bottom: 0px;
+        left: 0;
         right: 12px;
         border-top: 1px solid #fff;
         border-left: 1px solid #fff;
         border-right: 1px solid #fff;
         background-color: #fff;
-        /* border-radius: 20px; */
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         box-shadow: 0 4px 20px #0000001f;
-        padding: 12.4px 3px;
+        padding: 6px 3px;
         width: 100%;
   }
 

@@ -1,7 +1,5 @@
 .brandon-newsletter-banner-wrapper {
   width: 100%;
-  max-width: 1440px;
-    margin: 0 auto;
   position: relative;
   overflow: hidden;
 }
@@ -100,22 +98,38 @@
   background: #fff;
   border-radius: 40px;
   border: 1px solid #e0e0e0;
-  /* padding: 9px 9px 7px 9px; */
   height: 61px;
+  box-shadow: none;
+  outline: none;
+}
+
+.brandon-newsletter-banner__field-wrapper:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .brandon-newsletter-banner__input {
   flex: 1;
-  border: none;
-  background: transparent;
+  border: none !important;
+  background: transparent !important;
   padding: 12px 40px;
   font-family: var(--font-semplicita, sans-serif);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.1em;
   color: #111;
-  outline: none;
+  outline: none !important;
+  box-shadow: none !important;
   text-transform: uppercase;
+}
+
+.brandon-newsletter-banner__input:focus,
+.brandon-newsletter-banner__input:focus-visible,
+.brandon-newsletter-banner__input:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background-color: transparent !important;
 }
 
 .brandon-newsletter-banner__input::placeholder {
