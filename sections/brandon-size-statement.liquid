@@ -1,0 +1,342 @@
+{{ 'brandon-size-statement.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'brandon-size-statement.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+#ShopifySection-{{ section.id }} .brandon-size-statement {
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+}
+{%- endstyle -%}
+
+<div id="ShopifySection-{{ section.id }}" class="shopify-section brandon-size-statement-wrapper"
+  data-section-id="{{ section.id }}" data-section-type="brandon-size-statement">
+  <section class="brandon-size-statement" aria-label="Every Size Every Statement">
+    <div class="brandon-size-statement__container">
+
+      <div class="brandon-size-statement__header">
+        {%- if section.settings.heading != blank -%}
+        <h2 class="brandon-size-statement__heading">
+          {{ section.settings.heading | newline_to_br }}
+        </h2>
+        {%- endif -%}
+
+        {%- if section.settings.subtitle != blank -%}
+        <p class="brandon-size-statement__subtitle">
+          {{ section.settings.subtitle }}
+        </p>
+        {%- endif -%}
+      </div>
+
+      <div class="brandon-size-statement__carousel-wrapper">
+
+        <button type="button"
+          class="brandon-size-statement__nav-btn brandon-size-statement__nav-btn--prev js-size-statement-prev"
+          aria-label="Previous item">
+          <svg width="33" height="12" viewBox="0 0 33 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0.68214 6.67971H32.3197C32.6961 6.67971 33.0001 6.37442 33.0001 5.99653C33.0001 5.61865 32.6961 5.31335 32.3197 5.31335H2.32568L6.45472 1.16728C6.7205 0.900413 6.7205 0.46702 6.45472 0.200151C6.18895 -0.0667171 5.75734 -0.0667171 5.49156 0.200151L0.199497 5.51403C0.00388718 5.71045 -0.0535202 6.00294 0.0527916 6.25913C0.1591 6.51319 0.407864 6.67971 0.68214 6.67971Z"
+              fill="black" />
+            <path
+              d="M5.98041 12.0008C6.15476 12.0008 6.32911 11.9346 6.46093 11.8001C6.72671 11.5332 6.72671 11.0998 6.46093 10.8329L1.16249 5.51265C0.896714 5.24578 0.465101 5.24578 0.199328 5.51265C-0.0664449 5.77952 -0.0664449 6.21291 0.199328 6.47978L5.49777 11.8001C5.63172 11.9346 5.80607 12.0008 5.98041 12.0008Z"
+              fill="black" />
+          </svg>
+
+        </button>
+
+        <div class="swiper brandon-size-statement__swiper js-size-statement-swiper">
+          <div class="swiper-wrapper brandon-size-statement__swiper-wrapper">
+
+            {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+            <div
+              class="swiper-slide brandon-size-statement__slide {% if block.settings.is_active %}brandon-size-statement__slide--active{% endif %}"
+              {{ block.shopify_attributes }}>
+              <div class="brandon-size-statement__card">
+
+                <div class="brandon-size-statement__image-wrapper">
+                  {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 800 }}"
+                    alt="{{ block.settings.title | escape }}" loading="lazy" class="brandon-size-statement__img">
+                  {%- else -%}
+                  {%- assign placeholder_index = forloop.index | modulo: 5 | plus: 1 -%}
+                  {{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'placeholder-svg
+                  brandon-size-statement__img' }}
+                  {%- endif -%}
+                </div>
+
+                <div class="brandon-size-statement__timeline">
+                  <div class="brandon-size-statement__dot-wrapper">
+                    {%- if block.settings.dot_svg != blank -%}
+                    <div class="brandon-size-statement__custom-dot">{{ block.settings.dot_svg }}</div>
+                    {%- elsif block.settings.is_active and section.settings.active_dot_svg != blank -%}
+                    <div class="brandon-size-statement__custom-dot">{{ section.settings.active_dot_svg }}</div>
+                    {%- elsif section.settings.inactive_dot_svg != blank -%}
+                    <div class="brandon-size-statement__custom-dot">{{ section.settings.inactive_dot_svg }}</div>
+                    {%- else -%}
+                    <span
+                      class="brandon-size-statement__dot {% if block.settings.is_active %}brandon-size-statement__dot--active{% endif %}"></span>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                <div class="brandon-size-statement__content">
+                  {%- if block.settings.title != blank -%}
+                  <h3 class="brandon-size-statement__card-title">{{ block.settings.title }}</h3>
+                  {%- endif -%}
+
+                  {%- if block.settings.size != blank -%}
+                  <span class="brandon-size-statement__card-size">{{ block.settings.size }}</span>
+                  <div class="brandon-size-statement__card-divider"></div>
+                  {%- endif -%}
+
+                  {%- if block.settings.description != blank -%}
+                  <div class="brandon-size-statement__card-desc">
+                    {{ block.settings.description }}
+                  </div>
+                  {%- endif -%}
+
+                  {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="brandon-size-statement__card-link"
+                    aria-label="View {{ block.settings.title | escape }}">
+                    <span>{{ block.settings.link_text | default: 'View' | escape }}</span>
+                    <span class="brandon-size-statement__arrow">
+                      {%- if block.settings.arrow_svg != blank -%}
+                        {{ block.settings.arrow_svg }}
+                      {%- elsif section.settings.arrow_svg != blank -%}
+                        {{ section.settings.arrow_svg }}
+                  
+                      {%- endif -%}
+                    </span>
+                  </a>
+                  {%- else -%}
+                  <a href="#" class="brandon-size-statement__card-link"
+                    aria-label="View {{ block.settings.title | default: 'Product' | escape }}">
+                    <span>{{ block.settings.link_text | default: 'View' | escape }}</span>
+                    <span class="brandon-size-statement__arrow">
+                      {%- if block.settings.arrow_svg != blank -%}
+                        {{ block.settings.arrow_svg }}
+                      {%- elsif section.settings.arrow_svg != blank -%}
+                        {{ section.settings.arrow_svg }}
+                      {%- endif -%}
+                    </span>
+                  </a>
+                  {%- endif -%}
+                </div>
+
+              </div>
+            </div>
+            {%- endfor -%}
+            {%- endif -%}
+
+          </div>
+        </div>
+
+        <button type="button"
+          class="brandon-size-statement__nav-btn brandon-size-statement__nav-btn--next js-size-statement-next"
+          aria-label="Next item">
+          <svg width="33" height="12" viewBox="0 0 33 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M32.318 6.67971H0.680378C0.304044 6.67971 0 6.37442 0 5.99653C0 5.61865 0.304044 5.31335 0.680378 5.31335H30.6744L26.5454 1.16728C26.2796 0.900413 26.2796 0.46702 26.5454 0.200151C26.8112 -0.0667171 27.2428 -0.0667171 27.5085 0.200151L32.8006 5.51403C32.9962 5.71045 33.0536 6.00294 32.9473 6.25913C32.841 6.51319 32.5922 6.67971 32.318 6.67971Z"
+              fill="black" />
+            <path
+              d="M27.0197 12.0008C26.8453 12.0008 26.671 11.9346 26.5392 11.8001C26.2734 11.5332 26.2734 11.0998 26.5392 10.8329L31.8376 5.51265C32.1034 5.24578 32.535 5.24578 32.8008 5.51265C33.0666 5.77952 33.0666 6.21291 32.8008 6.47978L27.5023 11.8001C27.3684 11.9346 27.194 12.0008 27.0197 12.0008Z"
+              fill="black" />
+          </svg>
+
+        </button>
+
+      </div>
+
+      <div class="brandon-size-statement__mobile-nav">
+        <button type="button" class="brandon-size-statement__mobile-nav-btn js-size-statement-mobile-prev"
+          aria-label="Previous item">
+          <svg width="33" height="12" viewBox="0 0 33 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.68214 6.67971H32.3197C32.6961 6.67971 33.0001 6.37442 33.0001 5.99653C33.0001 5.61865 32.6961 5.31335 32.3197 5.31335H2.32568L6.45472 1.16728C6.7205 0.900413 6.7205 0.46702 6.45472 0.200151C6.18895 -0.0667171 5.75734 -0.0667171 5.49156 0.200151L0.199497 5.51403C0.00388718 5.71045 -0.0535202 6.00294 0.0527916 6.25913C0.1591 6.51319 0.407864 6.67971 0.68214 6.67971Z" fill="black"/>
+<path d="M5.98041 12.0008C6.15476 12.0008 6.32911 11.9346 6.46093 11.8001C6.72671 11.5332 6.72671 11.0998 6.46093 10.8329L1.16249 5.51265C0.896714 5.24578 0.465101 5.24578 0.199328 5.51265C-0.0664449 5.77952 -0.0664449 6.21291 0.199328 6.47978L5.49777 11.8001C5.63172 11.9346 5.80607 12.0008 5.98041 12.0008Z" fill="black"/>
+</svg>
+
+        </button>
+        <button type="button" class="brandon-size-statement__mobile-nav-btn js-size-statement-mobile-next"
+          aria-label="Next item">
+          <svg width="33" height="12" viewBox="0 0 33 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M32.318 6.67971H0.680378C0.304044 6.67971 0 6.37442 0 5.99653C0 5.61865 0.304044 5.31335 0.680378 5.31335H30.6744L26.5454 1.16728C26.2796 0.900413 26.2796 0.46702 26.5454 0.200151C26.8112 -0.0667171 27.2428 -0.0667171 27.5085 0.200151L32.8006 5.51403C32.9962 5.71045 33.0536 6.00294 32.9473 6.25913C32.841 6.51319 32.5922 6.67971 32.318 6.67971Z" fill="black"/>
+<path d="M27.0197 12.0008C26.8453 12.0008 26.671 11.9346 26.5392 11.8001C26.2734 11.5332 26.2734 11.0998 26.5392 10.8329L31.8376 5.51265C32.1034 5.24578 32.535 5.24578 32.8008 5.51265C33.0666 5.77952 33.0666 6.21291 32.8008 6.47978L27.5023 11.8001C27.3684 11.9346 27.194 12.0008 27.0197 12.0008Z" fill="black"/>
+</svg>
+
+        </button>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+{% schema %}
+{
+"name": "Size Statement",
+"tag": "section",
+"class": "shopify-section-brandon-size-statement",
+"settings": [
+{
+"type": "textarea",
+"id": "heading",
+"label": "Section Heading",
+"default": "EVERY SIZE\nEVERY STATEMENT"
+},
+{
+"type": "textarea",
+"id": "subtitle",
+"label": "Section Subtitle",
+"default": "From mini moments to everyday essentials Explore the BB bag assortment and find your perfect fit."
+},
+{
+"type": "html",
+"id": "active_dot_svg",
+"label": "Active Dot Custom SVG Code (Optional)"
+},
+{
+"type": "html",
+"id": "inactive_dot_svg",
+"label": "Inactive Dot Custom SVG Code (Optional)"
+},
+{
+"type": "html",
+"id": "arrow_svg",
+"label": "Link Arrow Custom SVG Code (Optional)"
+},
+{
+"type": "color",
+"id": "bg_color",
+"label": "Background Color",
+"default": "#ffffff"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Top Padding",
+"default": 60
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Bottom Padding",
+"default": 60
+}
+],
+"blocks": [
+{
+"type": "product_item",
+"name": "Product Size Item",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Product Image"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Product Title",
+"default": "Mini Kobi Bag"
+},
+{
+"type": "text",
+"id": "size",
+"label": "Dimensions / Size",
+"default": "5.31\" L x 3.74\" H x 2.76\" W"
+},
+{
+"type": "textarea",
+"id": "description",
+"label": "Description",
+"default": "Compact & chic for your essentials."
+},
+{
+"type": "text",
+"id": "link_text",
+"label": "Link Text",
+"default": "View"
+},
+{
+"type": "url",
+"id": "link",
+"label": "Product Link"
+},
+{
+"type": "checkbox",
+"id": "is_active",
+"label": "Highlight as Active/Featured Item",
+"default": false
+},
+{
+"type": "html",
+"id": "dot_svg",
+"label": "Item Timeline Dot SVG Code (Optional)"
+},
+{
+"type": "html",
+"id": "arrow_svg",
+"label": "Item Arrow Custom SVG Code (Optional)"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Size Statement",
+"blocks": [
+{
+"type": "product_item",
+"settings": {
+"title": "Mini Kobi Bag",
+"size": "5.31\" L x 3.74\" H x 2.76\" W",
+"description": "Compact & chic for your essentials."
+}
+},
+{
+"type": "product_item",
+"settings": {
+"title": "Elyse Bag",
+"size": "5.31\" L x 3.74\" H x 2.76\" W",
+"description": "Everyday ease with just the right space."
+}
+},
+{
+"type": "product_item",
+"settings": {
+"title": "Luna Bag",
+"size": "5.31\" L x 3.74\" H x 2.76\" W",
+"description": "The perfect balance of style & functionality",
+"is_active": true
+}
+},
+{
+"type": "product_item",
+"settings": {
+"title": "Medium Kobi Bag",
+"size": "5.31\" L x 3.74\" H x 2.76\" W",
+"description": "Roomy & versatile for your on the go life."
+}
+},
+{
+"type": "product_item",
+"settings": {
+"title": "Sylvia Bag",
+"size": "5.31\" L x 3.74\" H x 2.76\" W",
+"description": "Maximum space for maximum impact."
+}
+}
+]
+}
+]
+}
+{% endschema %}

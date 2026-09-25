@@ -1,141 +1,107 @@
 {{ 'brandon-textures-grid.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  #ShopifySection-{{ section.id }} .brandon-textures-grid {
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: {{ section.settings.bg_color | default: '#D7A779' }};
-  }
+#ShopifySection-{{ section.id }} .brandon-textures-grid {
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+background-color: {{ section.settings.bg_color | default: '#D7A779' }};
+}
 {%- endstyle -%}
 
-<div
-  id="ShopifySection-{{ section.id }}"
-  class="shopify-section brandon-textures-wrapper"
-  data-section-id="{{ section.id }}"
-  data-section-type="brandon-textures-grid"
->
+<div id="ShopifySection-{{ section.id }}" class="shopify-section brandon-textures-wrapper"
+  data-section-id="{{ section.id }}" data-section-type="brandon-textures-grid">
   <section class="brandon-textures-grid" aria-label="Textures of the Season Grid">
-    
+
     <div class="brandon-textures-grid__bg-wrapper">
       {%- if section.settings.bg_image_desktop != blank or section.settings.bg_image_mobile != blank -%}
-        <picture class="brandon-textures-grid__bg-picture">
-          {%- if section.settings.bg_image_mobile != blank -%}
-            <source
-              media="(max-width: 768px)"
-              srcset="{{ section.settings.bg_image_mobile | image_url: width: 1500 }}"
-            >
-          {%- endif -%}
-          {%- if section.settings.bg_image_desktop != blank -%}
-            <img
-              src="{{ section.settings.bg_image_desktop | image_url: width: 2400 }}"
-              alt="{{ section.settings.left_heading | escape }}"
-              width="{{ section.settings.bg_image_desktop.width }}"
-              height="{{ section.settings.bg_image_desktop.height }}"
-              loading="lazy"
-              class="brandon-textures-grid__bg-img"
-            >
-          {%- else -%}
-            <img
-              src="{{ section.settings.bg_image_mobile | image_url: width: 1500 }}"
-              alt="{{ section.settings.left_heading | escape }}"
-              loading="lazy"
-              class="brandon-textures-grid__bg-img"
-            >
-          {%- endif -%}
-        </picture>
+      <picture class="brandon-textures-grid__bg-picture">
+        {%- if section.settings.bg_image_mobile != blank -%}
+        <source media="(max-width: 768px)" srcset="{{ section.settings.bg_image_mobile | image_url: width: 1500 }}">
+        {%- endif -%}
+        {%- if section.settings.bg_image_desktop != blank -%}
+        <img src="{{ section.settings.bg_image_desktop | image_url: width: 2400 }}"
+          alt="{{ section.settings.left_heading | escape }}" width="{{ section.settings.bg_image_desktop.width }}"
+          height="{{ section.settings.bg_image_desktop.height }}" loading="lazy" class="brandon-textures-grid__bg-img">
+        {%- else -%}
+        <img src="{{ section.settings.bg_image_mobile | image_url: width: 1500 }}"
+          alt="{{ section.settings.left_heading | escape }}" loading="lazy" class="brandon-textures-grid__bg-img">
+        {%- endif -%}
+      </picture>
       {%- endif -%}
     </div>
 
     <div class="brandon-textures-grid__container">
       <div class="brandon-textures-grid__cards">
-        
+
         <div class="brandon-textures-grid__card brandon-textures-grid__card--left">
           {%- if section.settings.left_link != blank -%}
-            <a href="{{ section.settings.left_link }}" class="brandon-textures-grid__card-link" aria-label="{{ section.settings.left_heading | escape }}">
-          {%- endif -%}
-
-          <div class="brandon-textures-grid__image-wrapper">
-            {%- if section.settings.left_image_desktop != blank or section.settings.left_image_mobile != blank -%}
-              <picture class="brandon-textures-grid__picture">
-                {%- if section.settings.left_image_mobile != blank -%}
-                  <source
-                    media="(max-width: 768px)"
-                    srcset="{{ section.settings.left_image_mobile | image_url: width: 1200 }}"
-                  >
-                {%- endif -%}
-                {%- if section.settings.left_image_desktop != blank -%}
-                  <img
-                    src="{{ section.settings.left_image_desktop | image_url: width: 1400 }}"
-                    alt="{{ section.settings.left_heading | escape }}"
-                    loading="lazy"
-                    class="brandon-textures-grid__img"
-                  >
-                {%- else -%}
-                  <img
-                    src="{{ section.settings.left_image_mobile | image_url: width: 1200 }}"
-                    alt="{{ section.settings.left_heading | escape }}"
-                    loading="lazy"
-                    class="brandon-textures-grid__img"
-                  >
-                {%- endif -%}
-              </picture>
+          <a href="{{ section.settings.left_link }}" class="brandon-textures-grid__card-link"
+            aria-label="{{ section.settings.left_heading | escape }}">
             {%- endif -%}
 
-            <div class="brandon-textures-grid__content-card">
-              {%- if section.settings.left_heading != blank -%}
+            <div class="brandon-textures-grid__image-wrapper">
+              {%- if section.settings.left_image_desktop != blank or section.settings.left_image_mobile != blank -%}
+              <picture class="brandon-textures-grid__picture">
+                {%- if section.settings.left_image_mobile != blank -%}
+                <source media="(max-width: 768px)"
+                  srcset="{{ section.settings.left_image_mobile | image_url: width: 1200 }}">
+                {%- endif -%}
+                {%- if section.settings.left_image_desktop != blank -%}
+                <img src="{{ section.settings.left_image_desktop | image_url: width: 1400 }}"
+                  alt="{{ section.settings.left_heading | escape }}" loading="lazy" class="brandon-textures-grid__img">
+                {%- else -%}
+                <img src="{{ section.settings.left_image_mobile | image_url: width: 1200 }}"
+                  alt="{{ section.settings.left_heading | escape }}" loading="lazy" class="brandon-textures-grid__img">
+                {%- endif -%}
+              </picture>
+              {%- endif -%}
+
+              <div class="brandon-textures-grid__content-card">
+                {%- if section.settings.left_heading != blank -%}
                 <h2 class="brandon-textures-grid__heading">
                   {{ section.settings.left_heading }}
                 </h2>
-              {%- endif -%}
+                {%- endif -%}
 
-              {%- if section.settings.left_description != blank -%}
+                {%- if section.settings.left_description != blank -%}
                 <div class="brandon-textures-grid__description">
                   {{ section.settings.left_description }}
                 </div>
-              {%- endif -%}
+                {%- endif -%}
+              </div>
             </div>
-          </div>
 
-          {%- if section.settings.left_link != blank -%}
-            </a>
+            {%- if section.settings.left_link != blank -%}
+          </a>
           {%- endif -%}
         </div>
 
         <div class="brandon-textures-grid__card brandon-textures-grid__card--right">
           {%- if section.settings.right_link != blank -%}
-            <a href="{{ section.settings.right_link }}" class="brandon-textures-grid__card-link" aria-label="View Products">
-          {%- endif -%}
+          <a href="{{ section.settings.right_link }}" class="brandon-textures-grid__card-link"
+            aria-label="View Products">
+            {%- endif -%}
 
-          <div class="brandon-textures-grid__image-wrapper">
-            {%- if section.settings.right_image_desktop != blank or section.settings.right_image_mobile != blank -%}
+            <div class="brandon-textures-grid__image-wrapper">
+              {%- if section.settings.right_image_desktop != blank or section.settings.right_image_mobile != blank -%}
               <picture class="brandon-textures-grid__picture">
                 {%- if section.settings.right_image_mobile != blank -%}
-                  <source
-                    media="(max-width: 768px)"
-                    srcset="{{ section.settings.right_image_mobile | image_url: width: 1200 }}"
-                  >
+                <source media="(max-width: 768px)"
+                  srcset="{{ section.settings.right_image_mobile | image_url: width: 1200 }}">
                 {%- endif -%}
                 {%- if section.settings.right_image_desktop != blank -%}
-                  <img
-                    src="{{ section.settings.right_image_desktop | image_url: width: 1400 }}"
-                    alt="Textures Collection"
-                    loading="lazy"
-                    class="brandon-textures-grid__img"
-                  >
+                <img src="{{ section.settings.right_image_desktop | image_url: width: 1400 }}" alt="Textures Collection"
+                  loading="lazy" class="brandon-textures-grid__img">
                 {%- else -%}
-                  <img
-                    src="{{ section.settings.right_image_mobile | image_url: width: 1200 }}"
-                    alt="Textures Collection"
-                    loading="lazy"
-                    class="brandon-textures-grid__img"
-                  >
+                <img src="{{ section.settings.right_image_mobile | image_url: width: 1200 }}" alt="Textures Collection"
+                  loading="lazy" class="brandon-textures-grid__img">
                 {%- endif -%}
               </picture>
-            {%- endif -%}
-          </div>
+              {%- endif -%}
+            </div>
 
-          {%- if section.settings.right_link != blank -%}
-            </a>
+            {%- if section.settings.right_link != blank -%}
+          </a>
           {%- endif -%}
         </div>
 
@@ -144,36 +110,28 @@
 
     <div class="brandon-textures-grid__featured-strip">
       {%- if section.settings.featured_text != blank -%}
-        <div class="brandon-textures-grid__featured-pill">
-          {{ section.settings.featured_text | escape }}
-        </div>
+      <div class="brandon-textures-grid__featured-pill">
+        {{ section.settings.featured_text | escape }}
+      </div>
       {%- endif -%}
 
       <div class="brandon-textures-grid__featured-logos-wrapper">
         {%- if section.settings.featured_image_desktop != blank or section.settings.featured_image_mobile != blank -%}
-          <picture class="brandon-textures-grid__featured-picture">
-            {%- if section.settings.featured_image_mobile != blank -%}
-              <source
-                media="(max-width: 768px)"
-                srcset="{{ section.settings.featured_image_mobile | image_url: width: 1400 }}"
-              >
-            {%- endif -%}
-            {%- if section.settings.featured_image_desktop != blank -%}
-              <img
-                src="{{ section.settings.featured_image_desktop | image_url: width: 2400 }}"
-                alt="{{ section.settings.featured_text | escape }}"
-                loading="lazy"
-                class="brandon-textures-grid__featured-img"
-              >
-            {%- else -%}
-              <img
-                src="{{ section.settings.featured_image_mobile | image_url: width: 1400 }}"
-                alt="{{ section.settings.featured_text | escape }}"
-                loading="lazy"
-                class="brandon-textures-grid__featured-img"
-              >
-            {%- endif -%}
-          </picture>
+        <picture class="brandon-textures-grid__featured-picture">
+          {%- if section.settings.featured_image_mobile != blank -%}
+          <source media="(max-width: 768px)"
+            srcset="{{ section.settings.featured_image_mobile | image_url: width: 1400 }}">
+          {%- endif -%}
+          {%- if section.settings.featured_image_desktop != blank -%}
+          <img src="{{ section.settings.featured_image_desktop | image_url: width: 2400 }}"
+            alt="{{ section.settings.featured_text | escape }}" loading="lazy"
+            class="brandon-textures-grid__featured-img">
+          {%- else -%}
+          <img src="{{ section.settings.featured_image_mobile | image_url: width: 1400 }}"
+            alt="{{ section.settings.featured_text | escape }}" loading="lazy"
+            class="brandon-textures-grid__featured-img">
+          {%- endif -%}
+        </picture>
         {%- endif -%}
       </div>
     </div>
@@ -183,129 +141,129 @@
 
 {% schema %}
 {
-  "name": "Brandon Textures Grid",
-  "tag": "section",
-  "class": "shopify-section-brandon-textures-grid",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Background Settings"
-    },
-    {
-      "type": "image_picker",
-      "id": "bg_image_desktop",
-      "label": "Background Image (Desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "bg_image_mobile",
-      "label": "Background Image (Mobile)"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color Fallback",
-      "default": "#D7A779"
-    },
-    {
-      "type": "header",
-      "content": "Left Card Settings (Image & Text Card Overlay)"
-    },
-    {
-      "type": "image_picker",
-      "id": "left_image_desktop",
-      "label": "Left Card Image (Desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "left_image_mobile",
-      "label": "Left Card Image (Mobile)"
-    },
-    {
-      "type": "html",
-      "id": "left_heading",
-      "label": "Left Card Heading",
-      "default": "TEXTURES OF THE SEASON."
-    },
-    {
-      "type": "textarea",
-      "id": "left_description",
-      "label": "Left Card Description",
-      "default": "Some things are meant to be felt before they're seen. Raffia woven fine and close. Linen with the quiet character of natural fiber. Cognac and cream leather, oiled by hand to a soft, lived-in glow. This is summer told through material."
-    },
-    {
-      "type": "url",
-      "id": "left_link",
-      "label": "Left Card Link"
-    },
-    {
-      "type": "header",
-      "content": "Right Card Settings (Image or Products)"
-    },
-    {
-      "type": "image_picker",
-      "id": "right_image_desktop",
-      "label": "Right Card Image (Desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "right_image_mobile",
-      "label": "Right Card Image (Mobile)"
-    },
-    {
-      "type": "url",
-      "id": "right_link",
-      "label": "Right Card Link"
-    },
-    {
-      "type": "header",
-      "content": "Bottom Featured On Strip"
-    },
-    {
-      "type": "text",
-      "id": "featured_text",
-      "label": "Featured On Text",
-      "default": "FEATURED ON"
-    },
-    {
-      "type": "image_picker",
-      "id": "featured_image_desktop",
-      "label": "Featured Logos Image (Desktop)"
-    },
-    {
-      "type": "image_picker",
-      "id": "featured_image_mobile",
-      "label": "Featured Logos Image (Mobile)"
-    },
-    {
-      "type": "header",
-      "content": "Section Spacing"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Top Padding",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Bottom Padding",
-      "default": 0
-    }
-  ],
-  "presets": [
-    {
-      "name": "Brandon Textures Grid"
-    }
-  ]
+"name": "Brandon Textures Grid",
+"tag": "section",
+"class": "shopify-section-brandon-textures-grid",
+"settings": [
+{
+"type": "header",
+"content": "Background Settings"
+},
+{
+"type": "image_picker",
+"id": "bg_image_desktop",
+"label": "Background Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "bg_image_mobile",
+"label": "Background Image (Mobile)"
+},
+{
+"type": "color",
+"id": "bg_color",
+"label": "Background Color Fallback",
+"default": "#D7A779"
+},
+{
+"type": "header",
+"content": "Left Card Settings (Image & Text Card Overlay)"
+},
+{
+"type": "image_picker",
+"id": "left_image_desktop",
+"label": "Left Card Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "left_image_mobile",
+"label": "Left Card Image (Mobile)"
+},
+{
+"type": "html",
+"id": "left_heading",
+"label": "Left Card Heading",
+"default": "TEXTURES OF THE SEASON."
+},
+{
+"type": "textarea",
+"id": "left_description",
+"label": "Left Card Description",
+"default": "Some things are meant to be felt before they're seen. Raffia woven fine and close. Linen with the quiet character of natural fiber. Cognac and cream leather, oiled by hand to a soft, lived-in glow. This is summer told through material."
+},
+{
+"type": "url",
+"id": "left_link",
+"label": "Left Card Link"
+},
+{
+"type": "header",
+"content": "Right Card Settings (Image or Products)"
+},
+{
+"type": "image_picker",
+"id": "right_image_desktop",
+"label": "Right Card Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "right_image_mobile",
+"label": "Right Card Image (Mobile)"
+},
+{
+"type": "url",
+"id": "right_link",
+"label": "Right Card Link"
+},
+{
+"type": "header",
+"content": "Bottom Featured On Strip"
+},
+{
+"type": "text",
+"id": "featured_text",
+"label": "Featured On Text",
+"default": "FEATURED ON"
+},
+{
+"type": "image_picker",
+"id": "featured_image_desktop",
+"label": "Featured Logos Image (Desktop)"
+},
+{
+"type": "image_picker",
+"id": "featured_image_mobile",
+"label": "Featured Logos Image (Mobile)"
+},
+{
+"type": "header",
+"content": "Section Spacing"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Top Padding",
+"default": 40
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 4,
+"unit": "px",
+"label": "Bottom Padding",
+"default": 0
+}
+],
+"presets": [
+{
+"name": "Brandon Textures Grid"
+}
+]
 }
 {% endschema %}

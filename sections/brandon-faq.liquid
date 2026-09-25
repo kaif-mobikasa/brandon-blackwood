@@ -1,0 +1,206 @@
+{{ 'brandon-faq.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'brandon-faq.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+#ShopifySection-{{ section.id }} .brandon-faq {
+  background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+#ShopifySection-{{ section.id }} .brandon-faq__heading,
+#ShopifySection-{{ section.id }} .brandon-faq__question {
+  color: {{ section.settings.text_color | default: '#000000' }};
+}
+#ShopifySection-{{ section.id }} .brandon-faq__item {
+  border-bottom-color: {{ section.settings.line_color | default: '#eeeeee' }};
+}
+#ShopifySection-{{ section.id }} .brandon-faq__accordion {
+  border-top-color: {{ section.settings.line_color | default: '#eeeeee' }};
+}
+{%- endstyle -%}
+
+<div id="ShopifySection-{{ section.id }}" class="shopify-section brandon-faq-wrapper"
+  data-section-id="{{ section.id }}" data-section-type="brandon-faq">
+  <section class="brandon-faq" aria-label="{{ section.settings.heading | escape }}">
+    <div class="brandon-faq__container" style="max-width: {{ section.settings.container_max_width | default: 720 }}px;">
+
+      {%- if section.settings.heading != blank -%}
+      <h2 class="brandon-faq__heading" style="text-align: {{ section.settings.heading_alignment | default: 'center' }};">
+        {{ section.settings.heading }}
+      </h2>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+      <div class="brandon-faq__accordion js-faq-accordion">
+        {%- for block in section.blocks -%}
+        <div class="brandon-faq__item {% if block.settings.open_by_default %}is-active{% endif %}" {{ block.shopify_attributes }}>
+          <button type="button" class="brandon-faq__trigger js-faq-trigger" aria-expanded="{% if block.settings.open_by_default %}true{% else %}false{% endif %}">
+            <span class="brandon-faq__question">{{ block.settings.question }}</span>
+            <span class="brandon-faq__icon" aria-hidden="true">
+              <span class="brandon-faq__icon-plus"></span>
+            </span>
+          </button>
+          <div class="brandon-faq__content js-faq-content" {% unless block.settings.open_by_default %}style="display: none;"{% endunless %}>
+            <div class="brandon-faq__answer rte">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+
+    </div>
+  </section>
+</div>
+
+
+{% schema %}
+{
+  "name": "Brandon FAQ",
+  "tag": "section",
+  "class": "shopify-section-brandon-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "min": 500,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "label": "Container Max Width",
+      "default": 720
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Border Line Color",
+      "default": "#eeeeee"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Shipping Information"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We offer standard and expedited shipping options. Orders are processed within 1-2 business days.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brandon FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Shipping Information",
+            "answer": "<p>We offer worldwide express shipping. All orders are processed within 24-48 hours. Shipping timelines and costs will be calculated at checkout.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Returns & Exchanges",
+            "answer": "<p>Returns and exchanges are accepted within 14 days of receiving your item. Products must be in original condition with tags attached.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Materials & Care",
+            "answer": "<p>Crafted from premium Italian leathers and luxury hardware. Wipe clean with a soft dry cloth. Store in the provided dust bag when not in use.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Care Instructions",
+            "answer": "<p>Avoid direct exposure to sunlight, humidity, and liquid. Use leather conditioner periodically to maintain supple finish.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Size & Fit",
+            "answer": "<p>Please reference product details on each PDP for exact dimensions, strap drop lengths, and weight specs.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Product Availability",
+            "answer": "<p>Items marked as pre-order or waitlist will ship as soon as stock arrives. Sign up for restock notifications on sold-out products.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

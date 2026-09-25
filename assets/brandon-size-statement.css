@@ -1,0 +1,335 @@
+.brandon-size-statement {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.brandon-size-statement__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 51px 0 46px;
+  box-sizing: border-box;
+}
+
+.brandon-size-statement__header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.brandon-size-statement__heading {
+  font-size: 24px;
+  font-family: var(--font-essonnes-display);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 8%;
+  color: #000000;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.brandon-size-statement__subtitle {
+  font-family: var(--font-semplicita);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 5%;
+  color: #000000;
+  max-width: 432px;
+  margin: 0 auto;
+}
+
+.brandon-size-statement__carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.brandon-size-statement__swiper {
+  width: 100%;
+  padding: 16px 0;
+  overflow: hidden;
+}
+
+.brandon-size-statement__swiper-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+.brandon-size-statement__slide {
+  height: auto;
+}
+
+.brandon-size-statement__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.brandon-size-statement__image-wrapper {
+  height: 220px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.brandon-size-statement__img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.brandon-size-statement__carousel-wrapper::before {
+  content: "";
+  position: absolute;
+  top: calc(16px + 220px + 17px);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #e5e5e5;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.brandon-size-statement__timeline {
+  width: 100%;
+  height: 34px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 29px;
+}
+
+.brandon-size-statement__timeline::before {
+  display: none !important;
+}
+
+.brandon-size-statement__dot-wrapper {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandon-size-statement__dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  border: 2px solid #ffffff;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.brandon-size-statement__dot--active {
+  width: 18px;
+  height: 18px;
+  background-color: #111111;
+  border: 3px solid #ffffff;
+  outline: 1.5px solid #111111;
+}
+
+.brandon-size-statement__custom-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandon-size-statement__custom-dot svg {
+  display: block;
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.brandon-size-statement__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.brandon-size-statement__card-title {
+  font-family: var(--font-semplicita);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 5%;
+  color: #000000;
+  margin: 0 0 6px;
+}
+
+.brandon-size-statement__card-size {
+  font-size: 12px;
+  font-weight: 400;
+  color: #1b1b1b;
+  margin-bottom: 24px;
+  letter-spacing: 5%;
+  font-family: var(--font-semplicita);
+}
+
+.brandon-size-statement__card-divider {
+  width: 44px;
+  height: 1px;
+  background-color: #d1d1d1;
+  margin-bottom: 14px;
+}
+
+.brandon-size-statement__card-desc {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 5%;
+  color: #1b1b1b;
+  max-width: 152px;
+  margin-bottom: 14px;
+  font-family: var(--font-semplicita);
+}
+
+.brandon-size-statement__card-link {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 5%;
+  color: #111;
+  font-family: var(--font-semplicita);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.brandon-size-statement__card-link:hover {
+  opacity: 0.7;
+}
+
+.brandon-size-statement__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandon-size-statement__nav-btn {
+  position: absolute;
+  top: calc(16px + 220px + 17px);
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 55px;
+  height: 34px;
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.brandon-size-statement__nav-btn:hover {
+  background-color: #eaeaea;
+}
+
+.brandon-size-statement__nav-btn--prev {
+  left: -8px;
+}
+
+.brandon-size-statement__nav-btn--next {
+  right: -12px;
+}
+
+.brandon-size-statement__mobile-nav {
+  display: none;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.brandon-size-statement__mobile-nav-btn {
+  width: 55px;
+  height: 34px;
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .brandon-size-statement {
+    padding-top: 39px !important;
+  }
+  .brandon-size-statement__container {
+    padding: 0 15px;
+  }
+
+  .brandon-size-statement__heading {
+    font-size: 25px;
+    letter-spacing: 2%;
+    margin-bottom: 11px;
+    line-height: 160%;
+  }
+
+  .brandon-size-statement__subtitle {
+    font-size: 11px;
+    max-width: 100%;
+  }
+  .brandon-size-statement__carousel-wrapper::before {
+    top: calc(16px + 170px + 25px);
+  }
+
+  .brandon-size-statement__header {
+    margin-bottom: 61px;
+  }
+
+  .brandon-size-statement__image-wrapper {
+    height: 170px;
+    padding-bottom: 16px;
+  }
+
+  .brandon-size-statement__nav-btn {
+    display: none;
+  }
+
+  .brandon-size-statement__mobile-nav {
+    display: flex;
+    gap: 41px;
+    margin-top: 23px;
+  }
+  .brandon-size-statement__slide {
+    max-width: 179px !important;
+    width: 100% !important;
+  }
+
+  .brandon-size-statement__card-desc {
+    max-width: 126px;
+    font-size: 11px;
+    line-height: 22px;
+    margin-bottom: 9px;
+  }
+  .brandon-size-statement__dot {
+    width: 18px;
+    height: 18px;
+  }
+  .brandon-size-statement__timeline {
+    height: 48px;
+    margin-bottom: 20px;
+  }
+  .brandon-size-statement__card-size {
+    font-size: 11px;
+    margin-bottom: 21px;
+  }
+}

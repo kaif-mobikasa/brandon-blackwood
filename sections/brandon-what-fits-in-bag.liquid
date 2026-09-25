@@ -1,0 +1,266 @@
+{{ 'brandon-what-fits-in-bag.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #ShopifySection-{{ section.id }} .brandon-what-fits {
+    background-color: {{ section.settings.bg_color | default: '#f7f7f7' }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div
+  id="ShopifySection-{{ section.id }}"
+  class="shopify-section brandon-what-fits-wrapper"
+  data-section-id="{{ section.id }}"
+  data-section-type="brandon-what-fits"
+>
+  <section class="brandon-what-fits" aria-label="What Fits In The Bag">
+    <div class="brandon-what-fits__container">
+      
+      <div class="brandon-what-fits__grid">
+        
+        <div class="brandon-what-fits__media-col">
+          {%- if section.settings.image_desktop != blank or section.settings.image_mobile != blank -%}
+            <picture class="brandon-what-fits__picture">
+              {%- if section.settings.image_mobile != blank -%}
+                <source media="(max-width: 767px)" srcset="{{ section.settings.image_mobile | image_url: width: 1000 }}">
+              {%- endif -%}
+              {%- if section.settings.image_desktop != blank -%}
+                <img
+                  src="{{ section.settings.image_desktop | image_url: width: 1400 }}"
+                  alt="{{ section.settings.heading | escape }}"
+                  loading="lazy"
+                  class="brandon-what-fits__img"
+                >
+              {%- else -%}
+                <img
+                  src="{{ section.settings.image_mobile | image_url: width: 1000 }}"
+                  alt="{{ section.settings.heading | escape }}"
+                  loading="lazy"
+                  class="brandon-what-fits__img"
+                >
+              {%- endif -%}
+            </picture>
+          {%- endif -%}
+        </div>
+
+        <div class="brandon-what-fits__content-col">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="brandon-what-fits__heading">
+              {{ section.settings.heading | newline_to_br }}
+            </h2>
+          {%- endif -%}
+
+          {%- if section.settings.subtitle != blank -%}
+            <p class="brandon-what-fits__subtitle">
+              {{ section.settings.subtitle }}
+            </p>
+          {%- endif -%}
+
+          {%- if section.settings.list_title != blank -%}
+            <h3 class="brandon-what-fits__list-title">
+              {{ section.settings.list_title }}
+            </h3>
+          {%- endif -%}
+
+          {%- if section.blocks.size > 0 -%}
+            <div class="brandon-what-fits__list">
+              {%- for block in section.blocks -%}
+                <div class="brandon-what-fits__item" {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon_svg != blank -%}
+                    <div class="brandon-what-fits__icon">
+                      {{ block.settings.icon_svg }}
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <span class="brandon-what-fits__item-text">{{ block.settings.text }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.length_val != blank or section.settings.height_val != blank or section.settings.width_val != blank -%}
+            <div class="brandon-what-fits__divider"></div>
+
+            <div class="brandon-what-fits__dimensions">
+              {%- if section.settings.length_val != blank -%}
+                <div class="brandon-what-fits__dim-col">
+                  {%- if section.settings.length_label != blank -%}
+                    <span class="brandon-what-fits__dim-label">{{ section.settings.length_label }}</span>
+                  {%- endif -%}
+                  <span class="brandon-what-fits__dim-val">{{ section.settings.length_val }}</span>
+                </div>
+              {%- endif -%}
+
+              {%- if section.settings.height_val != blank -%}
+                <div class="brandon-what-fits__dim-col">
+                  {%- if section.settings.height_label != blank -%}
+                    <span class="brandon-what-fits__dim-label">{{ section.settings.height_label }}</span>
+                  {%- endif -%}
+                  <span class="brandon-what-fits__dim-val">{{ section.settings.height_val }}</span>
+                </div>
+              {%- endif -%}
+
+              {%- if section.settings.width_val != blank -%}
+                <div class="brandon-what-fits__dim-col">
+                  {%- if section.settings.width_label != blank -%}
+                    <span class="brandon-what-fits__dim-label">{{ section.settings.width_label }}</span>
+                  {%- endif -%}
+                  <span class="brandon-what-fits__dim-val">{{ section.settings.width_val }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "What Fits In Bag",
+  "tag": "section",
+  "class": "shopify-section-brandon-what-fits",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Left Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Left Image (Mobile)"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "WHAT FITS IN THE BAG"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Smartly designed to hold your everyday must haves and more."
+    },
+    {
+      "type": "text",
+      "id": "list_title",
+      "label": "List Section Title",
+      "default": "WHAT FITS"
+    },
+    {
+      "type": "text",
+      "id": "length_label",
+      "label": "Length Label",
+      "default": "Length"
+    },
+    {
+      "type": "text",
+      "id": "length_val",
+      "label": "Length Value",
+      "default": "22 cm / 8.66\""
+    },
+    {
+      "type": "text",
+      "id": "height_label",
+      "label": "Height Label",
+      "default": "Height"
+    },
+    {
+      "type": "text",
+      "id": "height_val",
+      "label": "Height Value",
+      "default": "18 cm / 7.09\""
+    },
+    {
+      "type": "text",
+      "id": "width_label",
+      "label": "Width Label",
+      "default": "Width"
+    },
+    {
+      "type": "text",
+      "id": "width_val",
+      "label": "Width Value",
+      "default": "6 cm / 2.36\""
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fit_item",
+      "name": "What Fits Item",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Right Side Icon SVG Code"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Item Description Text",
+          "default": "A Phone, charger, cables and a power bank"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What Fits In Bag",
+      "blocks": [
+        {
+          "type": "fit_item",
+          "settings": {
+            "text": "A Phone, charger, cables and a power bank"
+          }
+        },
+        {
+          "type": "fit_item",
+          "settings": {
+            "text": "Your wallet and keys"
+          }
+        },
+        {
+          "type": "fit_item",
+          "settings": {
+            "text": "Sunglass and Small Perfum Bottle"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,309 @@
+{{ 'brandon-you-may-also-like.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'brandon-you-may-also-like.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+#ShopifySection-{{ section.id }} .brandon-also-like {
+background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+padding-top: {{ section.settings.padding_top }}px;
+padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+{%- endstyle -%}
+
+<div id="ShopifySection-{{ section.id }}" class="shopify-section brandon-also-like-wrapper"
+  data-section-id="{{ section.id }}" data-section-type="brandon-also-like">
+  <section class="brandon-also-like" aria-label="You May Also Like">
+    <div class="brandon-also-like__container">
+
+      {%- if section.settings.heading != blank -%}
+      <h2 class="brandon-also-like__heading">
+        {{ section.settings.heading }}
+      </h2>
+      {%- endif -%}
+
+      <div class="brandon-also-like__slider-container">
+        <div class="swiper brandon-also-like__swiper js-also-like-swiper">
+          <div class="swiper-wrapper brandon-also-like__swiper-wrapper">
+
+            {%- assign selected_collection = collections[section.settings.collection] -%}
+            {%- if selected_collection != blank and selected_collection.products_count > 0 -%}
+            {%- for product in selected_collection.products limit: section.settings.products_to_show -%}
+            <div class="swiper-slide brandon-also-like__slide">
+              <div class="brandon-also-like__card">
+                <div class="brandon-also-like__media-wrapper">
+                  <a href="{{ product.url }}" class="brandon-also-like__media-link">
+                    {%- if product.featured_media != blank -%}
+                    <img src="{{ product.featured_media | image_url: width: 800 }}" alt="{{ product.title | escape }}"
+                      loading="lazy" class="brandon-also-like__img">
+                    {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-also-like__img' }}
+                    {%- endif -%}
+                  </a>
+
+                </div>
+
+                <div class="brandon-also-like__card-line"></div>
+
+                <div class="brandon-also-like__info">
+                  {%- form 'product', product, class: 'brandon-also-like__atc-form' -%}
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <button type="submit" name="add" class="brandon-also-like__atc-btn"
+                    aria-label="Add {{ product.title | escape }} to cart">
+                    ADD TO CART
+                  </button>
+                  {%- endform -%}
+
+                  <a href="{{ product.url }}" class="brandon-also-like__title">
+                    {{ product.title }}
+                  </a>
+                  <div class="brandon-also-like__meta">
+                    <div class="brandon-also-like__price">
+                      {{ product.price | money }}
+                    </div>
+                    <div class="brandon-also-like__swatches">
+                      {%- assign has_options = false -%}
+                      {%- for option in product.options_with_values -%}
+                      {%- assign downcase_name = option.name | downcase -%}
+                      {%- if downcase_name contains 'color' or downcase_name contains 'colour' -%}
+                      {%- assign has_options = true -%}
+                      {%- for value in option.values limit: 3 -%}
+                      {%- assign color_slug = value | handle -%}
+                      <span class="brandon-also-like__swatch" style="background-color: {{ color_slug }};"
+                        title="{{ value | escape }}"></span>
+                      {%- endfor -%}
+                      {%- if option.values.size > 3 -%}
+                      <span class="brandon-also-like__swatch-more">+{{ option.values.size | minus: 3 }}</span>
+                      {%- endif -%}
+                      {%- endif -%}
+                      {%- endfor -%}
+
+                      {%- if has_options == false -%}
+                      <span class="brandon-also-like__swatch" style="background-color: #b58359;"></span>
+                      <span class="brandon-also-like__swatch" style="background-color: #cc6666;"></span>
+                      <span class="brandon-also-like__swatch" style="background-color: #ba9470;"></span>
+                      <span class="brandon-also-like__swatch-more">+3</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%- endfor -%}
+
+            {%- elsif section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+            <div class="swiper-slide brandon-also-like__slide" {{ block.shopify_attributes }}>
+              <div class="brandon-also-like__card">
+                <div class="brandon-also-like__media-wrapper">
+                  <a href="{{ block.settings.product_url | default: '#' }}" class="brandon-also-like__media-link">
+                    {%- if block.settings.image != blank -%}
+                    <img src="{{ block.settings.image | image_url: width: 800 }}"
+                      alt="{{ block.settings.title | escape }}" loading="lazy" class="brandon-also-like__img">
+                    {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-also-like__img' }}
+                    {%- endif -%}
+                  </a>
+                </div>
+
+                <div class="brandon-also-like__card-line"></div>
+
+                <div class="brandon-also-like__info">
+                  <form action="/cart/add" method="post" class="brandon-also-like__atc-form">
+                    <button type="button" class="brandon-also-like__atc-btn">
+                      ADD TO CART
+                    </button>
+                  </form>
+
+                  <a href="{{ block.settings.product_url | default: '#' }}" class="brandon-also-like__title">
+                    {{ block.settings.title | default: 'Luna Bag' }}
+                  </a>
+                  <div class="brandon-also-like__meta">
+                    <div class="brandon-also-like__price">
+                      {{ block.settings.price | default: '$450.00' }}
+                    </div>
+                    <div class="brandon-also-like__swatches">
+                      <span class="brandon-also-like__swatch"
+                        style="background-color: {{ block.settings.color_1 | default: '#b58359' }};"></span>
+                      <span class="brandon-also-like__swatch"
+                        style="background-color: {{ block.settings.color_2 | default: '#cc6666' }};"></span>
+                      <span class="brandon-also-like__swatch"
+                        style="background-color: {{ block.settings.color_3 | default: '#ba9470' }};"></span>
+                      {%- if block.settings.more_colors_text != blank -%}
+                      <span class="brandon-also-like__swatch-more">{{ block.settings.more_colors_text }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%- endfor -%}
+            {%- endif -%}
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+
+{% schema %}
+{
+"name": "You May Also Like",
+"tag": "section",
+"class": "shopify-section-brandon-also-like",
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"label": "Section Heading",
+"default": "YOU MAY ALSO LIKE"
+},
+{
+"type": "collection",
+"id": "collection",
+"label": "Collection Picker"
+},
+{
+"type": "range",
+"id": "products_to_show",
+"min": 4,
+"max": 12,
+"step": 1,
+"label": "Products To Show",
+"default": 8
+},
+{
+"type": "color",
+"id": "bg_color",
+"label": "Background Color",
+"default": "#ffffff"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 120,
+"step": 4,
+"unit": "px",
+"label": "Top Padding",
+"default": 60
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 120,
+"step": 4,
+"unit": "px",
+"label": "Bottom Padding",
+"default": 60
+}
+],
+"blocks": [
+{
+"type": "custom_product",
+"name": "Custom Product",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Product Image"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Product Title",
+"default": "Luna Bag"
+},
+{
+"type": "text",
+"id": "price",
+"label": "Product Price",
+"default": "$450.00"
+},
+{
+"type": "color",
+"id": "color_1",
+"label": "Color Swatch 1",
+"default": "#b58359"
+},
+{
+"type": "color",
+"id": "color_2",
+"label": "Color Swatch 2",
+"default": "#cc6666"
+},
+{
+"type": "color",
+"id": "color_3",
+"label": "Color Swatch 3",
+"default": "#ba9470"
+},
+{
+"type": "text",
+"id": "more_colors_text",
+"label": "More Colors Badge Text",
+"default": "+3"
+},
+{
+"type": "url",
+"id": "product_url",
+"label": "Product Page Link"
+}
+]
+}
+],
+"presets": [
+{
+"name": "You May Also Like",
+"blocks": [
+{
+"type": "custom_product",
+"settings": {
+"title": "Arlen Bag",
+"price": "$272.00",
+"color_1": "#111111",
+"color_2": "#d67969",
+"color_3": "#c5a059",
+"more_colors_text": "+3"
+}
+},
+{
+"type": "custom_product",
+"settings": {
+"title": "Bamboo B Micro Tote",
+"price": "$390.00",
+"color_1": "#d8b789",
+"color_2": "#d87a70",
+"color_3": "#3e6ba1",
+"more_colors_text": "+3"
+}
+},
+{
+"type": "custom_product",
+"settings": {
+"title": "Jordi Bag",
+"price": "$1,400.00",
+"color_1": "#ee7725",
+"color_2": "#c89650",
+"color_3": "#3e6ba1",
+"more_colors_text": "+3"
+}
+},
+{
+"type": "custom_product",
+"settings": {
+"title": "Elizabeth Doctor Bag",
+"price": "$590.00",
+"color_1": "#b22727",
+"color_2": "#d87a70",
+"color_3": "#b58359",
+"more_colors_text": "+3"
+}
+}
+]
+}
+]
+}
+{% endschema %}

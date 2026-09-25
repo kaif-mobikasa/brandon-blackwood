@@ -1,0 +1,421 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "brandon-product-pdp",
+      "settings": {
+        "fallback_title": "Luna Bag",
+        "badge_text": "BESTSELLER",
+        "fallback_compare_price": 70000,
+        "selected_color": "Linen w/ Fringed Wicker",
+        "view_other_colors_link": "shopify://collections/automated-collection",
+        "other_colors_text": "View other colors",
+        "atc_button_text": "ADD TO CART",
+        "stock_text": "In Stock - Only 3 Left",
+        "all_details_text": "All Details",
+        "personalize_text": "Personalize",
+        "personalize_link": "",
+        "afterpay_svg": "<svg width=\"64\" height=\"12\" viewbox=\"0 0 64 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_2982_16562)\">\n<path d=\"M5.26735 5.87195C5.26735 4.79342 4.45941 4.03541 3.46697 4.03541C2.47452 4.03541 1.66658 4.8062 1.66658 5.87195C1.66658 6.92493 2.47452 7.70853 3.46697 7.70853C4.46041 7.70753 5.26735 6.95048 5.26735 5.87195ZM5.28154 9.08203V8.24729C4.7919 8.82542 4.06304 9.18426 3.19022 9.18426C1.37665 9.18426 0 7.77144 0 5.87195C0 3.98427 1.42936 2.54688 3.23077 2.54688C4.07826 2.54688 4.79294 2.90672 5.28254 3.47106V2.6619H6.91061V9.08203H5.28154Z\" fill=\"black\"></path>\n<path d=\"M14.8194 7.65701C14.2497 7.65701 14.0915 7.4515 14.0915 6.91274V4.06251H15.1377V2.66249H14.0915V1.0963H12.4229V2.66249H10.2738V2.27217C10.2738 1.73241 10.4857 1.52693 11.0686 1.52693H11.4346V0.28125H10.6317C9.25501 0.28125 8.60622 0.717777 8.60622 2.05292V2.66151H7.67969V4.06154H8.60622V9.08161H10.2748V4.06154H12.4239V7.20767C12.4239 8.51726 12.9399 9.08261 14.2902 9.08261H15.1509V7.65701H14.8194Z\" fill=\"black\"></path>\n<path d=\"M20.8026 5.29485C20.684 4.46011 19.9815 3.95967 19.1613 3.95967C18.3402 3.95967 17.6651 4.44734 17.4938 5.29485H20.8026ZM17.4796 6.29669C17.5992 7.24644 18.3007 7.7862 19.1877 7.7862C19.8892 7.7862 20.4326 7.46468 20.7499 6.95147H22.458C22.0606 8.31219 20.8026 9.18525 19.1482 9.18525C17.1491 9.18525 15.7461 7.82453 15.7461 5.88571C15.7461 3.9469 17.2292 2.54688 19.1887 2.54688C21.1615 2.54688 22.5908 3.95971 22.5908 5.88571C22.5908 6.02731 22.5776 6.16791 22.5513 6.29669H17.4796Z\" fill=\"black\"></path>\n<path d=\"M33.2001 5.87195C33.2001 4.83174 32.3921 4.03541 31.3997 4.03541C30.4072 4.03541 29.5992 4.8062 29.5992 5.87195C29.5992 6.92493 30.4072 7.70853 31.3997 7.70853C32.3921 7.70753 33.2001 6.91216 33.2001 5.87195ZM27.957 2.6619H29.5851V3.49662C30.0747 2.90573 30.8026 2.54688 31.6764 2.54688C33.4636 2.54688 34.8666 3.97247 34.8666 5.85918C34.8666 7.74685 33.4372 9.18523 31.6369 9.18523C30.8026 9.18523 30.1143 8.86374 29.6378 8.32498V11.7238H27.957V2.6619Z\" fill=\"black\"></path>\n<path d=\"M40.7342 5.87195C40.7342 4.79342 39.9272 4.03541 38.9337 4.03541C37.9413 4.03541 37.1333 4.8062 37.1333 5.87195C37.1333 6.92493 37.9413 7.70853 38.9337 7.70853C39.9272 7.70753 40.7342 6.95048 40.7342 5.87195ZM40.7484 9.08203V8.24729C40.2588 8.82542 39.5297 9.18426 38.6569 9.18426C36.8434 9.18426 35.4668 7.77144 35.4668 5.87195C35.4668 3.98427 36.8962 2.54688 38.6966 2.54688C39.544 2.54688 40.2588 2.90672 40.7484 3.47106V2.6619H42.3766V9.08203H40.7484Z\" fill=\"black\"></path>\n<path d=\"M25.128 3.24426C25.128 3.24426 25.5427 2.5 26.5574 2.5C26.9913 2.5 27.2721 2.64452 27.2721 2.64452V4.2825C27.2721 4.2825 26.6598 3.91576 26.0972 3.9895C25.5345 4.06324 25.1787 4.56465 25.1808 5.23518V9.03612H23.5V2.61601H25.128V3.24426Z\" fill=\"black\"></path>\n<path d=\"M49.9805 2.66406L45.8699 11.7053H44.1365L45.7504 8.21013L43.0215 2.66406H44.9862L46.5827 6.36964L48.2209 2.66406H49.9805Z\" fill=\"black\"></path>\n<path d=\"M63.103 2.51662L59.0278 0.235667C57.8314 -0.43387 56.3363 0.402808 56.3363 1.74287V1.97686C56.3363 2.18825 56.4527 2.3839 56.6413 2.48909L57.4108 2.91972C57.6367 3.04656 57.9186 2.88826 57.9186 2.63559V2.05355C57.9186 1.76253 58.2432 1.58065 58.5027 1.72616L62.0323 3.70233C62.2922 3.84784 62.2922 4.21161 62.0323 4.35615L58.5027 6.33232C58.2432 6.47783 57.9186 6.29593 57.9186 6.00492V5.6952C57.9186 4.35515 56.4234 3.51749 55.2263 4.188L51.1512 6.46897C49.9548 7.13853 49.9548 8.81384 51.1512 9.48337L55.2263 11.7643C56.4223 12.4339 57.9186 11.5972 57.9186 10.2571V10.0231C57.9186 9.81174 57.8021 9.61707 57.6136 9.51089L56.8441 9.07928C56.6181 8.95246 56.3363 9.11075 56.3363 9.36344V9.94548C56.3363 10.2365 56.0121 10.4184 55.7522 10.2729L52.2226 8.29668C51.9631 8.15117 51.9631 7.78742 52.2226 7.64191L55.7522 5.6657C56.0121 5.52019 56.3363 5.70209 56.3363 5.99311V6.30283C56.3363 7.64288 57.8314 8.48055 59.0278 7.81002L63.103 5.52906C64.2993 4.86147 64.2993 3.18616 63.103 2.51662Z\" fill=\"black\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_2982_16562\">\n<rect width=\"64\" height=\"12\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
+        "shoppay_svg": "<svg width=\"50\" height=\"12\" viewbox=\"0 0 50 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_2982_16574)\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M33.3053 0C32.2975 0 31.4805 0.8166 31.4805 1.82393V10.1191C31.4805 11.1265 32.2975 11.9431 33.3053 11.9431H48.1757C49.1835 11.9431 50.0005 11.1265 50.0005 10.1191V1.82393C50.0005 0.8166 49.1835 0 48.1757 0H33.3053ZM35.8734 8.33429V6.23167H37.1968C38.4059 6.23167 39.0488 5.55408 39.0488 4.52722C39.0488 3.50036 38.4059 2.88564 37.1968 2.88564H35.0208V8.33429H35.8734ZM35.8734 3.69596H37.0011C37.7838 3.69596 38.1682 4.01729 38.1682 4.55516C38.1682 5.09304 37.7978 5.41437 37.036 5.41437H35.8734V3.69596ZM40.5521 8.44602C41.202 8.44602 41.6283 8.15963 41.824 7.67063C41.8799 8.21554 42.2084 8.49498 42.9212 8.30634L42.9282 7.72654C42.6417 7.75449 42.5858 7.64971 42.5858 7.34934V5.9243C42.5858 5.08605 42.0337 4.59009 41.0133 4.59009C40.0069 4.59009 39.4268 5.09304 39.4268 5.94526H40.2096C40.2096 5.54011 40.4961 5.29561 40.9993 5.29561C41.5305 5.29561 41.7751 5.52614 41.7681 5.9243V6.10593L40.8666 6.20372C39.8532 6.31549 39.294 6.69969 39.294 7.37027C39.294 7.92212 39.6854 8.44602 40.5521 8.44602ZM40.7267 7.81734C40.2865 7.81734 40.1117 7.57983 40.1117 7.34232C40.1117 7.02102 40.4751 6.87432 41.188 6.7905L41.7471 6.72763C41.7122 7.34232 41.2999 7.81734 40.7267 7.81734ZM45.517 8.60671C45.1606 9.4729 44.5875 9.73134 43.6929 9.73134H43.3085V9.01888H43.7209C44.2101 9.01888 44.4477 8.86515 44.7063 8.4251L43.1199 4.70186H44.0005L45.1327 7.41922L46.139 4.70186H46.9986L45.517 8.60671Z\" fill=\"#5433EB\"></path>\n<path d=\"M4.20211 5.25123C3.03465 4.99811 2.51457 4.89906 2.51457 4.44941C2.51457 4.02649 2.86654 3.81581 3.57046 3.81581C4.18954 3.81581 4.64206 4.08623 4.97517 4.61606C5.00031 4.65694 5.05216 4.67109 5.09458 4.64908L6.40816 3.98561C6.4553 3.96202 6.47258 3.90228 6.44587 3.85669C5.90064 2.91179 4.89346 2.39453 3.56732 2.39453C1.82479 2.39453 0.742188 3.25296 0.742188 4.61763C0.742188 6.06721 2.06047 6.43354 3.22949 6.68667C4.39851 6.93979 4.92017 7.03884 4.92017 7.48846C4.92017 7.93817 4.53993 8.15037 3.78101 8.15037C3.08023 8.15037 2.56014 7.82966 2.24588 7.20706C2.22231 7.16147 2.16732 7.14261 2.12176 7.16619L0.811324 7.81554C0.765753 7.8391 0.746902 7.89412 0.770467 7.94132C1.29056 8.98678 2.35744 9.57478 3.78258 9.57478C5.59739 9.57478 6.69413 8.73054 6.69413 7.32339C6.69413 5.91628 5.36955 5.50751 4.20211 5.25438V5.25123Z\" fill=\"#5433EB\"></path>\n<path d=\"M11.2406 2.39291C10.4958 2.39291 9.83749 2.65703 9.36457 3.12713C9.3347 3.15543 9.28595 3.13499 9.28595 3.09411V0.0927606C9.28595 0.0408775 9.2451 0 9.19327 0H7.54971C7.49788 0 7.45703 0.0408775 7.45703 0.0927606V9.40814C7.45703 9.46002 7.49788 9.50084 7.54971 9.50084H9.19327C9.2451 9.50084 9.28595 9.46002 9.28595 9.40814V5.32193C9.28595 4.53268 9.89093 3.92738 10.7064 3.92738C11.5219 3.92738 12.1127 4.52011 12.1127 5.32193V9.40814C12.1127 9.46002 12.1535 9.50084 12.2053 9.50084H13.8489C13.9008 9.50084 13.9417 9.46002 13.9417 9.40814V5.32193C13.9417 3.60508 12.8166 2.39447 11.2406 2.39447V2.39291Z\" fill=\"#5433EB\"></path>\n<path d=\"M17.2753 2.125C16.3829 2.125 15.5469 2.39857 14.9467 2.7932C14.9059 2.81992 14.8917 2.87495 14.9169 2.9174L15.6412 4.15473C15.668 4.19875 15.7245 4.21447 15.7685 4.18774C16.2242 3.9126 16.7458 3.76953 17.2785 3.77268C18.713 3.77268 19.7674 4.78518 19.7674 6.12314C19.7674 7.26299 18.9236 8.10726 17.8535 8.10726C16.9815 8.10726 16.3766 7.59945 16.3766 6.88251C16.3766 6.47217 16.551 6.13572 17.0051 5.89831C17.0522 5.87316 17.0695 5.81498 17.0412 5.76939L16.3577 4.61224C16.3357 4.57451 16.2886 4.55721 16.2461 4.57293C15.3301 4.91253 14.6875 5.73008 14.6875 6.82749C14.6875 8.48774 16.0089 9.72667 17.852 9.72667C20.0046 9.72667 21.5523 8.23465 21.5523 6.09483C21.5523 3.80098 19.7516 2.125 17.2753 2.125Z\" fill=\"#5433EB\"></path>\n<path d=\"M26.3589 2.38048C25.5277 2.38048 24.7861 2.68706 24.244 3.22791C24.2141 3.25777 24.1654 3.23576 24.1654 3.19488V2.54399C24.1654 2.49211 24.1246 2.45123 24.0727 2.45123H22.4716C22.4198 2.45123 22.3789 2.49211 22.3789 2.54399V11.8452C22.3789 11.8971 22.4198 11.938 22.4716 11.938H24.1151C24.167 11.938 24.2078 11.8971 24.2078 11.8452V8.79513C24.2078 8.75423 24.2566 8.73381 24.2864 8.76052C24.8269 9.26364 25.5419 9.55764 26.3605 9.55764C28.2884 9.55764 29.7921 7.9964 29.7921 5.96827C29.7921 3.94011 28.2868 2.37891 26.3605 2.37891L26.3589 2.38048ZM26.0493 7.98228C24.9526 7.98228 24.1214 7.10969 24.1214 5.95569C24.1214 4.80168 24.951 3.92911 26.0493 3.92911C27.1476 3.92911 27.9758 4.78753 27.9758 5.95569C27.9758 7.12384 27.1587 7.98228 26.0478 7.98228H26.0493Z\" fill=\"#5433EB\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_2982_16574\">\n<rect width=\"50\" height=\"12\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
+        "fallback_description": ""
+      }
+    },
+    "uncommon_materials": {
+      "type": "brandon-uncommon-materials",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Mask_group.png",
+            "image_mobile": "shopify://shop_images/Mask_group_2.png",
+            "heading": "THE ART OF UNCOMMON MATERIALS",
+            "description": "Every Luna Bag is defined by the unexpected combination of textures, finishes and details. Discover the materials that give this piece its distinctive character.",
+            "icon_svg": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 8H20M4 16H20M8 4V20M16 4V20\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>",
+            "tagline": "",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Mask_group_1.png",
+            "image_mobile": "shopify://shop_images/Mask_group_3.png",
+            "heading": "",
+            "description": "Natural straw and textured linen come together to create a distinctive aesthetic. The straw material adds an expressive fringed edge while linen gives the silhouette its refined structure.",
+            "icon_svg": "<svg width=\"30\" height=\"30\" viewbox=\"0 0 30 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.209 2.12891H11.4066V9.31391H10.209V2.12891Z\" fill=\"black\"></path>\n<path d=\"M14.4004 2.12891H15.598V5.12231H14.4004V2.12891Z\" fill=\"black\"></path>\n<path d=\"M14.4004 8.71484H15.598V13.5046H14.4004V8.71484Z\" fill=\"black\"></path>\n<path d=\"M18.5918 2.12891H19.7894V9.31391H18.5918V2.12891Z\" fill=\"black\"></path>\n<path d=\"M12.6035 6.32031H17.3933V7.51791H12.6035V6.32031Z\" fill=\"black\"></path>\n<path d=\"M16.1973 10.5117H21.5859V11.7093H16.1973V10.5117Z\" fill=\"black\"></path>\n<path d=\"M6.01953 2.12891H7.21713V5.12231H6.01953V2.12891Z\" fill=\"black\"></path>\n<path d=\"M6.01953 24.8828H7.21713V27.8762H6.01953V24.8828Z\" fill=\"black\"></path>\n<path d=\"M14.4004 24.8828H15.598V27.8762H14.4004V24.8828Z\" fill=\"black\"></path>\n<path d=\"M22.7832 24.8828H23.9808V27.8762H22.7832V24.8828Z\" fill=\"black\"></path>\n<path d=\"M6.01953 8.71484H7.21713V13.5046H6.01953V8.71484Z\" fill=\"black\"></path>\n<path d=\"M2.42578 6.32031H9.01198V7.51791H2.42578V6.32031Z\" fill=\"black\"></path>\n<path d=\"M8.41406 10.5117H13.2039V11.7093H8.41406V10.5117Z\" fill=\"black\"></path>\n<path d=\"M22.7832 2.12891H23.9808V5.12231H22.7832V2.12891Z\" fill=\"black\"></path>\n<path d=\"M22.7832 8.71484H23.9808V13.5046H22.7832V8.71484Z\" fill=\"black\"></path>\n<path d=\"M20.9863 6.32031H27.5725V7.51791H20.9863V6.32031Z\" fill=\"black\"></path>\n<path d=\"M10.209 12.9062H11.4066V17.6961H10.209V12.9062Z\" fill=\"black\"></path>\n<path d=\"M18.5918 12.9062H19.7894V18.2949H18.5918V12.9062Z\" fill=\"black\"></path>\n<path d=\"M12.6035 14.7031H17.3933V15.9007H12.6035V14.7031Z\" fill=\"black\"></path>\n<path d=\"M2.42578 14.7031H9.01198V15.9007H2.42578V14.7031Z\" fill=\"black\"></path>\n<path d=\"M20.9863 14.7031H26.3749V15.9007H20.9863V14.7031Z\" fill=\"black\"></path>\n<path d=\"M14.4004 17.0977H15.598V21.2887H14.4004V17.0977Z\" fill=\"black\"></path>\n<path d=\"M16.7949 18.8945H21.5847V20.0921H16.7949V18.8945Z\" fill=\"black\"></path>\n<path d=\"M6.01953 17.0977H7.21713V21.2887H6.01953V17.0977Z\" fill=\"black\"></path>\n<path d=\"M8.41406 18.8945H13.2039V20.0921H8.41406V18.8945Z\" fill=\"black\"></path>\n<path d=\"M22.7832 17.0977H23.9808V21.2887H22.7832V17.0977Z\" fill=\"black\"></path>\n<path d=\"M10.209 21.2891H11.4066V27.8753H10.209V21.2891Z\" fill=\"black\"></path>\n<path d=\"M18.5918 21.2891H19.7894V27.8753H18.5918V21.2891Z\" fill=\"black\"></path>\n<path d=\"M12.6035 22.4844H17.3933V23.682H12.6035V22.4844Z\" fill=\"black\"></path>\n<path d=\"M2.42578 22.4844H9.01198V23.682H2.42578V22.4844Z\" fill=\"black\"></path>\n<path d=\"M20.9863 22.4844H27.5725V23.682H20.9863V22.4844Z\" fill=\"black\"></path>\n<path d=\"M2.42578 10.5117H4.82098V11.7093H2.42578V10.5117Z\" fill=\"black\"></path>\n<path d=\"M2.42578 18.8945H4.82098V20.0921H2.42578V18.8945Z\" fill=\"black\"></path>\n<path d=\"M25.1777 10.5117H27.5729V11.7093H25.1777V10.5117Z\" fill=\"black\"></path>\n<path d=\"M25.1777 18.8945H27.5729V20.0921H25.1777V18.8945Z\" fill=\"black\"></path>\n</svg>",
+            "tagline": "Main",
+            "subtitle": "Straw material + Linen",
+            "link": ""
+          }
+        },
+        "card_GeJ4qG": {
+          "type": "card",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Mask_group.png",
+            "image_mobile": "shopify://shop_images/Mask_group_2.png",
+            "heading": "THE ART OF UNCOMMON MATERIALS",
+            "description": "Every Luna Bag is defined by the unexpected combination of textures, finishes and details. Discover the materials that give this piece its distinctive character.",
+            "icon_svg": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 8H20M4 16H20M8 4V20M16 4V20\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>",
+            "tagline": "Main",
+            "subtitle": "Straw material + Linen",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_GeJ4qG"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    },
+    "disclosures": {
+      "type": "disclosures",
+      "settings": {
+        "heading": "Disclosures",
+        "heading_size": "h2",
+        "open_by_default": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "brandon_size_statement_Xa9yTt": {
+      "type": "brandon-size-statement",
+      "blocks": {
+        "product_item_npn3Pj": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/image_98.png",
+            "title": "Mini Kobi Bag",
+            "size": "5.31\" L x 3.74\" H x 2.76\" W",
+            "description": "Compact & chic for your essentials.",
+            "link_text": "View",
+            "link": "",
+            "is_active": false,
+            "dot_svg": "",
+            "arrow_svg": "<svg width=\"4\" height=\"8\" viewbox=\"0 0 4 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M0.164947 0.148754C0.112681 0.196558 0.0711959 0.253431 0.0428855 0.316094C0.0145752 0.378758 -2.95194e-07 0.445971 -2.92227e-07 0.513855C-2.89259e-07 0.581739 0.0145752 0.648951 0.0428855 0.711615C0.0711959 0.774278 0.112681 0.831151 0.164947 0.878956L2.71891 3.23412C2.77118 3.28192 2.81266 3.3388 2.84097 3.40146C2.86928 3.46412 2.88386 3.53133 2.88386 3.59922C2.88386 3.6671 2.86928 3.73432 2.84097 3.79698C2.81266 3.85964 2.77118 3.91652 2.71891 3.96432L0.164947 6.31948C0.112681 6.36729 0.0711961 6.42416 0.0428858 6.48682C0.0145754 6.54949 -2.54627e-08 6.6167 -2.24954e-08 6.68458C-1.95281e-08 6.75247 0.0145754 6.81968 0.0428858 6.88234C0.0711962 6.94501 0.112681 7.00188 0.164947 7.04969C0.269427 7.14546 0.41076 7.19922 0.55808 7.19922C0.705399 7.19922 0.846732 7.14546 0.951212 7.04969L3.51075 4.68938C3.82403 4.40013 4 4.00803 4 3.59922C4 3.19041 3.82403 2.79831 3.51075 2.50906L0.951211 0.148754C0.846732 0.0529785 0.705398 -0.00078109 0.558079 -0.000781084C0.41076 -0.000781077 0.269427 0.0529785 0.164947 0.148754Z\" fill=\"black\"></path>\n</svg>"
+          }
+        },
+        "product_item_pdfya7": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/image_98_1.png",
+            "title": "Elyse Bag",
+            "size": "5.31\" L x 3.74\" H x 2.76\" W",
+            "description": "Everyday ease with just the right space.",
+            "link_text": "View",
+            "link": "",
+            "is_active": false,
+            "dot_svg": "",
+            "arrow_svg": "<svg width=\"4\" height=\"8\" viewbox=\"0 0 4 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M0.164947 0.148754C0.112681 0.196558 0.0711959 0.253431 0.0428855 0.316094C0.0145752 0.378758 -2.95194e-07 0.445971 -2.92227e-07 0.513855C-2.89259e-07 0.581739 0.0145752 0.648951 0.0428855 0.711615C0.0711959 0.774278 0.112681 0.831151 0.164947 0.878956L2.71891 3.23412C2.77118 3.28192 2.81266 3.3388 2.84097 3.40146C2.86928 3.46412 2.88386 3.53133 2.88386 3.59922C2.88386 3.6671 2.86928 3.73432 2.84097 3.79698C2.81266 3.85964 2.77118 3.91652 2.71891 3.96432L0.164947 6.31948C0.112681 6.36729 0.0711961 6.42416 0.0428858 6.48682C0.0145754 6.54949 -2.54627e-08 6.6167 -2.24954e-08 6.68458C-1.95281e-08 6.75247 0.0145754 6.81968 0.0428858 6.88234C0.0711962 6.94501 0.112681 7.00188 0.164947 7.04969C0.269427 7.14546 0.41076 7.19922 0.55808 7.19922C0.705399 7.19922 0.846732 7.14546 0.951212 7.04969L3.51075 4.68938C3.82403 4.40013 4 4.00803 4 3.59922C4 3.19041 3.82403 2.79831 3.51075 2.50906L0.951211 0.148754C0.846732 0.0529785 0.705398 -0.00078109 0.558079 -0.000781084C0.41076 -0.000781077 0.269427 0.0529785 0.164947 0.148754Z\" fill=\"black\"></path>\n</svg>"
+          }
+        },
+        "product_item_EjPAfV": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/image_97.png",
+            "title": "Luna Bag",
+            "size": "5.31\" L x 3.74\" H x 2.76\" W",
+            "description": "The perfect balance of style & functionality",
+            "link_text": "View",
+            "link": "",
+            "is_active": true,
+            "dot_svg": "",
+            "arrow_svg": "<svg width=\"4\" height=\"8\" viewbox=\"0 0 4 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M0.164947 0.148754C0.112681 0.196558 0.0711959 0.253431 0.0428855 0.316094C0.0145752 0.378758 -2.95194e-07 0.445971 -2.92227e-07 0.513855C-2.89259e-07 0.581739 0.0145752 0.648951 0.0428855 0.711615C0.0711959 0.774278 0.112681 0.831151 0.164947 0.878956L2.71891 3.23412C2.77118 3.28192 2.81266 3.3388 2.84097 3.40146C2.86928 3.46412 2.88386 3.53133 2.88386 3.59922C2.88386 3.6671 2.86928 3.73432 2.84097 3.79698C2.81266 3.85964 2.77118 3.91652 2.71891 3.96432L0.164947 6.31948C0.112681 6.36729 0.0711961 6.42416 0.0428858 6.48682C0.0145754 6.54949 -2.54627e-08 6.6167 -2.24954e-08 6.68458C-1.95281e-08 6.75247 0.0145754 6.81968 0.0428858 6.88234C0.0711962 6.94501 0.112681 7.00188 0.164947 7.04969C0.269427 7.14546 0.41076 7.19922 0.55808 7.19922C0.705399 7.19922 0.846732 7.14546 0.951212 7.04969L3.51075 4.68938C3.82403 4.40013 4 4.00803 4 3.59922C4 3.19041 3.82403 2.79831 3.51075 2.50906L0.951211 0.148754C0.846732 0.0529785 0.705398 -0.00078109 0.558079 -0.000781084C0.41076 -0.000781077 0.269427 0.0529785 0.164947 0.148754Z\" fill=\"black\"></path>\n</svg>"
+          }
+        },
+        "product_item_nLqJFg": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/image_97_1.png",
+            "title": "Medium Kobi Bag",
+            "size": "5.31\" L x 3.74\" H x 2.76\" W",
+            "description": "Roomy & versatile for your on the go life.",
+            "link_text": "View",
+            "link": "",
+            "is_active": false,
+            "dot_svg": "",
+            "arrow_svg": "<svg width=\"4\" height=\"8\" viewbox=\"0 0 4 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M0.164947 0.148754C0.112681 0.196558 0.0711959 0.253431 0.0428855 0.316094C0.0145752 0.378758 -2.95194e-07 0.445971 -2.92227e-07 0.513855C-2.89259e-07 0.581739 0.0145752 0.648951 0.0428855 0.711615C0.0711959 0.774278 0.112681 0.831151 0.164947 0.878956L2.71891 3.23412C2.77118 3.28192 2.81266 3.3388 2.84097 3.40146C2.86928 3.46412 2.88386 3.53133 2.88386 3.59922C2.88386 3.6671 2.86928 3.73432 2.84097 3.79698C2.81266 3.85964 2.77118 3.91652 2.71891 3.96432L0.164947 6.31948C0.112681 6.36729 0.0711961 6.42416 0.0428858 6.48682C0.0145754 6.54949 -2.54627e-08 6.6167 -2.24954e-08 6.68458C-1.95281e-08 6.75247 0.0145754 6.81968 0.0428858 6.88234C0.0711962 6.94501 0.112681 7.00188 0.164947 7.04969C0.269427 7.14546 0.41076 7.19922 0.55808 7.19922C0.705399 7.19922 0.846732 7.14546 0.951212 7.04969L3.51075 4.68938C3.82403 4.40013 4 4.00803 4 3.59922C4 3.19041 3.82403 2.79831 3.51075 2.50906L0.951211 0.148754C0.846732 0.0529785 0.705398 -0.00078109 0.558079 -0.000781084C0.41076 -0.000781077 0.269427 0.0529785 0.164947 0.148754Z\" fill=\"black\"></path>\n</svg>"
+          }
+        },
+        "product_item_mpTx9R": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/image_99.png",
+            "title": "Sylvia Bag",
+            "size": "5.31\" L x 3.74\" H x 2.76\" W",
+            "description": "Maximum space for maximum impact.",
+            "link_text": "View",
+            "link": "",
+            "is_active": false,
+            "dot_svg": "",
+            "arrow_svg": "<svg width=\"4\" height=\"8\" viewbox=\"0 0 4 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M0.164947 0.148754C0.112681 0.196558 0.0711959 0.253431 0.0428855 0.316094C0.0145752 0.378758 -2.95194e-07 0.445971 -2.92227e-07 0.513855C-2.89259e-07 0.581739 0.0145752 0.648951 0.0428855 0.711615C0.0711959 0.774278 0.112681 0.831151 0.164947 0.878956L2.71891 3.23412C2.77118 3.28192 2.81266 3.3388 2.84097 3.40146C2.86928 3.46412 2.88386 3.53133 2.88386 3.59922C2.88386 3.6671 2.86928 3.73432 2.84097 3.79698C2.81266 3.85964 2.77118 3.91652 2.71891 3.96432L0.164947 6.31948C0.112681 6.36729 0.0711961 6.42416 0.0428858 6.48682C0.0145754 6.54949 -2.54627e-08 6.6167 -2.24954e-08 6.68458C-1.95281e-08 6.75247 0.0145754 6.81968 0.0428858 6.88234C0.0711962 6.94501 0.112681 7.00188 0.164947 7.04969C0.269427 7.14546 0.41076 7.19922 0.55808 7.19922C0.705399 7.19922 0.846732 7.14546 0.951212 7.04969L3.51075 4.68938C3.82403 4.40013 4 4.00803 4 3.59922C4 3.19041 3.82403 2.79831 3.51075 2.50906L0.951211 0.148754C0.846732 0.0529785 0.705398 -0.00078109 0.558079 -0.000781084C0.41076 -0.000781077 0.269427 0.0529785 0.164947 0.148754Z\" fill=\"black\"></path>\n</svg>"
+          }
+        },
+        "product_item_NJ9HWq": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/image_99.png",
+            "title": "Sylvia Bag",
+            "size": "5.31\" L x 3.74\" H x 2.76\" W",
+            "description": "Maximum space for maximum impact.",
+            "link_text": "View",
+            "link": "",
+            "is_active": false,
+            "dot_svg": "",
+            "arrow_svg": "<svg width=\"4\" height=\"8\" viewbox=\"0 0 4 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M0.164947 0.148754C0.112681 0.196558 0.0711959 0.253431 0.0428855 0.316094C0.0145752 0.378758 -2.95194e-07 0.445971 -2.92227e-07 0.513855C-2.89259e-07 0.581739 0.0145752 0.648951 0.0428855 0.711615C0.0711959 0.774278 0.112681 0.831151 0.164947 0.878956L2.71891 3.23412C2.77118 3.28192 2.81266 3.3388 2.84097 3.40146C2.86928 3.46412 2.88386 3.53133 2.88386 3.59922C2.88386 3.6671 2.86928 3.73432 2.84097 3.79698C2.81266 3.85964 2.77118 3.91652 2.71891 3.96432L0.164947 6.31948C0.112681 6.36729 0.0711961 6.42416 0.0428858 6.48682C0.0145754 6.54949 -2.54627e-08 6.6167 -2.24954e-08 6.68458C-1.95281e-08 6.75247 0.0145754 6.81968 0.0428858 6.88234C0.0711962 6.94501 0.112681 7.00188 0.164947 7.04969C0.269427 7.14546 0.41076 7.19922 0.55808 7.19922C0.705399 7.19922 0.846732 7.14546 0.951212 7.04969L3.51075 4.68938C3.82403 4.40013 4 4.00803 4 3.59922C4 3.19041 3.82403 2.79831 3.51075 2.50906L0.951211 0.148754C0.846732 0.0529785 0.705398 -0.00078109 0.558079 -0.000781084C0.41076 -0.000781077 0.269427 0.0529785 0.164947 0.148754Z\" fill=\"black\"></path>\n</svg>"
+          }
+        }
+      },
+      "block_order": [
+        "product_item_npn3Pj",
+        "product_item_pdfya7",
+        "product_item_EjPAfV",
+        "product_item_nLqJFg",
+        "product_item_mpTx9R",
+        "product_item_NJ9HWq"
+      ],
+      "name": "Size Statement",
+      "settings": {
+        "heading": "Every Size Every Statement",
+        "subtitle": "From mini moments to everyday essentials Explore the BB bag assortment and find your perfect fit.",
+        "active_dot_svg": "",
+        "inactive_dot_svg": "",
+        "arrow_svg": "",
+        "bg_color": "#ffffff",
+        "padding_top": 32,
+        "padding_bottom": 60
+      }
+    },
+    "brandon_what_fits_in_bag_w9p9hN": {
+      "type": "brandon-what-fits-in-bag",
+      "blocks": {
+        "fit_item_4xB7XY": {
+          "type": "fit_item",
+          "settings": {
+            "icon_svg": "<svg width=\"15\" height=\"15\" viewbox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_2769_4162)\">\n<path d=\"M9.6875 0H5.3125C3.76188 0 2.5 1.26188 2.5 2.8125V12.1875C2.5 13.7381 3.76188 15 5.3125 15H9.6875C11.2381 15 12.5 13.7381 12.5 12.1875V2.8125C12.5 1.26188 11.2381 0 9.6875 0ZM9.25437 0.625L9.05125 1.23375C8.92313 1.6175 8.56563 1.875 8.16187 1.875H6.83875C6.435 1.875 6.0775 1.6175 5.94938 1.23375L5.74625 0.625H9.25437ZM11.875 12.1875C11.875 13.3938 10.8938 14.375 9.6875 14.375H5.3125C4.10625 14.375 3.125 13.3938 3.125 12.1875V2.8125C3.125 1.68125 3.99187 0.758125 5.09438 0.646875L5.35563 1.43125C5.56875 2.07 6.16438 2.49938 6.83813 2.49938H8.16125C8.835 2.49938 9.43062 2.07 9.64375 1.43125L9.905 0.646875C11.0075 0.758125 11.8744 1.68062 11.8744 2.8125L11.875 12.1875Z\" fill=\"black\"></path>\n<path d=\"M8.4375 12.5H6.5625C6.39 12.5 6.25 12.64 6.25 12.8125C6.25 12.985 6.39 13.125 6.5625 13.125H8.4375C8.61 13.125 8.75 12.985 8.75 12.8125C8.75 12.64 8.61 12.5 8.4375 12.5Z\" fill=\"black\"></path>\n</g>\n<defs>\n<clippath id=\"clip0_2769_4162\">\n<rect width=\"15\" height=\"15\" fill=\"white\"></rect>\n</clippath>\n</defs>\n</svg>",
+            "text": "A Phone, charger, cables and a power bank"
+          }
+        },
+        "fit_item_LcLtEm": {
+          "type": "fit_item",
+          "settings": {
+            "icon_svg": "<svg width=\"15\" height=\"15\" viewbox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M13.4375 3.75H2.8125C2.09625 3.75 1.42438 3.39563 1.0175 2.81313C1.41375 2.24625 2.07063 1.875 2.8125 1.875H14.6875C14.86 1.875 15 1.735 15 1.5625C15 1.39 14.86 1.25 14.6875 1.25H2.8125C1.25938 1.25 0 2.50938 0 4.0625V10.9375C0 12.4906 1.25938 13.75 2.8125 13.75H13.4375C14.3006 13.75 15 13.0506 15 12.1875V5.3125C15 4.44938 14.3006 3.75 13.4375 3.75ZM14.375 12.1875C14.375 12.7044 13.9544 13.125 13.4375 13.125H2.8125C1.60625 13.125 0.625 12.1438 0.625 10.9375V4.0625C0.625 3.845 0.656875 3.635 0.71625 3.43688C1.245 4.02563 2.00625 4.375 2.8125 4.375H13.4375C13.9544 4.375 14.375 4.79563 14.375 5.3125V12.1875ZM13.125 8.75C13.125 9.095 12.845 9.375 12.5 9.375C12.155 9.375 11.875 9.095 11.875 8.75C11.875 8.405 12.155 8.125 12.5 8.125C12.845 8.125 13.125 8.405 13.125 8.75Z\" fill=\"black\"></path>\n</svg>",
+            "text": "Your wallet and keys"
+          }
+        },
+        "fit_item_eJ6B6Q": {
+          "type": "fit_item",
+          "settings": {
+            "icon_svg": "<svg width=\"17\" height=\"17\" viewbox=\"0 0 17 17\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M16.3404 4.39793C15.853 3.85464 15.1539 3.54297 14.4236 3.54297H2.57603C1.84573 3.54297 1.14661 3.85464 0.659276 4.39864C0.171234 4.94193 -0.0632243 5.66939 0.0146924 6.39259L0.494942 11.1604C0.636609 12.4715 1.73736 13.4596 3.05557 13.4596H4.56786C5.52553 13.4596 6.39748 12.9341 6.84515 12.0869L7.76457 10.3465C7.91119 10.0696 8.18532 9.9038 8.49911 9.9038C8.8129 9.9038 9.08703 10.0688 9.23365 10.3465L10.1524 12.0862C10.5993 12.9326 11.472 13.4589 12.4297 13.4589H13.9427C15.2609 13.4589 16.3616 12.4708 16.504 11.1576L16.9842 6.39472C17.0629 5.66868 16.8284 4.94122 16.3404 4.39793ZM1.18628 4.87109C1.53973 4.47655 2.04619 4.2513 2.57603 4.2513H4.95815V5.3138C4.95815 5.89959 4.48144 6.3763 3.89565 6.3763H0.725151C0.652901 5.8323 0.817942 5.2798 1.18628 4.87109ZM16.2801 6.32176L15.7999 11.0846C15.6972 12.0345 14.8989 12.7513 13.9434 12.7513H12.4304C11.7362 12.7513 11.1037 12.3702 10.7792 11.7561L9.85982 10.0164C9.59278 9.51068 9.07144 9.19618 8.49982 9.19618C7.92819 9.19618 7.40615 9.50997 7.13911 10.0164L6.21969 11.7561C5.89528 12.3702 5.26203 12.7513 4.56786 12.7513H3.05557C2.10003 12.7513 1.30173 12.0345 1.19903 11.0867L0.795984 7.08464H3.89565C4.87173 7.08464 5.66648 6.28989 5.66648 5.3138V4.2513H14.4236C14.9534 4.2513 15.4599 4.47726 15.8134 4.87109C16.1675 5.26493 16.3375 5.79264 16.2801 6.32176Z\" fill=\"black\"></path>\n</svg>",
+            "text": "Sunglass and Small Perfum Bottle"
+          }
+        }
+      },
+      "block_order": [
+        "fit_item_4xB7XY",
+        "fit_item_LcLtEm",
+        "fit_item_eJ6B6Q"
+      ],
+      "name": "What Fits In Bag",
+      "settings": {
+        "image_desktop": "shopify://shop_images/image_80-removebg-preview.png",
+        "heading": "WHAT FITS IN THE BAG",
+        "subtitle": "Smartly designed to hold your everyday must haves and more.",
+        "list_title": "WHAT FITS",
+        "length_label": "Length",
+        "length_val": "22 cm / 8.66\"",
+        "height_label": "Height",
+        "height_val": "18 cm / 7.09\"",
+        "width_label": "Width",
+        "width_val": "6 cm / 2.36\"",
+        "bg_color": "#f4f4f4",
+        "padding_top": 0,
+        "padding_bottom": 76
+      }
+    },
+    "brandon_you_may_also_like_88imNw": {
+      "type": "brandon-you-may-also-like",
+      "blocks": {
+        "custom_product_EmqBaG": {
+          "type": "custom_product",
+          "settings": {
+            "title": "Arlen Bag",
+            "price": "$272.00",
+            "color_1": "#111111",
+            "color_2": "#d67969",
+            "color_3": "#c5a059",
+            "more_colors_text": "+3",
+            "product_url": ""
+          }
+        },
+        "custom_product_rtYpnC": {
+          "type": "custom_product",
+          "settings": {
+            "title": "Bamboo B Micro Tote",
+            "price": "$390.00",
+            "color_1": "#d8b789",
+            "color_2": "#d87a70",
+            "color_3": "#3e6ba1",
+            "more_colors_text": "+3",
+            "product_url": ""
+          }
+        },
+        "custom_product_tfmptV": {
+          "type": "custom_product",
+          "settings": {
+            "title": "Jordi Bag",
+            "price": "$1,400.00",
+            "color_1": "#ee7725",
+            "color_2": "#c89650",
+            "color_3": "#3e6ba1",
+            "more_colors_text": "+3",
+            "product_url": ""
+          }
+        },
+        "custom_product_AnCp9U": {
+          "type": "custom_product",
+          "settings": {
+            "title": "Elizabeth Doctor Bag",
+            "price": "$590.00",
+            "color_1": "#b22727",
+            "color_2": "#d87a70",
+            "color_3": "#b58359",
+            "more_colors_text": "+3",
+            "product_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_product_EmqBaG",
+        "custom_product_rtYpnC",
+        "custom_product_tfmptV",
+        "custom_product_AnCp9U"
+      ],
+      "name": "You May Also Like",
+      "settings": {
+        "heading": "YOU MAY ALSO LIKE",
+        "collection": "you-may-like",
+        "products_to_show": 8,
+        "bg_color": "#ffffff",
+        "padding_top": 72,
+        "padding_bottom": 60
+      }
+    },
+    "brandon_faq_zixebf": {
+      "type": "brandon-faq",
+      "blocks": {
+        "faq_item_JYXbjE": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Shipping Information",
+            "answer": "<p>We offer worldwide express shipping. All orders are processed within 24-48 hours. Shipping timelines and costs will be calculated at checkout.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_item_FPRyxz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Returns & Exchanges",
+            "answer": "<p>Returns and exchanges are accepted within 14 days of receiving your item. Products must be in original condition with tags attached.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_item_4qfywa": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Materials & Care",
+            "answer": "<p>Crafted from premium Italian leathers and luxury hardware. Wipe clean with a soft dry cloth. Store in the provided dust bag when not in use.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_item_NeignY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Care Instructions",
+            "answer": "<p>Avoid direct exposure to sunlight, humidity, and liquid. Use leather conditioner periodically to maintain supple finish.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_item_cxXYLC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Size & Fit",
+            "answer": "<p>Please reference product details on each PDP for exact dimensions, strap drop lengths, and weight specs.</p>",
+            "open_by_default": false
+          }
+        },
+        "faq_item_WUCpQ7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Product Availability",
+            "answer": "<p>Items marked as pre-order or waitlist will ship as soon as stock arrives. Sign up for restock notifications on sold-out products.</p>",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_JYXbjE",
+        "faq_item_FPRyxz",
+        "faq_item_4qfywa",
+        "faq_item_NeignY",
+        "faq_item_cxXYLC",
+        "faq_item_WUCpQ7"
+      ],
+      "name": "Brandon FAQ",
+      "settings": {
+        "heading": "FREQUENTLY ASKED QUESTIONS",
+        "heading_alignment": "center",
+        "container_max_width": 1200,
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "line_color": "#eeeeee",
+        "padding_top": 4,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "uncommon_materials",
+    "disclosures",
+    "related-products",
+    "brandon_size_statement_Xa9yTt",
+    "brandon_what_fits_in_bag_w9p9hN",
+    "brandon_you_may_also_like_88imNw",
+    "brandon_faq_zixebf"
+  ]
+}
