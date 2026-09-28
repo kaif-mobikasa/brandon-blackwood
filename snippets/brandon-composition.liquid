@@ -1,0 +1,24 @@
+{%- assign comp_items = composition | default: product.metafields.custom.composition.value -%}
+{%- if comp_items != blank -%}
+<div class="brandon-pdp__composition-list">
+  {%- for item in comp_items -%}
+  <div class="brandon-pdp__composition-row">
+    <div class="brandon-pdp__composition-icon-wrap">
+      {%- if item.icon != blank -%}
+        {%- assign comp_icon_str = item.icon | string -%}
+        {%- if comp_icon_str contains '<svg' or item.icon contains '<svg' -%}
+          <span class="brandon-pdp__composition-icon-svg">{{ item.icon }}</span>
+        {%- else -%}
+          <img src="{{ item.icon | image_url: width: 80 }}" alt="{{ item.title | escape }}" class="brandon-pdp__composition-icon" loading="lazy">
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+    <div class="brandon-pdp__composition-divider"></div>
+    <div class="brandon-pdp__composition-info">
+      <span class="brandon-pdp__composition-title">{{ item.title }}</span>
+      <span class="brandon-pdp__composition-material">{{ item.material }}</span>
+    </div>
+  </div>
+  {%- endfor -%}
+</div>
+{%- endif -%}

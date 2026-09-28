@@ -9,7 +9,6 @@
     const accordionsContainer = section.querySelector(
       ".brandon-pdp__accordions",
     );
-    const currentNumEl = section.querySelector(".js-pdp-current-num");
     const galleryItems = section.querySelectorAll(".brandon-pdp__gallery-item");
 
     const container = section.querySelector(".brandon-pdp__container");
@@ -39,6 +38,7 @@
           }
         } else {
           if (container) {
+            container.classList.remove("has-colors-open");
             container.classList.add("has-details-open");
           }
         }
@@ -71,25 +71,6 @@
       });
     }
 
-    if (galleryItems.length > 0 && currentNumEl) {
-      const observerOptions = {
-        root: null,
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0,
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Array.from(galleryItems).indexOf(entry.target) + 1;
-            const formattedIndex = index < 10 ? "0" + index : "" + index;
-            currentNumEl.textContent = formattedIndex;
-          }
-        });
-      }, observerOptions);
-
-      galleryItems.forEach((item) => observer.observe(item));
-    }
 
     const swiperEl = section.querySelector(".js-pdp-swiper");
     if (swiperEl && typeof Swiper !== "undefined") {
@@ -106,14 +87,6 @@
           clickable: true,
           bulletClass: "brandon-pdp__dot",
           bulletActiveClass: "brandon-pdp__dot--active",
-        },
-        on: {
-          slideChange: function () {
-            if (currentNumEl) {
-              const idx = this.activeIndex + 1;
-              currentNumEl.textContent = idx < 10 ? "0" + idx : "" + idx;
-            }
-          },
         },
       });
     }
@@ -162,6 +135,66 @@
           }
         });
       }
+    }
+
+    const openColorsBtns = section.querySelectorAll(".js-pdp-trigger-colors-modal");
+    const closeColorsBtn = section.querySelector(".js-pdp-close-colors-panel");
+
+    if (openColorsBtns.length > 0 && container) {
+      openColorsBtns.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          container.classList.remove("has-details-open");
+          container.classList.add("has-colors-open");
+        });
+      });
+    }
+
+    if (closeColorsBtn && container) {
+      closeColorsBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        container.classList.remove("has-colors-open");
+      });
+    }
+
+    const openPersonalizeBtns = section.querySelectorAll(".js-pdp-trigger-personalize");
+    const closePersonalizeBtn = section.querySelector(".js-pdp-close-personalize-panel");
+
+    if (openPersonalizeBtns.length > 0 && container) {
+      openPersonalizeBtns.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          container.classList.remove("has-details-open");
+          container.classList.remove("has-colors-open");
+          container.classList.add("has-personalize-open");
+        });
+      });
+    }
+
+    if (closePersonalizeBtn && container) {
+      closePersonalizeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        container.classList.remove("has-personalize-open");
+      });
+    }
+
+    const personalizeInput = section.querySelector(".js-personalize-input");
+    const slot1 = section.querySelector(".js-personalize-slot-1");
+    const slot2 = section.querySelector(".js-personalize-slot-2");
+    const slot3 = section.querySelector(".js-personalize-slot-3");
+    const propInput = section.querySelector(".js-personalize-property-input");
+
+    if (personalizeInput) {
+      const updateSlots = function () {
+        const val = personalizeInput.value.toUpperCase();
+        if (slot1) slot1.textContent = val[0] || (val.length === 0 ? "|" : "");
+        if (slot2) slot2.textContent = val[1] || (val.length === 1 ? "|" : "");
+        if (slot3) slot3.textContent = val[2] || (val.length === 2 ? "|" : "");
+        if (propInput) propInput.value = val;
+      };
+
+      personalizeInput.addEventListener("input", updateSlots);
+      updateSlots();
     }
   }
 

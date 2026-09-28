@@ -1,0 +1,23 @@
+{%- assign items = item_details | default: product.metafields.custom.item_details.value -%}
+{%- if items != blank -%}
+  <div class="brandon-pdp__item-details-list">
+    {%- for item in items -%}
+      <div class="brandon-pdp__item-detail-row">
+        <div class="brandon-pdp__item-detail-label">
+          {%- if item.icon != blank -%}
+            {%- assign item_icon_str = item.icon | string -%}
+            {%- if item_icon_str contains '<svg' or item.icon contains '<svg' -%}
+              <span class="brandon-pdp__detail-icon-wrap">{{ item.icon }}</span>
+            {%- else -%}
+              <img src="{{ item.icon | image_url: width: 60 }}" alt="{{ item.label | escape }}" class="brandon-pdp__detail-icon" loading="lazy">
+            {%- endif -%}
+          {%- endif -%}
+          <span>{{ item.label }}</span>
+        </div>
+        <div class="brandon-pdp__item-detail-value">
+          {{ item.value }}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}

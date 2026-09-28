@@ -2,7 +2,7 @@ function initBrandonUncommonMaterials(container) {
   if (!container || container.dataset.uncommonMaterialsInitialized === "true") return;
 
   const swiperEl = container.querySelector(".js-uncommon-materials-swiper");
-  const dotsEl = container.querySelector(".js-uncommon-materials-dots-desktop");
+  const dotsEl = container.querySelector(".js-uncommon-materials-dots");
 
   if (swiperEl && typeof Swiper !== "undefined") {
     container.dataset.uncommonMaterialsInitialized = "true";

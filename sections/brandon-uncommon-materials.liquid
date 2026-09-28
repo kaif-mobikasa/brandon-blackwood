@@ -17,7 +17,6 @@ background-color: {{ section.settings.bg_color | default: '#ffffff' }};
       <div class="swiper brandon-uncommon-materials__swiper js-uncommon-materials-swiper">
         <div class="swiper-wrapper brandon-uncommon-materials__swiper-wrapper">
 
-          {%- if section.blocks.size > 0 -%}
           {%- for block in section.blocks -%}
           <div class="swiper-slide brandon-uncommon-materials__slide-card" {{ block.shopify_attributes }}>
             <div class="brandon-uncommon-materials__card-inner">
@@ -73,10 +72,6 @@ background-color: {{ section.settings.bg_color | default: '#ffffff' }};
                   {{ block.settings.description }}
                 </div>
                 {%- endif -%}
-
-                {%- if forloop.first -%}
-                <div class="brandon-uncommon-materials__mobile-dots js-uncommon-materials-dots-mobile"></div>
-                {%- endif -%}
               </div>
 
               <div class="brandon-uncommon-materials__desktop-content">
@@ -110,63 +105,17 @@ background-color: {{ section.settings.bg_color | default: '#ffffff' }};
                   {{ block.settings.description }}
                 </div>
                 {%- endif -%}
-
-                {%- if forloop.first -%}
-                <div class="brandon-uncommon-materials__desktop-dots js-uncommon-materials-dots-desktop"></div>
-                {%- endif -%}
               </div>
 
             </div>
           </div>
           {%- endfor -%}
-          {%- else -%}
-          <div class="swiper-slide brandon-uncommon-materials__slide-card">
-            <div class="brandon-uncommon-materials__card-inner">
-              <div class="brandon-uncommon-materials__media">
-                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-uncommon-materials__img' }}
-              </div>
-              <div class="brandon-uncommon-materials__desktop-content">
-                <h2 class="brandon-uncommon-materials__desktop-heading">THE ART OF UNCOMMON MATERIALS</h2>
-                <div class="brandon-uncommon-materials__desktop-desc">
-                  Every Luna Bag is defined by the unexpected combination of textures, finishes and details. Discover
-                  the materials that give this piece its distinctive character.
-                </div>
-                <div class="brandon-uncommon-materials__desktop-dots js-uncommon-materials-dots-desktop"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide brandon-uncommon-materials__slide-card">
-            <div class="brandon-uncommon-materials__card-inner">
-              <div class="brandon-uncommon-materials__media">
-                {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg brandon-uncommon-materials__img' }}
-              </div>
-              <div class="brandon-uncommon-materials__desktop-content">
-                <div class="brandon-uncommon-materials__material-header">
-                  <div class="brandon-uncommon-materials__icon-wrapper">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M4 8H20M4 16H20M8 4V20M16 4V20" stroke="currentColor" stroke-width="1.5"
-                        stroke-linecap="round" />
-                    </svg>
-                  </div>
-                  <div class="brandon-uncommon-materials__divider"></div>
-                  <div class="brandon-uncommon-materials__material-titles">
-                    <span class="brandon-uncommon-materials__mat-title">Main</span>
-                    <span class="brandon-uncommon-materials__mat-subtitle">Straw material + Linen</span>
-                  </div>
-                </div>
-                <div class="brandon-uncommon-materials__desktop-desc">
-                  Natural straw and textured linen come together to create a distinctive aesthetic. The straw material
-                  adds an expressive fringed edge while linen gives the silhouette its refined structure.
-                </div>
-              </div>
-            </div>
-          </div>
-          {%- endif -%}
 
         </div>
+
       </div>
 
+      <div class="brandon-uncommon-materials__dots js-uncommon-materials-dots"></div>
       <div class="brandon-uncommon-materials__bottom-line"></div>
     </div>
   </section>
@@ -272,7 +221,6 @@ background-color: {{ section.settings.bg_color | default: '#ffffff' }};
           "settings": {
             "heading": "",
             "description": "Natural straw and textured linen come together to create a distinctive aesthetic. The straw material adds an expressive fringed edge while linen gives the silhouette its refined structure.",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 8H20M4 16H20M8 4V20M16 4V20\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" /></svg>",
             "tagline": "Main",
             "subtitle": "Straw material + Linen"
           }

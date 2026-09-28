@@ -1,0 +1,36 @@
+{%- assign details = product_details | default: product.metafields.custom.product_details.value -%}
+{%- if details != blank -%}
+  <div class="brandon-pdp__product-details-content">
+    {%- assign features_list = details.features.value | default: details.features -%}
+    {%- if features_list != blank -%}
+      {%- assign features_array = features_list -%}
+      {%- if features_list.first == blank -%}
+        {%- assign features_array = features_list | newline_to_br | split: '<br />' -%}
+      {%- endif -%}
+      <ul class="brandon-pdp__features-list">
+        {%- for feature in features_array -%}
+          {%- assign f_clean = feature | strip -%}
+          {%- if f_clean != blank -%}
+            <li>{{ f_clean }}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    {%- if details.reference_number != blank -%}
+      <p class="brandon-pdp__meta-line">Reference Number: {{ details.reference_number }}</p>
+    {%- endif -%}
+    {%- if details.designed_in != blank -%}
+      <p class="brandon-pdp__meta-line">Designed in {{ details.designed_in }}</p>
+    {%- endif -%}
+    {%- if details.questions_text != blank or details.contact_email != blank -%}
+      <div class="brandon-pdp__meta-questions">
+        {%- if details.questions_text != blank -%}
+          <p>{{ details.questions_text }}</p>
+        {%- endif -%}
+        {%- if details.contact_email != blank -%}
+          <p>Reach out to us at <a href="mailto:{{ details.contact_email }}">{{ details.contact_email }}</a>.</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}
