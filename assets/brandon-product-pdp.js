@@ -196,6 +196,30 @@
       personalizeInput.addEventListener("input", updateSlots);
       updateSlots();
     }
+// custom hover image functionality for gallery items
+    const hoverCardEls = section.querySelectorAll("[data-hover-image]");
+    if (hoverCardEls.length > 0) {
+      hoverCardEls.forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          const hoverImgSrc = this.getAttribute("data-hover-image");
+          if (!hoverImgSrc) return;
+          const firstGalleryImg = section.querySelector(".brandon-pdp__gallery-img");
+          if (firstGalleryImg) {
+            if (!firstGalleryImg.dataset.originalSrc) {
+              firstGalleryImg.dataset.originalSrc = firstGalleryImg.src;
+            }
+            firstGalleryImg.src = hoverImgSrc;
+          }
+        });
+
+        card.addEventListener("mouseleave", function () {
+          const firstGalleryImg = section.querySelector(".brandon-pdp__gallery-img");
+          if (firstGalleryImg && firstGalleryImg.dataset.originalSrc) {
+            firstGalleryImg.src = firstGalleryImg.dataset.originalSrc;
+          }
+        });
+      });
+    }
   }
 
   if (document.readyState === "loading") {

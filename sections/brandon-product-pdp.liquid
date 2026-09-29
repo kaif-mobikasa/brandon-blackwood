@@ -102,25 +102,33 @@
         </div>
         {%- endif -%}
 
+        {%- assign other_color_products = product.metafields.custom.other_color_products.value -%}
+        {%- assign other_color_count = other_color_products.size | default: 0 -%}
+
+        {%- if other_color_count > 0 -%}
         <div class="brandon-pdp__swatches-row">
           <div class="brandon-pdp__swatches">
-            <span class="brandon-pdp__swatch brandon-pdp__swatch--active" style="background-color: #d2b48c;"></span>
-            <span class="brandon-pdp__swatch" style="background-color: #3b3c36;"></span>
-            <span class="brandon-pdp__swatch" style="background-color: #8b5a2b;"></span>
-            <span class="brandon-pdp__swatch" style="background-color: #c5a059;"></span>
-            <span class="brandon-pdp__swatch-more js-pdp-trigger-colors-modal">+3</span>
+            {%- for color_prod in other_color_products limit: 3 -%}
+              {%- assign swatch_img = color_prod.featured_media | default: color_prod.featured_image -%}
+              {%- assign swatch_style = '' -%}
+              {%- if swatch_img != blank -%}
+                {%- assign swatch_url = swatch_img | image_url: width: 60 -%}
+                {%- capture swatch_style -%}background-image: url('{{ swatch_url }}'); background-size: cover; background-position: center;{%- endcapture -%}
+              {%- endif -%}
+              <a href="{{ color_prod.url }}" class="brandon-pdp__swatch{% if color_prod.id == product.id %} brandon-pdp__swatch--active{% endif %}" title="{{ color_prod.title | escape }}" aria-label="{{ color_prod.title | escape }}" style="{{ swatch_style }}"{% if swatch_img != blank %} data-hover-image="{{ swatch_img | image_url: width: 1800 }}"{% endif %}></a>
+            {%- endfor -%}
+            {%- if other_color_count > 3 -%}
+              {%- assign remaining_colors = other_color_count | minus: 3 -%}
+              <span class="brandon-pdp__swatch-more js-pdp-trigger-colors-modal">+{{ remaining_colors }}</span>
+            {%- endif -%}
           </div>
-          {%- if section.settings.view_other_colors_link != blank -%}
-          <a href="{{ section.settings.view_other_colors_link }}" class="brandon-pdp__other-colors-link js-pdp-trigger-colors-modal"
-            aria-label="View other colors">
-            {{ section.settings.other_colors_text | default: 'View other colors' | escape }}
-          </a>
-          {%- else -%}
+          {%- if other_color_count > 3 -%}
           <a href="#" class="brandon-pdp__other-colors-link js-pdp-trigger-colors-modal" aria-label="View other colors">
             {{ section.settings.other_colors_text | default: 'View other colors' | escape }}
           </a>
           {%- endif -%}
         </div>
+        {%- endif -%}
 
         {%- form 'product', product, id: 'BrandonPdpForm', class: 'brandon-pdp__form' -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -379,7 +387,6 @@
         </div>
       </div>
 
-      {%- assign color_blocks = section.blocks | where: 'type', 'color_option' -%}
       <div class="brandon-pdp__colors-panel js-pdp-colors-panel" aria-hidden="true">
         <button type="button" class="brandon-pdp__desktop-details-close js-pdp-close-colors-panel" aria-label="Close colors panel">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -390,19 +397,48 @@
         <h2 class="brandon-pdp__colors-panel-title">Other Colors</h2>
 
         <div class="brandon-pdp__colors-grid">
-          {%- if color_blocks.size > 0 -%}
-            {%- for block in color_blocks -%}
-              <a href="{{ block.settings.link | default: '#' }}" class="brandon-pdp__color-card {% if block.settings.is_active %}is-active{% endif %}" {{ block.shopify_attributes }}>
+          {%- if other_color_products != blank and other_color_products.size > 0 -%}
+            {%- for color_product in other_color_products -%}
+              <a href="{{ color_product.url }}" class="brandon-pdp__color-card{% if color_product.id == product.id %} is-active{% endif %}"{% if color_product.featured_media != blank %} data-hover-image="{{ color_product.featured_media | image_url: width: 1800 }}"{% endif %}>
                 <div class="brandon-pdp__color-card-media">
-                  {%- if block.settings.image != blank -%}
-                    <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title | escape }}" loading="lazy" class="brandon-pdp__color-card-img">
+                  {%- if color_product.featured_media != blank -%}
+                    <img src="{{ color_product.featured_media | image_url: width: 600 }}" alt="{{ color_product.title | escape }}" loading="lazy" class="brandon-pdp__color-card-img">
                   {%- else -%}
                     {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-pdp__color-card-img' }}
                   {%- endif -%}
                 </div>
-                <div class="brandon-pdp__color-card-title">{{ block.settings.title | escape }}</div>
+                <div class="brandon-pdp__color-card-title">{{ color_product.title }}</div>
               </a>
             {%- endfor -%}
+          {%- else -%}
+            <a href="#" class="brandon-pdp__color-card is-active">
+              <div class="brandon-pdp__color-card-media">
+                {%- if product.featured_media != blank -%}
+                  <img src="{{ product.featured_media | image_url: width: 600 }}" alt="{{ product.title | escape }}" loading="lazy" class="brandon-pdp__color-card-img">
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-pdp__color-card-img' }}
+                {%- endif -%}
+              </div>
+              <div class="brandon-pdp__color-card-title">Linen w/ Fringed Wicker</div>
+            </a>
+            <a href="#" class="brandon-pdp__color-card">
+              <div class="brandon-pdp__color-card-media">
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-pdp__color-card-img' }}
+              </div>
+              <div class="brandon-pdp__color-card-title">Dark Brown Oiled Leather w/ Fringed Wicker</div>
+            </a>
+            <a href="#" class="brandon-pdp__color-card">
+              <div class="brandon-pdp__color-card-media">
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-pdp__color-card-img' }}
+              </div>
+              <div class="brandon-pdp__color-card-title">Green Oiled Leather w/ Fringed Wicker</div>
+            </a>
+            <a href="#" class="brandon-pdp__color-card">
+              <div class="brandon-pdp__color-card-media">
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-pdp__color-card-img' }}
+              </div>
+              <div class="brandon-pdp__color-card-title">Olive Green Oiled Leather w/ Brass Hardware</div>
+            </a>
           {%- endif -%}
         </div>
       </div>

@@ -146,13 +146,16 @@
 }
 
 .brandon-pdp__swatch {
-  width: 15px;
-  height: 15px;
+  display: block !important;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
   background-clip: content-box;
   display: block;
+  border: 1px solid #dcdcdc;
+  background-color: #d2b48c;
 }
 
 .brandon-pdp__swatch--active {
@@ -844,10 +847,10 @@
     justify-content: space-between;
     align-items: center;
   }
-  .brandon-pdp__composition-material{
-        font-weight: 500;
+  .brandon-pdp__composition-material {
+    font-weight: 500;
     letter-spacing: 5%;
-    color: #1D1D1D;
+    color: #1d1d1d;
   }
 }
 
@@ -1077,7 +1080,30 @@
   align-self: flex-start;
   position: sticky;
   top: 147px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #cccccc transparent;
   background-color: #fff;
+}
+
+.brandon-pdp__colors-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.brandon-pdp__colors-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.brandon-pdp__colors-panel::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 4px;
+}
+
+.brandon-pdp__colors-panel::-webkit-scrollbar-thumb:hover {
+  background: #999999;
 }
 
 .brandon-pdp__container.has-colors-open .brandon-pdp__info-col {
@@ -1092,13 +1118,18 @@
   display: block;
 }
 
+.brandon-pdp__colors-panel .brandon-pdp__desktop-details-close {
+  top: 16px;
+  right: 20px;
+}
+
 .brandon-pdp__colors-panel-title {
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 3%;
   color: #111;
-  margin: -46px 0 33px;
+  margin: 0 0 33px;
 }
 
 .brandon-pdp__colors-grid {
@@ -1106,6 +1137,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 24px 20px;
   width: 100%;
+  padding-bottom: 50px;
 }
 
 .brandon-pdp__color-card {
@@ -1124,15 +1156,19 @@
 .brandon-pdp__color-card-media {
   width: 100%;
   max-width: 230px;
+  height: 230px;
+  aspect-ratio: 1 / 1;
   border: 1px solid #e6e6e6;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 8px 11px 8px;
+  padding: 8px;
+  box-sizing: border-box;
   margin-bottom: 12px;
   transition: border-color 0.2s ease;
 }
 
+.brandon-pdp__color-card:hover .brandon-pdp__color-card-media,
 .brandon-pdp__color-card.is-active .brandon-pdp__color-card-media {
   border-color: #111111;
 }
@@ -1145,14 +1181,18 @@
 
 .brandon-pdp__color-card-title {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.4;
   letter-spacing: 4%;
   color: #727272;
   text-align: center;
   max-width: 180px;
+  transition:
+    color 0.2s ease,
+    font-weight 0.2s ease;
 }
 
+.brandon-pdp__color-card:hover .brandon-pdp__color-card-title,
 .brandon-pdp__color-card.is-active .brandon-pdp__color-card-title {
   font-weight: 500;
   color: #111111;
@@ -1163,12 +1203,25 @@
   }
 }
 
+@media (min-width: 769px) and (max-width: 1040px) {
+  .brandon-pdp__colors-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .brandon-pdp__color-card {
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
 @media (max-width: 768px) {
   .brandon-pdp__colors-panel {
     width: 100%;
     position: relative;
-    padding: 20px 16px;
+    padding: 20px 16px 40px;
     top: auto;
+    max-height: 75vh;
   }
 
   .brandon-pdp__colors-panel-title {

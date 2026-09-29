@@ -9,10 +9,10 @@ function initBrandonSizeStatement(container) {
     const prevBtn = container.querySelector(".js-size-statement-prev");
     const nextBtn = container.querySelector(".js-size-statement-next");
     const mobPrevBtn = container.querySelector(
-      ".js-size-statement-mobile-prev",
+      ".js-size-statement-mobile-prev"
     );
     const mobNextBtn = container.querySelector(
-      ".js-size-statement-mobile-next",
+      ".js-size-statement-mobile-next"
     );
 
     const swiper = new Swiper(swiperEl, {
@@ -20,6 +20,10 @@ function initBrandonSizeStatement(container) {
       spaceBetween: 20,
       loop: false,
       centeredSlides: false,
+      navigation: {
+        prevEl: [prevBtn, mobPrevBtn].filter(Boolean),
+        nextEl: [nextBtn, mobNextBtn].filter(Boolean),
+      },
       breakpoints: {
         600: {
           slidesPerView: 3,
@@ -34,24 +38,51 @@ function initBrandonSizeStatement(container) {
           spaceBetween: 18,
         },
       },
+      on: {
+        init: updateActiveCenterDot,
+        slideChange: updateActiveCenterDot,
+        resize: updateActiveCenterDot,
+        breakpoint: updateActiveCenterDot,
+      },
     });
 
-    if (prevBtn)
-      prevBtn.addEventListener("click", function () {
-        swiper.slidePrev();
+    function updateActiveCenterDot(s) {
+      const sw = s || swiper;
+      if (!sw || !sw.slides || sw.slides.length === 0) return;
+
+      sw.slides.forEach((slide) => {
+        slide.classList.remove("brandon-size-statement__slide--active");
+        const dot = slide.querySelector(".brandon-size-statement__dot");
+        if (dot) {
+          dot.classList.remove("brandon-size-statement__dot--active");
+        }
       });
-    if (nextBtn)
-      nextBtn.addEventListener("click", function () {
-        swiper.slideNext();
-      });
-    if (mobPrevBtn)
-      mobPrevBtn.addEventListener("click", function () {
-        swiper.slidePrev();
-      });
-    if (mobNextBtn)
-      mobNextBtn.addEventListener("click", function () {
-        swiper.slideNext();
-      });
+
+      let spv = sw.params.slidesPerView;
+      if (typeof spv !== "number" || isNaN(spv)) {
+        spv = 1;
+      }
+      const centerOffset = Math.floor(spv / 2);
+      let activeIdx = sw.activeIndex;
+
+      let centerIdx = activeIdx + centerOffset;
+      if (centerIdx >= sw.slides.length) {
+        centerIdx = sw.slides.length - 1;
+      }
+
+      const centerSlide = sw.slides[centerIdx];
+      if (centerSlide) {
+        centerSlide.classList.add("brandon-size-statement__slide--active");
+        const centerDot = centerSlide.querySelector(
+          ".brandon-size-statement__dot"
+        );
+        if (centerDot) {
+          centerDot.classList.add("brandon-size-statement__dot--active");
+        }
+      }
+    }
+
+    updateActiveCenterDot(swiper);
   }
 }
 
