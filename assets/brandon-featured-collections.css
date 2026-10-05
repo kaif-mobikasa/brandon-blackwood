@@ -72,7 +72,7 @@
 
 .brandon-featured-collections__card-media {
   width: 100%;
-  /* aspect-ratio: 4 / 5; */
+  
   overflow: hidden;
   background-color: #f0f0f0;
   position: relative;
@@ -116,9 +116,9 @@
   white-space: nowrap;
   overflow: hidden;
   letter-spacing: 9%;
-  /* text-overflow: ellipsis; */
+  
   font-size: 14px;
-  /* font-family: var(--font-semplicita); */
+  
 }
 
 .brandon-featured-collections__card-link {
@@ -128,7 +128,7 @@
   text-decoration: underline;
   letter-spacing: 9%;
   text-underline-offset: 4px;
-  /* font-family: var(--font-semplicita); */
+  
   transition: opacity 0.2s ease;
 }
 

@@ -63,7 +63,7 @@
         "view_other_colors_link": "shopify://collections/automated-collection",
         "other_colors_text": "View other colors",
         "atc_button_text": "ADD TO CART",
-        "stock_text": "In Stock - Only 3 Left",
+        "stock_text": "In Stock - Only 4 Left",
         "all_details_text": "All Details",
         "personalize_text": "Personalize",
         "personalize_link": "",
@@ -234,6 +234,7 @@
         },
         "product_item_NJ9HWq": {
           "type": "product_item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/image_99.png",
             "title": "Sylvia Bag",

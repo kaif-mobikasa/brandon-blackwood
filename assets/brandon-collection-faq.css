@@ -1,0 +1,149 @@
+.brandon-collection-faq {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.brandon-collection-faq__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.brandon-collection-faq__header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.brandon-collection-faq__heading {
+  font-family: var(--font-essonnes-display);
+  font-size: clamp(16px, 2.2vw, 20px);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 2%;
+  color: #000;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.brandon-collection-faq__accordion {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.brandon-collection-faq__item {
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0;
+  position: relative;
+}
+
+.brandon-collection-faq__item:first-child {
+  border-top: 1px solid #e0e0e0;
+}
+
+.brandon-collection-faq__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  outline: none;
+}
+
+.brandon-collection-faq__summary::-webkit-details-marker {
+  display: none;
+}
+
+.brandon-collection-faq__title {
+  font-family: var(--font-semplicita);
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: 5%;
+  line-height: 1.4;
+}
+
+.brandon-collection-faq__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9px;
+  height: 10px;
+  transition: transform 0.25s ease;
+}
+
+.brandon-collection-faq__icon-chevron {
+  display: block;
+}
+
+.brandon-collection-faq__icon-plus {
+  display: none;
+}
+
+.brandon-collection-faq__item[open] .brandon-collection-faq__icon-chevron {
+  transform: rotate(180deg);
+}
+
+.brandon-collection-faq__item[open] .brandon-collection-faq__icon-plus {
+  transform: rotate(45deg);
+}
+
+.brandon-collection-faq__answer {
+  overflow: hidden;
+}
+
+.brandon-collection-faq__answer-inner {
+  padding: 0 0 20px 0;
+  font-family: var(--font-semplicita), sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #444444;
+  letter-spacing: 0.01em;
+}
+
+.brandon-collection-faq__answer-inner p {
+  margin: 0 0 10px 0;
+}
+
+.brandon-collection-faq__answer-inner p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .brandon-collection-faq__container {
+    padding: 0 20px;
+  }
+
+  .brandon-collection-faq__accordion {
+    max-width: 100%;
+  }
+
+  .brandon-collection-faq__summary {
+    padding: 15px 0 16px;
+  }
+
+  .brandon-collection-faq__title {
+    font-size: 11px;
+  }
+
+  .brandon-collection-faq__icon-chevron {
+    display: none;
+  }
+
+  .brandon-collection-faq__icon-plus {
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  .brandon-collection-faq {
+    padding-top: 62px !important;
+  }
+  .brandon-collection-faq__header {
+    margin-bottom: 31px;
+  }
+}

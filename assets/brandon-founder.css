@@ -14,7 +14,7 @@
 .brandon-founder__container {
   position: relative;
   width: 100%;
-  /* max-width: 1440px; */
+  
   margin: 0 auto;
   box-sizing: border-box;
   display: flex;
@@ -125,7 +125,7 @@ font-family: var(--font-semplicita-bold);
 .brandon-founder__desktop-bottom-img-wrapper {
     display: block;
     width: 100%;
-    /* max-width: 1100px; */
+    
     margin: 28px auto 0;
     overflow: hidden;
 }
@@ -145,7 +145,7 @@ font-family: var(--font-semplicita-bold);
 
   .brandon-founder__heading {
           font-size: 16px;
-        /* letter-spacing: .12em; */
+        
         margin-bottom: 20px;
   }
 
@@ -165,8 +165,7 @@ font-family: var(--font-semplicita-bold);
 
   .brandon-founder__subheading {
           font-size: 16px;
-        /* letter-spacing: .14em; */
-        /* margin-bottom: -4px; */
+
         font-family: var(--font-essonnes-display);
   }
 

@@ -1,0 +1,192 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection-swatches": {
+      "type": "brandon-collection-swatches",
+      "blocks": {
+        "collection_item_Ut873J": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "new-arrivals",
+            "title": "",
+            "url": "",
+            "is_black_circle": true,
+            "badge_text": "NEW",
+            "is_active": true
+          }
+        },
+        "collection_item_YMDJHe": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "crossbody",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_VEDBfG": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "backpacks",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_fcBpYP": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "handbags",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_bpbyxV": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mini-bags",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_RLxyFG": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "clutches",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_LAp7D9": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "trunk",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_YfPrWX": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "chloe-bags",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_7KdVx8": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "luna",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        },
+        "collection_item_QBE9Kg": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "crossbody",
+            "title": "",
+            "url": "",
+            "is_black_circle": false,
+            "badge_text": "NEW",
+            "is_active": false
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_Ut873J",
+        "collection_item_YMDJHe",
+        "collection_item_VEDBfG",
+        "collection_item_fcBpYP",
+        "collection_item_bpbyxV",
+        "collection_item_RLxyFG",
+        "collection_item_LAp7D9",
+        "collection_item_YfPrWX",
+        "collection_item_7KdVx8",
+        "collection_item_QBE9Kg"
+      ],
+      "settings": {
+        "heading": "ALL HANDBAGS",
+        "subtitle": "230 Products",
+        "bg_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "product-grid": {
+      "type": "brandon-main-collection-grid",
+      "settings": {
+        "desc_heading": "Luxury Handbags",
+        "desc_text": "Explore our collection of luxury handbags made with rare, unexpected materials that redefine modern elegance.",
+        "products_per_page": 16,
+        "bg_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 48,
+        "promo_1_desktop_index": 6,
+        "promo_1_mobile_index": 4,
+        "promo_2_desktop_index": 10,
+        "promo_2_mobile_index": 8
+      }
+    },
+    "brandon_art_of_materials_CxFTzN": {
+      "type": "brandon-art-of-materials",
+      "name": "Art of Uncommon Materials",
+      "settings": {
+        "image_desktop": "shopify://shop_images/Frame_319.png",
+        "heading": "THE ART OF UNCOMMON MATERIALS",
+        "description": "At Brandon Blackwood, we believe true luxury lies in the details. Our Uncommon Materials Collection showcases unique textures and rare finishes, selected and crafted to create timeless, unforgettable handbags.",
+        "button_label": "READ MORE",
+        "button_link": "",
+        "bg_color": "#ffffff",
+        "padding_top": 68,
+        "padding_bottom": 72
+      }
+    },
+    "brandon_collection_faq_hEKQCM": {
+      "type": "brandon-collection-faq",
+      "name": "Collection FAQ Accordion",
+      "settings": {
+        "heading": "FREQUENTLY ASKED QUESTIONS",
+        "bg_color": "#f2f2f2",
+        "padding_top": 68,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "collection-swatches",
+    "product-grid",
+    "brandon_art_of_materials_CxFTzN",
+    "brandon_collection_faq_hEKQCM"
+  ]
+}

@@ -221,7 +221,7 @@
 @media screen and (max-width: 767px) {
   .brandon-hero__media-wrapper {
     height: 97vh;
-    /* min-height: 450px; */
+    
   }
 
   .brandon-hero__content-overlay {

@@ -38,12 +38,6 @@
                   >
                 </div>
               {%- endfor -%}
-            {%- else -%}
-              {%- for i in (1..6) -%}
-                <div class="swiper-slide brandon-pdp__gallery-item">
-                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg brandon-pdp__gallery-img' }}
-                </div>
-              {%- endfor -%}
             {%- endif -%}
           </div>
         </div>
@@ -108,21 +102,29 @@
         {%- if other_color_count > 0 -%}
         <div class="brandon-pdp__swatches-row">
           <div class="brandon-pdp__swatches">
-            {%- for color_prod in other_color_products limit: 3 -%}
-              {%- assign swatch_img = color_prod.featured_media | default: color_prod.featured_image -%}
+            {%- for color_prod in other_color_products limit: 4 -%}
+              {%- assign custom_swatch_img = color_prod.metafields.custom.swatch_image.value | default: color_prod.metafields.custom.swatch_image | default: color_prod.metafields.custom.color_swatch | default: color_prod.metafields.swatch.image -%}
+              {%- assign color_hex = color_prod.metafields.custom.color_hex.value | default: color_prod.metafields.custom.color_hex -%}
               {%- assign swatch_style = '' -%}
-              {%- if swatch_img != blank -%}
-                {%- assign swatch_url = swatch_img | image_url: width: 60 -%}
+
+              {%- if custom_swatch_img != blank -%}
+                {%- assign swatch_url = custom_swatch_img | image_url: width: 100 -%}
                 {%- capture swatch_style -%}background-image: url('{{ swatch_url }}'); background-size: cover; background-position: center;{%- endcapture -%}
+              {%- elsif color_hex != blank -%}
+                {%- capture swatch_style -%}background-color: {{ color_hex }};{%- endcapture -%}
+              {%- elsif color_prod.featured_media != blank -%}
+                {%- assign swatch_url = color_prod.featured_media | image_url: width: 400 -%}
+                {%- capture swatch_style -%}background-image: url('{{ swatch_url }}'); background-size: 600% 600%; background-position: 58% 71%; background-repeat: no-repeat;{%- endcapture -%}
               {%- endif -%}
-              <a href="{{ color_prod.url }}" class="brandon-pdp__swatch{% if color_prod.id == product.id %} brandon-pdp__swatch--active{% endif %}" title="{{ color_prod.title | escape }}" aria-label="{{ color_prod.title | escape }}" style="{{ swatch_style }}"{% if swatch_img != blank %} data-hover-image="{{ swatch_img | image_url: width: 1800 }}"{% endif %}></a>
+
+              <a href="{{ color_prod.url }}" class="brandon-pdp__swatch{% if color_prod.id == product.id %} brandon-pdp__swatch--active{% endif %}" title="{{ color_prod.title | escape }}" aria-label="{{ color_prod.title | escape }}" style="{{ swatch_style }}"{% if color_prod.featured_media != blank %} data-hover-image="{{ color_prod.featured_media | image_url: width: 1800 }}"{% endif %}></a>
             {%- endfor -%}
-            {%- if other_color_count > 3 -%}
-              {%- assign remaining_colors = other_color_count | minus: 3 -%}
+            {%- if other_color_count > 4 -%}
+              {%- assign remaining_colors = other_color_count | minus: 4 -%}
               <span class="brandon-pdp__swatch-more js-pdp-trigger-colors-modal">+{{ remaining_colors }}</span>
             {%- endif -%}
           </div>
-          {%- if other_color_count > 3 -%}
+          {%- if other_color_count > 4 -%}
           <a href="#" class="brandon-pdp__other-colors-link js-pdp-trigger-colors-modal" aria-label="View other colors">
             {{ section.settings.other_colors_text | default: 'View other colors' | escape }}
           </a>

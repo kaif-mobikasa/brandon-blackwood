@@ -73,7 +73,7 @@
 .brandon-app-banner__main-wrapper {
   position: relative;
   width: 100%;
-  /* min-height: 520px; */
+  
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -132,7 +132,7 @@
 .brandon-app-banner__heading {
   font-family: var(--font-semplicita);
   font-size: 42px;
-  /* font-weight: 500; */
+  
   line-height: 1.08;
   letter-spacing: 0%;
   text-transform: uppercase;

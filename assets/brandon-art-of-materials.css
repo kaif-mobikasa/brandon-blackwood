@@ -1,0 +1,167 @@
+.brandon-art-materials {
+  width: 100%;
+  position: relative;
+  margin-top: 2px;
+}
+
+.brandon-art-materials__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 70px;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.brandon-art-materials__media {
+  
+  width: 34%;
+  position: relative;
+  background-color: #f2f2f2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandon-art-materials__picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.brandon-art-materials__img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.brandon-art-materials__placeholder {
+  width: 100%;
+  min-height: 480px;
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandon-art-materials__placeholder svg {
+  max-width: 200px;
+  max-height: 200px;
+  opacity: 0.5;
+}
+
+.brandon-art-materials__content {
+  flex: 1 1 50%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 40px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.brandon-art-materials__content-inner {
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.brandon-art-materials__heading {
+  font-family: var(--font-essonnes-display);
+  font-size: clamp(13px, 2.2vw, 20px);
+  font-weight: 400;
+  
+  line-height: 100%;
+  letter-spacing: 2%;
+  color: #000;
+  text-transform: uppercase;
+  margin: 0 0 17px;
+}
+
+.brandon-art-materials__desc {
+  font-family: var(--font-semplicita), sans-serif;
+  font-size: clamp(12px, 1.1vw, 14px);
+  font-weight: 400;
+  line-height: 1.65;
+  line-height: 23px;
+  color: #000000;
+  letter-spacing: 5%;
+  margin: 0 0 15px;
+  max-width: 454px;
+}
+
+.brandon-art-materials__link {
+  font-family: var(--font-semplicita), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 5%;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1.5px solid #000000;
+  padding-top: 8px;
+  
+  display: inline-block;
+  transition:
+    opacity 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.brandon-art-materials__link:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .brandon-art-materials__container {
+    flex-direction: column;
+    padding: 0 29px;
+    gap: 28px;
+  }
+
+  .brandon-art-materials__media {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .brandon-art-materials__img {
+    
+  }
+
+  .brandon-art-materials__content {
+    flex: 1 1 100%;
+    width: 100%;
+    padding: 0px 15px;
+  }
+
+  .brandon-art-materials__heading {
+    font-size: 21px;
+    font-size: 16px;
+    letter-spacing: 2%;
+    margin-bottom: 15px;
+    line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
+    margin: 0 0 17px;
+  }
+
+  .brandon-art-materials__desc {
+    font-size: 11px;
+    line-height: 1.6;
+    margin-bottom: 21px;
+    max-width: 270px;
+    margin: 0 0 20px;
+  }
+  .brandon-art-materials {
+    padding-top: 29px !important;
+    padding-bottom: 42px !important;
+  }
+  .brandon-art-materials__link {
+    font-size: 10px;
+    padding-top: 0px;
+  }
+}

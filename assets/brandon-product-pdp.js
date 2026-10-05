@@ -199,24 +199,63 @@
 // custom hover image functionality for gallery items
     const hoverCardEls = section.querySelectorAll("[data-hover-image]");
     if (hoverCardEls.length > 0) {
+      let restoreTimer = null;
+      let transitionTimer = null;
+
       hoverCardEls.forEach((card) => {
         card.addEventListener("mouseenter", function () {
+          // Cancel pending restoration to original image if moving between swatches
+          if (restoreTimer) {
+            clearTimeout(restoreTimer);
+            restoreTimer = null;
+          }
+
           const hoverImgSrc = this.getAttribute("data-hover-image");
           if (!hoverImgSrc) return;
           const firstGalleryImg = section.querySelector(".brandon-pdp__gallery-img");
-          if (firstGalleryImg) {
-            if (!firstGalleryImg.dataset.originalSrc) {
-              firstGalleryImg.dataset.originalSrc = firstGalleryImg.src;
-            }
-            firstGalleryImg.src = hoverImgSrc;
+          if (!firstGalleryImg) return;
+
+          if (!firstGalleryImg.dataset.originalSrc) {
+            firstGalleryImg.dataset.originalSrc = firstGalleryImg.src;
           }
+
+          if (transitionTimer) clearTimeout(transitionTimer);
+
+          firstGalleryImg.style.opacity = "0.4";
+
+          transitionTimer = setTimeout(() => {
+            firstGalleryImg.src = hoverImgSrc;
+            firstGalleryImg.onload = () => {
+              firstGalleryImg.style.opacity = "1";
+            };
+            if (firstGalleryImg.complete) {
+              firstGalleryImg.style.opacity = "1";
+            }
+          }, 80);
         });
 
         card.addEventListener("mouseleave", function () {
-          const firstGalleryImg = section.querySelector(".brandon-pdp__gallery-img");
-          if (firstGalleryImg && firstGalleryImg.dataset.originalSrc) {
-            firstGalleryImg.src = firstGalleryImg.dataset.originalSrc;
-          }
+          // Delay restoring the original image to allow moving smoothly to another swatch
+          if (restoreTimer) clearTimeout(restoreTimer);
+
+          restoreTimer = setTimeout(() => {
+            const firstGalleryImg = section.querySelector(".brandon-pdp__gallery-img");
+            if (!firstGalleryImg || !firstGalleryImg.dataset.originalSrc) return;
+
+            if (transitionTimer) clearTimeout(transitionTimer);
+
+            firstGalleryImg.style.opacity = "0.4";
+
+            transitionTimer = setTimeout(() => {
+              firstGalleryImg.src = firstGalleryImg.dataset.originalSrc;
+              firstGalleryImg.onload = () => {
+                firstGalleryImg.style.opacity = "1";
+              };
+              if (firstGalleryImg.complete) {
+                firstGalleryImg.style.opacity = "1";
+              }
+            }, 80);
+          }, 250);
         });
       });
     }

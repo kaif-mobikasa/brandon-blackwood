@@ -46,13 +46,14 @@
   height: 100%;
   display: block;
   object-fit: contain;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .brandon-pdp__info-col {
   width: 50%;
   max-width: 361px;
   margin: 0 auto;
-  /* padding: 56px 64px 48px 48px; */
+  
   box-sizing: border-box;
   align-self: flex-start;
   position: sticky;
@@ -81,7 +82,7 @@
   font-weight: 500;
   color: #1b1b1b;
   margin: 0 0 10px;
-  /* line-height: 1.2; */
+  
   line-height: 100%;
   letter-spacing: 2%;
 }
@@ -147,21 +148,22 @@
 
 .brandon-pdp__swatch {
   display: block !important;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
-  background-clip: content-box;
-  display: block;
-  border: 1px solid #dcdcdc;
-  background-color: #d2b48c;
+  background-size: 600% 600%;
+  background-position: 58% 71%;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+.brandon-pdp__swatch:hover,
 .brandon-pdp__swatch--active {
-  border-color: #000000;
-  box-shadow: 0 0 0 1px #000000;
-  border: 0.6px solid #dddddd;
+  box-shadow: 0 0 0 1.5px #ffffff, 0 0 0 2.5px #000000;
+  border-color: transparent !important;
 }
 
 .brandon-pdp__swatch-more {
@@ -671,7 +673,7 @@
   .brandon-pdp__gallery-item {
     flex: 0 0 100%;
     min-height: auto;
-    /* padding: 32px 20px; */
+    
   }
 
   .brandon-pdp__gallery-img {
@@ -860,6 +862,8 @@
   left: 0;
   right: 0;
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   z-index: 999;
   background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
@@ -881,9 +885,8 @@
 }
 
 .brandon-pdp__sticky-atc-inner {
-  max-width: 1440px;
   margin: 0 auto;
-  padding: 14px 40px;
+  padding: 22px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -898,8 +901,8 @@
 }
 
 .brandon-pdp__sticky-atc-media {
-  width: 48px;
-  height: 48px;
+  width: 55px;
+  height: 55px;
   flex-shrink: 0;
   background-color: #f9f9f9;
   overflow: hidden;
@@ -921,11 +924,12 @@
 }
 
 .brandon-pdp__sticky-atc-title {
-  font-family: var(--font-semplicita, "Semplicita Pro", sans-serif);
-  font-size: 16px;
+  font-family: var(--font-semplicita);
+  font-size: 18px;
   font-weight: 500;
-  color: #000000;
+  color: #000;
   line-height: 1.2;
+  letter-spacing: 2%;
 }
 
 .brandon-pdp__sticky-atc-variant-wrap {
@@ -956,9 +960,11 @@
 }
 
 .brandon-pdp__sticky-atc-variant-name {
-  font-family: var(--font-semplicita, "Semplicita Pro", sans-serif);
-  font-size: 13px;
+  font-family: var(--font-semplicita);
+  font-size: 12px;
+  font-weight: 500;
   color: #727272;
+  letter-spacing: 4%;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -972,10 +978,11 @@
 }
 
 .brandon-pdp__sticky-atc-price {
-  font-family: var(--font-semplicita, "Semplicita Pro", sans-serif);
+  font-family: var(--font-semplicita);
   font-size: 16px;
-  font-weight: 500;
-  color: #000000;
+  font-weight: 600;
+  letter-spacing: 2%;
+  color: #000;
 }
 
 .brandon-pdp__sticky-atc-stock {
@@ -996,15 +1003,15 @@
 }
 
 .brandon-pdp__sticky-atc-btn {
-  height: 48px;
-  padding: 0 32px;
-  background-color: #000000;
-  color: #ffffff;
+  height: 40px;
+  padding: 0 48px;
+  background-color: #000;
+  color: #fff;
   border: none;
-  font-family: var(--font-semplicita, "Semplicita Pro", sans-serif);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-family: var(--font-semplicita);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 5%;
   text-transform: uppercase;
   cursor: pointer;
   display: flex;
@@ -1226,6 +1233,16 @@
 
   .brandon-pdp__colors-panel-title {
     margin-top: 0;
+  }
+
+  .brandon-pdp__colors-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .brandon-pdp__color-card {
+    width: 100%;
+    max-width: 240px;
   }
 }
 .brandon-pdp__personalize-panel {

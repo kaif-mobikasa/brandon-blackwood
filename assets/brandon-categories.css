@@ -61,7 +61,7 @@ font-family: var(--font-essonnes-display);
 .brandon-categories__card-media {
   position: relative;
   width: 100%;
-  /* aspect-ratio: 4 / 5; */
+  
   overflow: hidden;
 }
 
@@ -126,8 +126,6 @@ font-family: var(--font-essonnes-display);
   .brandon-categories__slider-wrapper {
     max-width: 100%;
   }
-
-
 
   .brandon-categories__card-footer {
     margin-top: 16px;

@@ -1,0 +1,195 @@
+.brandon-collection-swatches-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.brandon-collection-swatches {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.brandon-collection-swatches__container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(15px, 3.5vw, 43px);
+  padding-right: 4px;
+}
+
+.brandon-collection-swatches__header {
+  margin-bottom: clamp(24px, 3.5vw, 32px);
+}
+
+.brandon-collection-swatches__heading {
+  font-family: var(--font-essonnes-display);
+  font-size: clamp(14px, 2.2vw, 22px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 6%;
+  color: #000;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.brandon-collection-swatches__subtitle {
+  font-family: var(--font-semplicita);
+  font-size: clamp(9px, 1.1vw, 11px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 5%;
+  color: #000000;
+  margin: 0;
+}
+
+.brandon-collection-swatches__row-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.brandon-collection-swatches__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: clamp(14px, 2.2vw, 32px);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 32px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.brandon-collection-swatches__row::-webkit-scrollbar {
+  display: none;
+}
+
+.brandon-collection-swatches__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  width: clamp(88px, 8.2vw, 120px);
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.brandon-collection-swatches__item:hover {
+  opacity: 0.85;
+}
+
+.brandon-collection-swatches__circle {
+  width: clamp(88px, 8.2vw, 120px);
+  height: clamp(88px, 8.2vw, 120px);
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.brandon-collection-swatches__circle--black {
+  background-color: #000000;
+}
+
+.brandon-collection-swatches__badge {
+  font-family: var(--font-semplicita), sans-serif;
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.brandon-collection-swatches__img {
+  width: 72%;
+  height: 54%;
+  object-fit: contain;
+  display: block;
+}
+
+.brandon-collection-swatches__circle-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #eaeaea;
+  border-radius: 50%;
+}
+
+.brandon-collection-swatches__title {
+  font-family: var(--font-semplicita), sans-serif;
+  font-size: clamp(10px, 0.95vw, 11px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 5%;
+  color: #000;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.brandon-collection-swatches__line-bar {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: #e5e5e5;
+  margin-top: 16px;
+  display: block;
+}
+
+.brandon-collection-swatches__line-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 19.4796%;
+  height: 2px;
+  background-color: #000000;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  transition: left 0.05s ease-out;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .brandon-collection-swatches__header {
+    margin-bottom: 35px;
+  }
+
+  .brandon-collection-swatches__row {
+    gap: 13px;
+    padding-bottom: 8px;
+  }
+
+  .brandon-collection-swatches__line-bar {
+    display: block !important;
+  }
+
+  .brandon-collection-swatches__line-indicator {
+    display: block !important;
+  }
+
+  .brandon-collection-swatches__item {
+    width: 95px;
+  }
+
+  .brandon-collection-swatches__circle {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 9px;
+  }
+}
+@media (max-width: 480px) {
+  .brandon-collection-swatches {
+    padding-top: 58px !important;
+  }
+  .brandon-collection-swatches__heading {
+    margin: 0 0 10px;
+  }
+}

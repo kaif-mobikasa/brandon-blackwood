@@ -75,7 +75,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 24px;
+  padding-bottom: 14px;
   box-sizing: border-box;
 }
 
@@ -85,6 +85,9 @@
   width: auto;
   height: auto;
   object-fit: contain;
+  transform-origin: bottom center;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 
 .brandon-size-statement__carousel-wrapper::before {
@@ -341,9 +344,6 @@
   }
   .brandon-size-statement__card-size {
     font-size: 11px;
-    margin-bottom: 21px;
-  }
-}
     margin-bottom: 21px;
   }
 }

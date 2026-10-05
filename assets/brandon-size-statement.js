@@ -9,10 +9,10 @@ function initBrandonSizeStatement(container) {
     const prevBtn = container.querySelector(".js-size-statement-prev");
     const nextBtn = container.querySelector(".js-size-statement-next");
     const mobPrevBtn = container.querySelector(
-      ".js-size-statement-mobile-prev"
+      ".js-size-statement-mobile-prev",
     );
     const mobNextBtn = container.querySelector(
-      ".js-size-statement-mobile-next"
+      ".js-size-statement-mobile-next",
     );
 
     const swiper = new Swiper(swiperEl, {
@@ -20,6 +20,7 @@ function initBrandonSizeStatement(container) {
       spaceBetween: 20,
       loop: false,
       centeredSlides: false,
+      watchSlidesProgress: true,
       navigation: {
         prevEl: [prevBtn, mobPrevBtn].filter(Boolean),
         nextEl: [nextBtn, mobNextBtn].filter(Boolean),
@@ -39,18 +40,64 @@ function initBrandonSizeStatement(container) {
         },
       },
       on: {
-        init: updateActiveCenterDot,
-        slideChange: updateActiveCenterDot,
-        resize: updateActiveCenterDot,
-        breakpoint: updateActiveCenterDot,
+        init: function (s) {
+          updateSlideScalesAndActiveDot(s);
+        },
+        slideChange: function (s) {
+          updateSlideScalesAndActiveDot(s);
+        },
+        slideChangeTransitionStart: function (s) {
+          updateSlideScalesAndActiveDot(s);
+        },
+        setTranslate: function (s) {
+          updateSlideScalesAndActiveDot(s);
+        },
+        progress: function (s) {
+          updateSlideScalesAndActiveDot(s);
+        },
+        resize: function (s) {
+          updateSlideScalesAndActiveDot(s);
+        },
+        breakpoint: function (s) {
+          updateSlideScalesAndActiveDot(s);
+        },
       },
     });
 
-    function updateActiveCenterDot(s) {
+    function getVisibleSlidesCount() {
+      const w = window.innerWidth;
+      if (w >= 1100) return 5;
+      if (w >= 900) return 4;
+      if (w >= 600) return 3;
+      return 2;
+    }
+
+    function updateSlideScalesAndActiveDot(s) {
       const sw = s || swiper;
       if (!sw || !sw.slides || sw.slides.length === 0) return;
 
-      sw.slides.forEach((slide) => {
+      const spv = getVisibleSlidesCount();
+      const maxProgressIndex = Math.max(1, spv - 1);
+      const SCALE_LEFT = 0.60;
+      const SCALE_RIGHT = 1.0;
+      const activeIdx = sw.activeIndex || 0;
+
+      // Dynamic Left (Small 0.60) to Right (Large 1.00) scaling for each visible slide
+      sw.slides.forEach((slide, idx) => {
+        const img = slide.querySelector(".brandon-size-statement__img");
+        if (img) {
+          let relPos = idx - activeIdx;
+          if (relPos < 0) relPos = 0;
+          if (relPos > maxProgressIndex) relPos = maxProgressIndex;
+
+          const normPos = relPos / maxProgressIndex;
+          const scaleVal = SCALE_LEFT + normPos * (SCALE_RIGHT - SCALE_LEFT);
+
+          img.style.transform = `scale(${scaleVal.toFixed(3)})`;
+          img.style.transformOrigin = "bottom center";
+        }
+
+        // Reset active slide and active dot classes
         slide.classList.remove("brandon-size-statement__slide--active");
         const dot = slide.querySelector(".brandon-size-statement__dot");
         if (dot) {
@@ -58,13 +105,8 @@ function initBrandonSizeStatement(container) {
         }
       });
 
-      let spv = sw.params.slidesPerView;
-      if (typeof spv !== "number" || isNaN(spv)) {
-        spv = 1;
-      }
-      const centerOffset = Math.floor(spv / 2);
-      let activeIdx = sw.activeIndex;
-
+      // Highlight active center visible slide & timeline dot
+      const centerOffset = Math.floor((spv - 1) / 2);
       let centerIdx = activeIdx + centerOffset;
       if (centerIdx >= sw.slides.length) {
         centerIdx = sw.slides.length - 1;
@@ -74,7 +116,7 @@ function initBrandonSizeStatement(container) {
       if (centerSlide) {
         centerSlide.classList.add("brandon-size-statement__slide--active");
         const centerDot = centerSlide.querySelector(
-          ".brandon-size-statement__dot"
+          ".brandon-size-statement__dot",
         );
         if (centerDot) {
           centerDot.classList.add("brandon-size-statement__dot--active");
@@ -82,7 +124,10 @@ function initBrandonSizeStatement(container) {
       }
     }
 
-    updateActiveCenterDot(swiper);
+    // Initial trigger
+    setTimeout(function () {
+      updateSlideScalesAndActiveDot(swiper);
+    }, 50);
   }
 }
 

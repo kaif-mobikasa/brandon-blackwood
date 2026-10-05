@@ -1,0 +1,238 @@
+{{ 'brandon-collection-swatches.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'brandon-collection-swatches.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+#ShopifySection-{{ section.id }} .brandon-collection-swatches {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+}
+{%- endstyle -%}
+
+<div id="ShopifySection-{{ section.id }}" class="shopify-section brandon-collection-swatches-wrapper"
+  data-section-id="{{ section.id }}" data-section-type="brandon-collection-swatches">
+  <section class="brandon-collection-swatches" aria-label="{{ section.settings.heading | default: 'All Handbags' | escape }}">
+    <div class="brandon-collection-swatches__container">
+
+      <div class="brandon-collection-swatches__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="brandon-collection-swatches__heading">
+            {{ section.settings.heading | newline_to_br }}
+          </h2>
+        {%- elsif collection != blank -%}
+          <h2 class="brandon-collection-swatches__heading">
+            {{ collection.title | escape }}
+          </h2>
+        {%- else -%}
+          <h2 class="brandon-collection-swatches__heading">
+            ALL HANDBAGS
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.subtitle != blank -%}
+          <p class="brandon-collection-swatches__subtitle">
+            {{ section.settings.subtitle }}
+          </p>
+        {%- elsif collection != blank -%}
+          <p class="brandon-collection-swatches__subtitle">
+            {{ collection.all_products_count | default: collection.products_count }} Products
+          </p>
+        {%- else -%}
+          <p class="brandon-collection-swatches__subtitle">
+            230 Products
+          </p>
+        {%- endif -%}
+      </div>
+
+      <div class="brandon-collection-swatches__row-wrapper">
+        <div class="brandon-collection-swatches__row">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              {%- assign featured_coll = block.settings.collection -%}
+              {%- assign item_title = block.settings.title | default: featured_coll.title -%}
+              {%- assign item_url = block.settings.url | default: featured_coll.url | default: '#' -%}
+              {%- assign item_img = block.settings.image | default: featured_coll.featured_image | default: featured_coll.products.first.featured_image -%}
+
+              <a href="{{ item_url }}" class="brandon-collection-swatches__item{% if block.settings.is_active %} brandon-collection-swatches__item--active{% endif %}" {{ block.shopify_attributes }}>
+                <div class="brandon-collection-swatches__circle{% if block.settings.is_black_circle %} brandon-collection-swatches__circle--black{% endif %}">
+                  {%- if block.settings.is_black_circle -%}
+                    <span class="brandon-collection-swatches__badge">{{ block.settings.badge_text | default: 'NEW' }}</span>
+                  {%- elsif item_img != blank -%}
+                    <img src="{{ item_img | image_url: width: 300 }}" alt="{{ item_title | escape }}" loading="lazy" class="brandon-collection-swatches__img">
+                  {%- else -%}
+                    <span class="brandon-collection-swatches__circle-placeholder"></span>
+                  {%- endif -%}
+                </div>
+                {%- if item_title != blank -%}
+                  <span class="brandon-collection-swatches__title">{{ item_title }}</span>
+                {%- endif -%}
+              </a>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+
+        <div class="brandon-collection-swatches__line-bar">
+          <div class="brandon-collection-swatches__line-indicator"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Swatches",
+  "tag": "section",
+  "class": "shopify-section-brandon-collection-swatches",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "ALL HANDBAGS"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "230 Products"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title Override"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image Override"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Custom Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_black_circle",
+          "label": "Show as Black Badge Circle",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text (if Black Circle)",
+          "default": "NEW"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_active",
+          "label": "Mark as Active Item",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Swatches",
+      "blocks": [
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "New Arrivals",
+            "is_black_circle": true,
+            "badge_text": "NEW"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Crossbody"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Backpacks"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Handbags"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Mini Bags"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Clutches"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Trunk"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Chloe Bags"
+          }
+        },
+        {
+          "type": "collection_item",
+          "settings": {
+            "title": "Luna Bags"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

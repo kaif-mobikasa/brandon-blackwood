@@ -1,0 +1,506 @@
+{{ 'brandon-main-collection-grid.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'brandon-main-collection-grid.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+#ShopifySection-{{ section.id }} .brandon-plp-grid {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.bg_color | default: '#ffffff' }};
+}
+{%- endstyle -%}
+
+<div id="ShopifySection-{{ section.id }}" class="shopify-section brandon-plp-grid-wrapper"
+  data-section-id="{{ section.id }}" data-section-type="brandon-main-collection-grid">
+  
+  <div class="brandon-plp-grid">
+    
+    {%- paginate collection.products by section.settings.products_per_page -%}
+    <div class="brandon-plp-grid__description-header">
+      {%- if section.settings.desc_heading != blank -%}
+        <h3 class="brandon-plp-grid__desc-title">{{ section.settings.desc_heading }}</h3>
+      {%- elsif collection.title != blank -%}
+        <h3 class="brandon-plp-grid__desc-title">{{ section.settings.desc_heading | default: 'Luxury Handbags' }}</h3>
+      {%- endif -%}
+
+      {%- if section.settings.desc_text != blank -%}
+        <p class="brandon-plp-grid__desc-text">{{ section.settings.desc_text }}</p>
+      {%- elsif collection.description != blank -%}
+        <div class="brandon-plp-grid__desc-text">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+    <div class="brandon-plp-grid__controls-bar">
+      
+      <!-- View By Column Buttons -->
+      <div class="brandon-plp-grid__view-by">
+        <span>View by</span>
+        <button type="button" class="brandon-plp-grid__view-btn brandon-plp-grid__view-btn--mobile js-view-btn" data-cols="1" aria-label="1 Column View">1</button>
+        <button type="button" class="brandon-plp-grid__view-btn brandon-plp-grid__view-btn--mobile js-view-btn brandon-plp-grid__view-btn--active" data-cols="2" aria-label="2 Columns View">2</button>
+
+        <button type="button" class="brandon-plp-grid__view-btn brandon-plp-grid__view-btn--desktop js-view-btn" data-cols="3" aria-label="3 Columns View">3</button>
+        <button type="button" class="brandon-plp-grid__view-btn brandon-plp-grid__view-btn--desktop js-view-btn brandon-plp-grid__view-btn--active" data-cols="4" aria-label="4 Columns View">4</button>
+        <button type="button" class="brandon-plp-grid__view-btn brandon-plp-grid__view-btn--desktop js-view-btn" data-cols="6" aria-label="6 Columns View">6</button>
+      </div>
+      <div class="brandon-plp-grid__filter-sort-group">
+        
+        <!-- Sort By Custom Radio Dropdown -->
+        <div class="brandon-plp-grid__sort-dropdown js-sort-dropdown">
+          <button type="button" class="brandon-plp-grid__sort-trigger js-sort-trigger" aria-expanded="false" aria-haspopup="true">
+            <span>Sort by</span>
+            <svg class="brandon-plp-grid__sort-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L9 1" stroke="#1B1B1B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="brandon-plp-grid__sort-menu js-sort-menu">
+            {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+            
+            <label class="brandon-plp-grid__sort-option">
+              <input type="radio" name="sort_by" value="manual" class="js-sort-radio" {% if current_sort == 'manual' or current_sort == 'title-ascending' or current_sort == 'featured' %}checked{% endif %}>
+              <span class="brandon-plp-grid__radio-custom"></span>
+              <span class="brandon-plp-grid__sort-label">Recommended</span>
+            </label>
+
+            <label class="brandon-plp-grid__sort-option">
+              <input type="radio" name="sort_by" value="best-selling" class="js-sort-radio" {% if current_sort == 'best-selling' %}checked{% endif %}>
+              <span class="brandon-plp-grid__radio-custom"></span>
+              <span class="brandon-plp-grid__sort-label">Best selling</span>
+            </label>
+
+            <label class="brandon-plp-grid__sort-option">
+              <input type="radio" name="sort_by" value="created-descending" class="js-sort-radio" {% if current_sort == 'created-descending' %}checked{% endif %}>
+              <span class="brandon-plp-grid__radio-custom"></span>
+              <span class="brandon-plp-grid__sort-label">Latest Arrivals</span>
+            </label>
+
+            <label class="brandon-plp-grid__sort-option">
+              <input type="radio" name="sort_by" value="price-ascending" class="js-sort-radio" {% if current_sort == 'price-ascending' %}checked{% endif %}>
+              <span class="brandon-plp-grid__radio-custom"></span>
+              <span class="brandon-plp-grid__sort-label">Price: Low to High</span>
+            </label>
+
+            <label class="brandon-plp-grid__sort-option">
+              <input type="radio" name="sort_by" value="price-descending" class="js-sort-radio" {% if current_sort == 'price-descending' %}checked{% endif %}>
+              <span class="brandon-plp-grid__radio-custom"></span>
+              <span class="brandon-plp-grid__sort-label">Price: High to Low</span>
+            </label>
+          </div>
+        </div>
+
+        <span class="brandon-plp-grid__controls-divider">|</span>
+
+        <!-- Filters Trigger -->
+        <button type="button" class="brandon-plp-grid__filter-btn js-open-filter-drawer" aria-label="Open Filters">
+          <span>Filters</span>
+          {%- assign active_filter_count = 0 -%}
+          {%- for filter in collection.filters -%}
+            {%- if filter.type == 'price_range' -%}
+              {%- if filter.min_value.value or filter.max_value.value -%}
+                {%- assign active_filter_count = active_filter_count | plus: 1 -%}
+              {%- endif -%}
+            {%- else -%}
+              {%- assign active_filter_count = active_filter_count | plus: filter.active_values.size -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if active_filter_count > 0 -%}
+            <span class="brandon-plp-grid__filter-badge">{{ active_filter_count }}</span>
+          {%- endif -%}
+         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.625 3.11458H5.06649C5.24332 3.7398 5.81815 4.19792 6.5 4.19792C7.18185 4.19792 7.75667 3.7398 7.93352 3.11458H11.375C11.5994 3.11458 11.7812 2.9327 11.7812 2.70833C11.7812 2.48397 11.5994 2.30208 11.375 2.30208H7.93352C7.75667 1.67686 7.18185 1.21875 6.5 1.21875C5.81815 1.21875 5.24332 1.67686 5.06649 2.30208H1.625C1.40064 2.30208 1.21875 2.48397 1.21875 2.70833C1.21875 2.9327 1.40064 3.11458 1.625 3.11458ZM9.20833 5.01042C8.38565 5.01042 7.71875 5.67732 7.71875 6.5C7.71875 7.32268 8.38565 7.98958 9.20833 7.98958C9.89018 7.98958 10.465 7.5315 10.6419 6.90625H11.375C11.5994 6.90625 11.7812 6.72436 11.7812 6.5C11.7812 6.27564 11.5994 6.09375 11.375 6.09375H10.6419C10.465 5.4685 9.89018 5.01042 9.20833 5.01042ZM1.21875 6.5C1.21875 6.27564 1.40064 6.09375 1.625 6.09375H6.5C6.72436 6.09375 6.90625 6.27564 6.90625 6.5C6.90625 6.72436 6.72436 6.90625 6.5 6.90625H1.625C1.40064 6.90625 1.21875 6.72436 1.21875 6.5ZM2.35816 10.6979H1.625C1.40064 10.6979 1.21875 10.516 1.21875 10.2917C1.21875 10.0673 1.40064 9.88542 1.625 9.88542H2.35816C2.53499 9.26017 3.10983 8.80208 3.79167 8.80208C4.61434 8.80208 5.28125 9.46898 5.28125 10.2917C5.28125 11.1144 4.61434 11.7812 3.79167 11.7812C3.10983 11.7812 2.53499 11.3232 2.35816 10.6979ZM6.09375 10.2917C6.09375 10.0673 6.27564 9.88542 6.5 9.88542H11.375C11.5994 9.88542 11.7812 10.0673 11.7812 10.2917C11.7812 10.516 11.5994 10.6979 11.375 10.6979H6.5C6.27564 10.6979 6.09375 10.516 6.09375 10.2917Z" fill="black"/>
+</svg>
+
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Connected to Search & Discovery App -->
+    <div class="brandon-plp-drawer js-plp-filter-drawer">
+      <div class="brandon-plp-drawer__overlay js-close-filter-drawer"></div>
+      <div class="brandon-plp-drawer__content">
+        
+        <div class="brandon-plp-drawer__header">
+          <h3 class="brandon-plp-drawer__title">FILTERS</h3>
+          <button type="button" class="brandon-plp-drawer__close js-close-filter-drawer" aria-label="Close Filters">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M1 13L13 1" stroke="#000" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+
+        <form id="BrandonFacetFiltersForm" action="{{ collection.url }}" method="GET" class="brandon-plp-drawer__form">
+          {%- if collection.sort_by != blank -%}
+            <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
+          {%- endif -%}
+
+          {%- if collection.filters.size > 0 -%}
+            {%- for filter in collection.filters -%}
+              <details class="brandon-plp-drawer__group" open>
+                <summary class="brandon-plp-drawer__group-header">
+                  <span>{{ filter.label }}</span>
+                  <span class="brandon-plp-drawer__icon">+</span>
+                </summary>
+
+                <div class="brandon-plp-drawer__group-content">
+                  {%- case filter.type -%}
+                    {%- when 'price_range' -%}
+                      {%- assign min_val = filter.min_value.value | money_without_currency | replace: ',', '' -%}
+                      {%- assign max_val = filter.max_value.value | money_without_currency | replace: ',', '' -%}
+                      <div class="brandon-plp-drawer__price-range">
+                        <div class="brandon-plp-drawer__field">
+                          <span>$</span>
+                          <input name="{{ filter.min_value.param_name }}" id="Filter-{{ filter.param_name }}-1"
+                            {% if filter.min_value.value %}value="{{ min_val }}"{% endif %}
+                            type="number" step="any" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" placeholder="Min">
+                        </div>
+                        <span>to</span>
+                        <div class="brandon-plp-drawer__field">
+                          <span>$</span>
+                          <input name="{{ filter.max_value.param_name }}" id="Filter-{{ filter.param_name }}-2"
+                            {% if filter.max_value.value %}value="{{ max_val }}"{% endif %}
+                            type="number" step="any" min="0" max="{{ filter.range_max | money_without_currency | replace: ',', '' }}" placeholder="Max">
+                        </div>
+                      </div>
+
+                    {%- when 'boolean', 'list' -%}
+                      <ul class="brandon-plp-drawer__list">
+                        {%- for value in filter.values -%}
+                          <li class="brandon-plp-drawer__item">
+                            <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}" class="brandon-plp-drawer__checkbox-label">
+                              <input type="checkbox"
+                                name="{{ value.param_name }}"
+                                value="{{ value.value }}"
+                                id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                                {% if value.active %}checked{% endif %}
+                                {% if value.count == 0 and value.active == false %}disabled{% endif %}>
+                              <span class="brandon-plp-drawer__text">{{ value.label }} ({{ value.count }})</span>
+                            </label>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                  {%- endcase -%}
+                </div>
+              </details>
+            {%- endfor -%}
+          {%- endif -%}
+        </form>
+
+        <div class="brandon-plp-drawer__footer">
+          {%- assign clear_url = collection.url -%}
+          {%- if collection.sort_by != blank -%}
+            {%- assign clear_url = clear_url | append: '?sort_by=' | append: collection.sort_by -%}
+          {%- endif -%}
+          <a href="{{ clear_url }}" class="brandon-plp-drawer__clear">Clear All</a>
+          <button type="submit" form="BrandonFacetFiltersForm" class="brandon-plp-drawer__apply js-apply-filters">Apply Filters</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="brandon-plp-grid__list brandon-plp-grid__list--col-4 js-plp-grid-list">
+      
+      {%- for product in collection.products -%}
+    {% assign meta_promo = collection.metafields.custom.plp_promo.value %}
+
+{% assign promo_1_img = meta_promo.promo_1_image %}
+{% assign promo_1_title = meta_promo.promo_1_title | default: 'HANDBAGS' %}
+{% assign promo_1_link_text = meta_promo.promo_1_link_text | default: 'Explore Collection' %}
+{% assign promo_1_url = meta_promo.promo_1_url | default: '#' %}
+
+{% assign promo_2_img = meta_promo.promo_2_image %}
+{% assign promo_2_prod = meta_promo.promo_2_product.value %}
+        
+        {%- assign p1_mob_target = section.settings.promo_1_mobile_index | default: 4 | plus: 1 -%}
+        {%- assign p1_desk_target = section.settings.promo_1_desktop_index | default: 6 | plus: 1 -%}
+        {%- assign p2_mob_target = section.settings.promo_2_mobile_index | default: 8 | plus: 1 -%}
+        {%- assign p2_desk_target = section.settings.promo_2_desktop_index | default: 10 | plus: 1 -%}
+
+        <!-- Row 2 In-Grid Banner -->
+        {%- if promo_1_img != blank -%}
+          {%- if forloop.index == p1_mob_target -%}
+            <div class="brandon-plp-promo brandon-plp-promo--row2 brandon-plp-promo--mobile-only">
+              <img src="{{ promo_1_img | image_url: width: 1200 }}" alt="{{ promo_1_title | escape }}" loading="lazy" class="brandon-plp-promo__bg-img">
+              <div class="brandon-plp-promo__content">
+                <h3 class="brandon-plp-promo__title">{{ promo_1_title }}</h3>
+                {%- if promo_1_link_text != blank -%}
+                  <a href="{{ promo_1_url }}" class="brandon-plp-promo__link">
+                    {{ promo_1_link_text }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+          {%- if forloop.index == p1_desk_target -%}
+            <div class="brandon-plp-promo brandon-plp-promo--row2 brandon-plp-promo--desktop-only">
+              <img src="{{ promo_1_img | image_url: width: 1200 }}" alt="{{ promo_1_title | escape }}" loading="lazy" class="brandon-plp-promo__bg-img">
+              <div class="brandon-plp-promo__content">
+                <h3 class="brandon-plp-promo__title">{{ promo_1_title }}</h3>
+                {%- if promo_1_link_text != blank -%}
+                  <a href="{{ promo_1_url }}" class="brandon-plp-promo__link">
+                    {{ promo_1_link_text }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+
+        <!-- Row 4 In-Grid Product Overlay Promo -->
+        {%- if promo_2_img != blank -%}
+          {%- if forloop.index == p2_mob_target -%}
+            <div class="brandon-plp-promo brandon-plp-promo--row4 brandon-plp-promo--mobile-only">
+              <img src="{{ promo_2_img | image_url: width: 1200 }}" alt="Featured Collection" loading="lazy" class="brandon-plp-promo__bg-img">
+
+              <!-- Interactive Hotspot Dots -->
+              <div class="brandon-plp-promo__hotspot brandon-plp-promo__hotspot--1 js-promo-hotspot">
+                <span class="brandon-plp-promo__hotspot-dot"></span>
+              </div>
+              <div class="brandon-plp-promo__hotspot brandon-plp-promo__hotspot--2 js-promo-hotspot">
+                <span class="brandon-plp-promo__hotspot-dot"></span>
+              </div>
+
+              {%- if promo_2_prod != blank -%}
+                <div class="brandon-plp-promo__overlay-card js-promo-overlay-card">
+                  <!-- Close Button Cross Icon -->
+                  <button type="button" class="brandon-plp-promo__overlay-close js-close-promo-overlay" aria-label="Close card">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L11 11M1 11L11 1" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+
+                  <!-- Left Thumbnail -->
+                  <div class="brandon-plp-promo__overlay-thumb">
+                    <img src="{{ promo_2_prod.featured_image | image_url: width: 120 }}" alt="{{ promo_2_prod.title | escape }}">
+                  </div>
+
+                  <!-- Product Details & Swatches -->
+                  <div class="brandon-plp-promo__overlay-info">
+                    <h4 class="brandon-plp-promo__overlay-title">{{ promo_2_prod.title }}</h4>
+                    <span class="brandon-plp-promo__overlay-price">{{ promo_2_prod.price | money }}</span>
+                    <div class="brandon-plp-promo__overlay-swatches">
+                      <span class="brandon-plp-card__swatch-dot" style="background-color: #D2B48C;"></span>
+                      <span class="brandon-plp-card__swatch-dot" style="background-color: #D4AF37;"></span>
+                      <span class="brandon-plp-card__swatch-dot" style="background-color: #5B7065;"></span>
+                      <span class="brandon-plp-card__swatch-more">+3</span>
+                    </div>
+                  </div>
+
+                  <!-- Add To Cart Button -->
+                  <button type="button" class="brandon-plp-promo__overlay-atc js-ajax-add-to-cart" data-variant-id="{{ promo_2_prod.selected_or_first_available_variant.id }}">
+                    ADD TO CART
+                  </button>
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          {%- if forloop.index == p2_desk_target -%}
+            <div class="brandon-plp-promo brandon-plp-promo--row4 brandon-plp-promo--desktop-only">
+              <img src="{{ promo_2_img | image_url: width: 1200 }}" alt="Featured Collection" loading="lazy" class="brandon-plp-promo__bg-img">
+              <div class="brandon-plp-promo__hotspot brandon-plp-promo__hotspot--1 js-promo-hotspot">
+                <span class="brandon-plp-promo__hotspot-dot"></span>
+              </div>
+              <div class="brandon-plp-promo__hotspot brandon-plp-promo__hotspot--2 js-promo-hotspot">
+                <span class="brandon-plp-promo__hotspot-dot"></span>
+              </div>
+
+              {%- if promo_2_prod != blank -%}
+                <div class="brandon-plp-promo__overlay-card js-promo-overlay-card">
+                  <!-- Close Button Cross Icon -->
+                  <button type="button" class="brandon-plp-promo__overlay-close js-close-promo-overlay" aria-label="Close card">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L11 11M1 11L11 1" stroke="#000000" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                  <div class="brandon-plp-promo__overlay-thumb">
+                    <img src="{{ promo_2_prod.featured_image | image_url: width: 120 }}" alt="{{ promo_2_prod.title | escape }}">
+                  </div>
+
+                  <!-- Product Details & Swatches -->
+                  <div class="brandon-plp-promo__overlay-info">
+                    <h4 class="brandon-plp-promo__overlay-title">{{ promo_2_prod.title }}</h4>
+                    <span class="brandon-plp-promo__overlay-price">{{ promo_2_prod.price | money }}</span>
+                    <div class="brandon-plp-promo__overlay-swatches">
+                      <span class="brandon-plp-card__swatch-dot" style="background-color: #D2B48C;"></span>
+                      <span class="brandon-plp-card__swatch-dot" style="background-color: #D4AF37;"></span>
+                      <span class="brandon-plp-card__swatch-dot" style="background-color: #5B7065;"></span>
+                      <span class="brandon-plp-card__swatch-more">+3</span>
+                    </div>
+                  </div>
+
+                  <!-- Add To Cart Button -->
+                  <button type="button" class="brandon-plp-promo__overlay-atc js-ajax-add-to-cart" data-variant-id="{{ promo_2_prod.selected_or_first_available_variant.id }}">
+                    ADD TO CART
+                  </button>
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+
+        <!-- Product Card -->
+        <div class="brandon-plp-card{% if forloop.index > 12 %} brandon-plp-card--mobile-hidden{% endif %}">
+          <div class="brandon-plp-card__image-box">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" loading="lazy" class="brandon-plp-card__img">
+            </a>
+            <button type="button" class="brandon-plp-card__atc-btn js-ajax-add-to-cart" data-variant-id="{{ product.selected_or_first_available_variant.id }}">
+              ADD TO CART
+            </button>
+          </div>
+
+          <div class="brandon-plp-card__details">
+            <div class="brandon-plp-card__title-row">
+              <a href="{{ product.url }}" class="brandon-plp-card__title">{{ product.title }}</a>
+            </div>
+
+            {%- if product.description != blank -%}
+              <p class="brandon-plp-card__desc">{{ product.description | strip_html | truncatewords: 8 }}</p>
+            {%- endif -%}
+            
+            <div class="brandon-plp-card__price-swatch-row">
+              <span class="brandon-plp-card__price">{{ product.price | money }}</span>
+              <div class="brandon-plp-card__swatches">
+                {%- assign color_mod = forloop.index | modulo: 4 -%}
+                {%- if color_mod == 0 -%}
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #000000;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #E5C358;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #C85A32;"></span>
+                  <span class="brandon-plp-card__swatch-more">+3</span>
+                {%- elsif color_mod == 1 -%}
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #8A4F32;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #D4AF37;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #2F3E46;"></span>
+                  <span class="brandon-plp-card__swatch-more">+2</span>
+                {%- elsif color_mod == 2 -%}
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #A22623;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #1B1B1B;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #E0A96D;"></span>
+                  <span class="brandon-plp-card__swatch-more">+4</span>
+                {%- else -%}
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #C49A45;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #4A5D4E;"></span>
+                  <span class="brandon-plp-card__swatch-dot" style="background-color: #8C2D19;"></span>
+                  <span class="brandon-plp-card__swatch-more">+3</span>
+                {%- endif -%}
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      {%- endfor -%}
+
+    </div>
+
+    <!-- Show More / Pagination -->
+    {%- if paginate.pages > 1 -%}
+    <div class="brandon-plp-grid__pagination">
+      <button type="button" class="brandon-plp-grid__show-more js-load-more-products">
+        SHOW MORE
+      </button>
+    </div>
+    {%- endif -%}
+
+    {%- endpaginate -%}
+
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "PLP Collection Grid",
+  "tag": "section",
+  "class": "shopify-section-brandon-plp-grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "desc_heading",
+      "label": "Description Heading",
+      "default": "Luxury Handbags"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_text",
+      "label": "Description Subtext",
+      "default": "Explore our collection of luxury handbags made with rare, unexpected materials that redefine modern elegance."
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "label": "Products Per Page",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Promo Banner Positions"
+    },
+    {
+      "type": "range",
+      "id": "promo_1_desktop_index",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "label": "Promo 1 Desktop Position (After product count)",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "promo_1_mobile_index",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "label": "Promo 1 Mobile Position (After product count)",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "promo_2_desktop_index",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "label": "Promo 2 Desktop Position (After product count)",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "promo_2_mobile_index",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "label": "Promo 2 Mobile Position (After product count)",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "PLP Collection Grid"
+    }
+  ]
+}
+{% endschema %}
